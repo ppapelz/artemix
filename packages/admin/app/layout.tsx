@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="h-screen">
         <StyledComponentsRegistry>
           <ConfigProvider theme={theme}>{children} </ConfigProvider>
         </StyledComponentsRegistry>
