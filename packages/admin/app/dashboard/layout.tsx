@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -9,16 +9,29 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const { Header, Sider, Content } = Layout;
 
 const Dashboard: React.FC = (props: any) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [pageLabel, setPageLabel] = useState("");
   const {
     token: { colorBgContainer },
   } = theme.useToken();
   const router = useRouter();
+  const currentPath = usePathname();
+
+  useEffect( () => {
+    const currentLabel = currentPath?.split('/')[2] || 'prompts'
+    setPageLabel(currentLabel);
+    router.push(`/dashboard/${currentLabel}`);
+  }, [])
+
+  const handleNavigate = ({ key }: { key: string }) => {
+    setPageLabel(key);
+    router.push(`/dashboard/${key}`);
+  };
 
   return (
     <div className="h-full">
@@ -30,25 +43,23 @@ const Dashboard: React.FC = (props: any) => {
           <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["1"]}
+            selectedKeys={[pageLabel]}
+            onClick={handleNavigate}
             items={[
               {
-                key: "1",
+                key: "prompts",
                 icon: <DeploymentUnitOutlined />,
                 label: "Prompts",
-                onClick: () => router.push("/dashboard/prompts"),
               },
               {
-                key: "2",
+                key: "settings",
                 icon: <SettingOutlined />,
                 label: "Settings",
-                onClick: () => router.push("/dashboard/settings"),
               },
               {
-                key: "3",
+                key: "logs",
                 icon: <DatabaseOutlined />,
                 label: "Logs",
-                onClick: () => router.push("/dashboard/logs"),
               },
             ]}
           />
@@ -65,7 +76,7 @@ const Dashboard: React.FC = (props: any) => {
                 height: 64,
               }}
             />
-            test
+            <span className="uppercase">{pageLabel}</span>
           </Header>
           <Content
             style={{
