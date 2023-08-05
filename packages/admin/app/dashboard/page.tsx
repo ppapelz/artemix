@@ -1,5 +1,5 @@
-import Prompts from "./prompts/page";
+import Prompts from "../prompts/page";
 
 export default function Dashboard() {
-  return <Prompts />;
+  return <div>Dashboard</div>;
 }
