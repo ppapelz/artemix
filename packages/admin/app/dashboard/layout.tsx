@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
+  DatabaseOutlined,
+  DeploymentUnitOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { useRouter } from "next/navigation";
@@ -18,13 +18,15 @@ const Dashboard: React.FC = (props: any) => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <div className="h-full">
       <Layout className="h-full">
         <Sider trigger={null} collapsible collapsed={collapsed}>
-          <div className="demo-logo-vertical" />
+          <div className="text-neutral-100 text-xl text-center p-2">
+            promptus
+          </div>
           <Menu
             theme="dark"
             mode="inline"
@@ -32,22 +34,21 @@ const Dashboard: React.FC = (props: any) => {
             items={[
               {
                 key: "1",
-                icon: <UserOutlined />,
+                icon: <DeploymentUnitOutlined />,
                 label: "Prompts",
-                onClick: () => router.push('/dashboard/prompts')
+                onClick: () => router.push("/dashboard/prompts"),
               },
               {
                 key: "2",
-                icon: <VideoCameraOutlined />,
-                label: "Setings",
-                onClick: () => router.push('/dashboard/setings')
+                icon: <SettingOutlined />,
+                label: "Settings",
+                onClick: () => router.push("/dashboard/settings"),
               },
               {
                 key: "3",
-                icon: <UploadOutlined />,
+                icon: <DatabaseOutlined />,
                 label: "Logs",
-                onClick: () => router.push('/dashboard/logs')
-
+                onClick: () => router.push("/dashboard/logs"),
               },
             ]}
           />
@@ -64,6 +65,7 @@ const Dashboard: React.FC = (props: any) => {
                 height: 64,
               }}
             />
+            test
           </Header>
           <Content
             style={{
