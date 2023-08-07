@@ -34,7 +34,6 @@ export default function RootLayout({
   useEffect(() => {
     const currentLabel = currentPath?.split("/")[1] || "dashboard";
     setPageLabel(currentLabel);
-    router.push(`/${currentLabel}`);
   }, []);
 
   const handleNavigate = ({ key }: { key: string }) => {
