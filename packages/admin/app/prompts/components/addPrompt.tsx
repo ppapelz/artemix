@@ -16,26 +16,32 @@ const AddPrompt = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
-  };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
+  const [form] = Form.useForm();
 
   const handleOk = () => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setModalOpen(false);
-      //router.push("/prompts/test");
-    }, 3000);
+    form
+      .validateFields()
+      .then((values) => {
+        setTimeout(() => {
+          setLoading(false);
+          setModalOpen(false);
+          form.resetFields();
+          router.push("/prompts/test");
+        }, 3000);
+      })
+      .catch((info) => {
+        setLoading(false);
+      });
   };
 
   const handleCancel = () => {
     setModalOpen(false);
+  };
+
+  const openModal = () => {
+    form.resetFields();
+    setModalOpen(true);
   };
 
   return (
@@ -45,7 +51,7 @@ const AddPrompt = () => {
         icon={<PlusOutlined />}
         size="large"
         className="self-end"
-        onClick={() => setModalOpen(true)}
+        onClick={openModal}
       >
         Add Prompt
       </Button>
@@ -54,7 +60,6 @@ const AddPrompt = () => {
         title="Add Prompt"
         centered
         open={modalOpen}
-        onOk={handleOk}
         onCancel={handleCancel}
         footer={[
           <Button key="back" onClick={handleCancel}>
@@ -67,19 +72,16 @@ const AddPrompt = () => {
             loading={loading}
             onClick={handleOk}
           >
-            Submit
+            Create
           </Button>,
         ]}
       >
         <Form
+          form={form}
           name="basic"
           labelCol={{ span: 7 }}
           wrapperCol={{ span: 20 }}
           style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
           id="add-prompt-form"
         >
           <Form.Item<FieldType>
