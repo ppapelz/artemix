@@ -27,7 +27,8 @@ const AddPrompt = () => {
           setLoading(false);
           setModalOpen(false);
           form.resetFields();
-          router.push("/prompts/test");
+          const promptId = Date.now();
+          router.push(`/prompts/${promptId}`);
         }, 3000);
       })
       .catch((info) => {

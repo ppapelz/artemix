@@ -1,10 +1,15 @@
 "use client";
 
 import React from "react";
-import { Tabs } from "antd";
-import type { TabsProps } from "antd";
+import { Form, Tabs } from "antd";
+import type { FormInstance, TabsProps } from "antd";
+import ModelOptions from "./modelOptions";
 
-const PromptOptions = (props: any) => {
+interface PromptOptionsProps {
+  modelForm: FormInstance;
+}
+
+const PromptOptions: React.FC<PromptOptionsProps> = ({ modelForm }) => {
   const onChange = (key: string) => {
     console.log(key);
   };
@@ -13,7 +18,7 @@ const PromptOptions = (props: any) => {
     {
       key: "1",
       label: `Model Options`,
-      children: `Content of Tab Pane 1`,
+      children: <ModelOptions form={modelForm} />,
     },
     {
       key: "2",
