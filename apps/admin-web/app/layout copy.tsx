@@ -1,5 +1,6 @@
 "use client";
 
+import StyledComponentsRegistry from "@/lib/AntdRegistry";
 import "./globals.css";
 import { ConfigProvider } from "antd";
 import defaultTheme from "./theme/themeConfig";
@@ -14,7 +15,6 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { useRouter, usePathname } from "next/navigation";
-import StyledComponentsRegistry from "../lib/AntdRegistry";
 
 const { Header, Sider, Content } = Layout;
 
