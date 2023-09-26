@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   const [collapsed, setCollapsed] = useState(false);
   const [pageLabel, setPageLabel] = useState('');
-  const [isClient, setIsClient] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -34,7 +34,7 @@ export default function RootLayout({
   const currentPath = usePathname();
 
   useEffect(() => {
-    setIsClient(true);
+    setMounted(true);
     const currentLabel = currentPath?.split('/')[1] || 'dashboard';
     setPageLabel(currentLabel);
   }, []);
@@ -50,78 +50,76 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <ConfigProvider theme={defaultTheme}>
             <div className="h-full">
-              {isClient ? (
-                <Layout className="h-full" hasSider>
-                  <Sider trigger={null} collapsible collapsed={collapsed}>
-                    <div className="text-neutral-100 text-xl text-center p-2">
-                      promptus
-                    </div>
-                    <Menu
-                      theme="dark"
-                      mode="inline"
-                      selectedKeys={[pageLabel]}
-                      onClick={handleNavigate}
-                      items={[
-                        {
-                          key: 'dashboard',
-                          icon: <HomeOutlined />,
-                          label: 'Dashboard',
-                        },
-                        {
-                          key: 'prompts',
-                          icon: <DeploymentUnitOutlined />,
-                          label: 'Prompts',
-                        },
-                        {
-                          key: 'settings',
-                          icon: <SettingOutlined />,
-                          label: 'Settings',
-                        },
-                        {
-                          key: 'logs',
-                          icon: <DatabaseOutlined />,
-                          label: 'Logs',
-                        },
-                      ]}
-                    />
-                  </Sider>
-                  <Layout>
-                    <Header
-                      style={{ padding: 0, background: colorBgContainer }}
-                    >
-                      <Button
-                        type="text"
-                        icon={
-                          collapsed ? (
-                            <MenuUnfoldOutlined />
-                          ) : (
-                            <MenuFoldOutlined />
-                          )
-                        }
-                        onClick={() => setCollapsed(!collapsed)}
-                        style={{
-                          fontSize: '16px',
-                          width: 64,
-                          height: 64,
-                        }}
-                      />
-                      <span className="uppercase">{pageLabel}</span>
-                    </Header>
-                    <Content
+              <Layout className="h-full" hasSider>
+                <Sider trigger={null} collapsible collapsed={collapsed}>
+                  <div className="text-neutral-100 text-xl text-center p-2">
+                    promptus
+                  </div>
+                  <Menu
+                    theme="dark"
+                    mode="inline"
+                    selectedKeys={[pageLabel]}
+                    onClick={handleNavigate}
+                    items={[
+                      {
+                        key: 'dashboard',
+                        icon: <HomeOutlined />,
+                        label: 'Dashboard',
+                      },
+                      {
+                        key: 'prompts',
+                        icon: <DeploymentUnitOutlined />,
+                        label: 'Prompts',
+                      },
+                      {
+                        key: 'settings',
+                        icon: <SettingOutlined />,
+                        label: 'Settings',
+                      },
+                      {
+                        key: 'logs',
+                        icon: <DatabaseOutlined />,
+                        label: 'Logs',
+                      },
+                    ]}
+                  />
+                </Sider>
+                <Layout>
+                  <Header style={{ padding: 0, background: colorBgContainer }}>
+                    <Button
+                      type="text"
+                      icon={
+                        collapsed ? (
+                          <MenuUnfoldOutlined />
+                        ) : (
+                          <MenuFoldOutlined />
+                        )
+                      }
+                      onClick={() => setCollapsed(!collapsed)}
                       style={{
-                        margin: '24px 16px',
-                        padding: 24,
-                        minHeight: 280,
-                        background: colorBgContainer,
+                        fontSize: '16px',
+                        width: 64,
+                        height: 64,
                       }}
+                    />
+                    <span className="uppercase">{pageLabel}</span>
+                  </Header>
+                  <Content
+                    style={{
+                      margin: '24px 16px',
+                      padding: 24,
+                      minHeight: 280,
+                      background: colorBgContainer,
+                    }}
+                  >
+                    <div
+                      style={{ visibility: !mounted ? 'hidden' : 'visible' }}
                     >
                       {children}
-                    </Content>
-                  </Layout>
+                    </div>
+                  </Content>
                 </Layout>
-              ) : (
-                <></>
-              )}
+              </Layout>
             </div>
           </ConfigProvider>
         </StyledComponentsRegistry>
