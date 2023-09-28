@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@promptus/admin-db": ["libs/admin-db/src/index.ts"],
+      "admin-db": ["libs/admin-db/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -47,7 +47,7 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <ConfigProvider theme={defaultTheme}>
             <div className="h-full">
-              <Layout className="h-full">
+              <Layout className="h-full" hasSider>
                 <Sider trigger={null} collapsible collapsed={collapsed}>
                   <div className="text-neutral-100 text-xl text-center p-2">
                     promptus
