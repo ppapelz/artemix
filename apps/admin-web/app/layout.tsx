@@ -1,9 +1,8 @@
-"use client";
+'use client';
 
-import "./globals.css";
-import { ConfigProvider } from "antd";
-import defaultTheme from "./theme/themeConfig";
-import React, { useEffect, useState } from "react";
+import { ConfigProvider } from 'antd';
+import defaultTheme from './theme/themeConfig';
+import React, { useEffect, useState } from 'react';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -11,10 +10,12 @@ import {
   DeploymentUnitOutlined,
   SettingOutlined,
   HomeOutlined,
-} from "@ant-design/icons";
-import { Layout, Menu, Button, theme } from "antd";
-import { useRouter, usePathname } from "next/navigation";
-import StyledComponentsRegistry from "../lib/AntdRegistry";
+} from '@ant-design/icons';
+import { Layout, Menu, Button, theme } from 'antd';
+import { useRouter, usePathname } from 'next/navigation';
+import StyledComponentsRegistry from '../lib/AntdRegistry';
+
+import './globals.css';
 
 const { Header, Sider, Content } = Layout;
 
@@ -24,7 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [collapsed, setCollapsed] = useState(false);
-  const [pageLabel, setPageLabel] = useState("");
+  const [pageLabel, setPageLabel] = useState('');
+  const [mounted, setMounted] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -32,7 +34,8 @@ export default function RootLayout({
   const currentPath = usePathname();
 
   useEffect(() => {
-    const currentLabel = currentPath?.split("/")[1] || "dashboard";
+    setMounted(true);
+    const currentLabel = currentPath?.split('/')[1] || 'dashboard';
     setPageLabel(currentLabel);
   }, []);
 
@@ -59,24 +62,24 @@ export default function RootLayout({
                     onClick={handleNavigate}
                     items={[
                       {
-                        key: "dashboard",
+                        key: 'dashboard',
                         icon: <HomeOutlined />,
-                        label: "Dashboard",
+                        label: 'Dashboard',
                       },
                       {
-                        key: "prompts",
+                        key: 'prompts',
                         icon: <DeploymentUnitOutlined />,
-                        label: "Prompts",
+                        label: 'Prompts',
                       },
                       {
-                        key: "settings",
+                        key: 'settings',
                         icon: <SettingOutlined />,
-                        label: "Settings",
+                        label: 'Settings',
                       },
                       {
-                        key: "logs",
+                        key: 'logs',
                         icon: <DatabaseOutlined />,
-                        label: "Logs",
+                        label: 'Logs',
                       },
                     ]}
                   />
@@ -94,7 +97,7 @@ export default function RootLayout({
                       }
                       onClick={() => setCollapsed(!collapsed)}
                       style={{
-                        fontSize: "16px",
+                        fontSize: '16px',
                         width: 64,
                         height: 64,
                       }}
@@ -103,13 +106,17 @@ export default function RootLayout({
                   </Header>
                   <Content
                     style={{
-                      margin: "24px 16px",
+                      margin: '24px 16px',
                       padding: 24,
                       minHeight: 280,
                       background: colorBgContainer,
                     }}
                   >
-                    {children}
+                    <div
+                      style={{ visibility: !mounted ? 'hidden' : 'visible' }}
+                    >
+                      {children}
+                    </div>
                   </Content>
                 </Layout>
               </Layout>
