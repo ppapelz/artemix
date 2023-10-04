@@ -2,7 +2,10 @@
   "name": "@promptus/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "migrate:db": "sequelize db:migrate --config=libs/db/config.json --migrations-path=libs/db/src/lib/migrations",
+    "seed:db": "sequelize db:seed:all --config=libs/db/config.json --seeders-path=libs/db/src/lib/seeders"
+  },
   "private": true,
   "devDependencies": {
     "@nx/cypress": "16.9.0",
@@ -42,6 +45,7 @@
     "postcss": "^8.4.27",
     "prettier": "^2.6.2",
     "sass": "1.62.1",
+    "sequelize-cli": "^6.6.1",
     "tailwindcss": "^3.3.3",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
@@ -55,6 +59,10 @@
     "express": "~4.18.1",
     "next": "13.4.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sequelize": "^6.33.0",
+    "sqlite3": "^5.1.6",
+    "typeorm": "^0.3.17"
   }
 }
+

@@ -14,9 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "paths": {
-      "@promptus/admin-db": ["libs/admin-db/src/index.ts"],
-      "admin-db": ["libs/admin-db/src/index.ts"]
+      "@promptus/db": ["libs/db/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

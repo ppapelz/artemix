@@ -1,21 +1,32 @@
 {
-  "name": "admin-db",
+  "name": "db",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/admin-db/src",
+  "sourceRoot": "libs/db/src",
   "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/db",
+        "tsConfig": "libs/db/tsconfig.lib.json",
+        "packageJson": "libs/db/package.json",
+        "main": "libs/db/src/index.ts",
+        "assets": ["libs/db/*.md", "libs/db/config.json"]
+      }
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/admin-db/**/*.ts"]
+        "lintFilePatterns": ["libs/db/**/*.ts", "libs/db/package.json"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/admin-db/jest.config.ts",
+        "jestConfig": "libs/db/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
