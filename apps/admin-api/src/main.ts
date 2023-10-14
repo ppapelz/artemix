@@ -9,14 +9,9 @@ const app = express();
 const sequelizeInstance = getSequelizeInstance();
 sequelizeInstance.authenticate()
   .then(async () => {
-
-
     try {
       const prompts = await promptService.getAllPrompts();
-
       console.log(prompts);
-
-
     } catch (error) {
       console.error("Error fetching prompts:", error);
     }
@@ -27,9 +22,9 @@ sequelizeInstance.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 
-
-app.get('/', (req, res) => {
-
+app.get('/', async (req, res) => {
+  const prompts = await promptService.getAllPrompts();
+  console.log(prompts);
   res.send({ message: 'test' });
 
 });

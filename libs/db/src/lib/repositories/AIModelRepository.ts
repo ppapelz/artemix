@@ -9,7 +9,7 @@ class AIModelRepository extends BaseRepository<AIModel> {
     }
 
     async findByPromptID(promptID: number): Promise<AIModel | null> {
-        return await this.model.findOne({ where: { PromptID: promptID } });
+        return await this.model.findOne({ where: { promptID: promptID } });
     }
 }
 

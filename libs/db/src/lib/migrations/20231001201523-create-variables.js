@@ -4,13 +4,13 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Variables', {
-      ID: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      PromptID: {
+      promptID: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Prompts',
@@ -18,12 +18,12 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      Label: Sequelize.STRING,
-      Type: Sequelize.STRING,
-      Name: Sequelize.STRING,
-      Description: Sequelize.TEXT,
-      DefaultValue: Sequelize.TEXT,
-      ContentLimit: Sequelize.INTEGER,
+      label: Sequelize.STRING,
+      type: Sequelize.STRING,
+      name: Sequelize.STRING,
+      description: Sequelize.TEXT,
+      defaultValue: Sequelize.TEXT,
+      contentLimit: Sequelize.INTEGER,
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

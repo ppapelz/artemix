@@ -2,48 +2,48 @@
 import { Model, DataTypes, Sequelize } from "sequelize";
 
 class Variable extends Model {
-    public ID!: number;
-    public PromptID!: number;
-    public Label!: string;
-    public Type!: string; // Burada belirli tipleri enum olarak da tanımlayabilirsiniz
-    public Name!: string;
-    public Description?: string;
-    public DefaultValue?: string;
-    public ContentLimit?: number;
+    public id!: number;
+    public promptId!: number;
+    public label!: string;
+    public type!: string; 
+    public name!: string;
+    public description?: string;
+    public defaultValue?: string;
+    public contentLimit?: number;
 }
 
 export const initializeVariable = (sequelize: Sequelize) => {
     Variable.init({
-        ID: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        PromptID: {
+        promptId: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        Label: {
+        label: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        Type: {
+        type: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        Name: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        Description: {
+        description: {
             type: DataTypes.TEXT,
             allowNull: true,
         },
-        DefaultValue: {
+        defaultValue: {
             type: DataTypes.STRING,
             allowNull: true,
         },
-        ContentLimit: {
+        contentLimit: {
             type: DataTypes.INTEGER,
             allowNull: true,
         }

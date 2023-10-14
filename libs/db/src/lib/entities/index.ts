@@ -8,9 +8,9 @@ export const initializeModels = (sequelize: Sequelize) => {
     initializeVariable(sequelize);
     initializeAIModel(sequelize);
 
-    Prompt.hasOne(AIModel, { foreignKey: "PromptID", as: "AIModel" });
-    AIModel.belongsTo(Prompt, { foreignKey: "PromptID", as: "Prompt" });
+    Prompt.hasOne(AIModel, { foreignKey: "promptId", as: "AIModel" });
+    AIModel.belongsTo(Prompt, { foreignKey: "promptId", as: "Prompt" });
 
-    Prompt.hasMany(Variable, { foreignKey: "PromptID", as: "Variables" });
-    Variable.belongsTo(Prompt, { foreignKey: "PromptID", as: "Prompt" });
+    Prompt.hasMany(Variable, { foreignKey: "promptId", as: "Variables" });
+    Variable.belongsTo(Prompt, { foreignKey: "promptId", as: "Prompt" });
 }

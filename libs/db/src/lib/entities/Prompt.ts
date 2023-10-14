@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize } from "sequelize";
 
 class Prompt extends Model {
-    public ID!: number;
-    public Content!: string;
-    public Name!: string;
+    public id!: number;
+    public content!: string;
+    public name!: string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
 }
 
 export const initializePrompt = (sequelize: Sequelize) => {
     Prompt.init({
-        ID: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        Content: {
+        content: {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        Name: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },

@@ -7,7 +7,7 @@ class VariableRepository extends BaseRepository<Variable> {
     }
 
     async findByPromptID(promptID: number): Promise<Variable[]> {
-        return await this.model.findAll({ where: { PromptID: promptID } });
+        return await this.model.findAll({ where: { promptID: promptID } });
     }
 }
 

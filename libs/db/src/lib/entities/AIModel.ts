@@ -2,53 +2,53 @@
 import { Model, DataTypes, Sequelize } from "sequelize";
 
 class AIModel extends Model {
-    public ID!: number;
-    public ModelType!: string;
-    public AIConnectionToken!: string;
-    public Temperature!: number;
-    public MaxLength!: number;
-    public Stop!: string;
-    public PresencePenalty!: number;
-    public FrequencyPenalty!: number;
-    public PromptID!: number;
+    public id!: number;
+    public modelType!: string;
+    public aiConnectionToken!: string;
+    public temperature!: number;
+    public maxLength!: number;
+    public stop!: string;
+    public presencePenalty!: number;
+    public frequencyPenalty!: number;
+    public promptId!: number;
 }
 
 export const initializeAIModel = (sequelize: Sequelize) => {
     AIModel.init({
-        ID: {
+        id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        ModelType: {
+        modelType: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        AIConnectionToken: {
+        aiConnectionToken: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        Temperature: {
+        temperature: {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        MaxLength: {
+        maxLength: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        Stop: {
+        stop: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        PresencePenalty: {
+        presencePenalty: {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        FrequencyPenalty: {
+        frequencyPenalty: {
             type: DataTypes.FLOAT,
             allowNull: false,
         },
-        PromptID: {
+        promptId: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },

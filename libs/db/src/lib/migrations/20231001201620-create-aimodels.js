@@ -4,20 +4,20 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('AIModels', {
-      ID: {
+      id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ModelType: Sequelize.STRING,
-      AIConnectionToken: Sequelize.STRING,
-      Temperature: Sequelize.FLOAT,
-      MaxLength: Sequelize.INTEGER,
-      Stop: Sequelize.STRING,
-      PresencePenalty: Sequelize.FLOAT,
-      FrequencyPenalty: Sequelize.FLOAT,
-      PromptID: {
+      modelType: Sequelize.STRING,
+      aiConnectionToken: Sequelize.STRING,
+      temperature: Sequelize.FLOAT,
+      maxLength: Sequelize.INTEGER,
+      stop: Sequelize.STRING,
+      presencePenalty: Sequelize.FLOAT,
+      frequencyPenalty: Sequelize.FLOAT,
+      promptId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Prompts',

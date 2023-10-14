@@ -4,14 +4,14 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     return await queryInterface.bulkInsert('Prompts', [
       {
-        Content: 'Prompt 1 content',
-        Name: 'Prompt1',
+        content: 'Prompt 1 content',
+        name: 'Prompt1',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        Content: 'Prompt 2 content',
-        Name: 'Prompt2',
+        content: 'Prompt 2 content',
+        name: 'Prompt2',
         createdAt: new Date(),
         updatedAt: new Date()
       }
