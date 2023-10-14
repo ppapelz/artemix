@@ -18,6 +18,7 @@
     "esModuleInterop": true,
     "paths": {
       "@promptus/db": ["libs/db/src/index.ts"],
+      "@promptus/graphql": ["libs/graphql/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
