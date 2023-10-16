@@ -1,4 +1,8 @@
-import { getSequelizeInstance, promptService, variableService, aiModelService } from '@promptus/db';
+import { getSequelizeInstance, promptService } from '@promptus/db';
+import { createApolloServer } from '@promptus/graphql';
+import { expressMiddleware } from '@apollo/server/express4';
+import cors from 'cors';
+import { json } from 'body-parser';
 
 import express from 'express';
 
@@ -6,6 +10,12 @@ const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 const app = express();
+
+const server = createApolloServer();
+server.start().then(() => {
+  app.use('/graphql', cors<cors.CorsRequest>(), json(), expressMiddleware(server));
+});
+
 const sequelizeInstance = getSequelizeInstance();
 sequelizeInstance.authenticate()
   .then(async () => {
@@ -22,13 +32,7 @@ sequelizeInstance.authenticate()
     console.error('Unable to connect to the database:', err);
   });
 
-app.get('/', async (req, res) => {
-  const prompts = await promptService.getAllPrompts();
-  console.log(prompts);
-  res.send({ message: 'test' });
-
-});
-
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
+app.listen({ host, port }, () => {
+  console.log(`🚀 Server ready at http://localhost:${port}/graphql`);
+  console.log(`🚀 REST API ready at http://localhost:${port}`);
 });
