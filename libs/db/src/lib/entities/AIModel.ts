@@ -1,4 +1,3 @@
-// src/models/AIModel.ts
 import { Model, DataTypes, Sequelize } from "sequelize";
 
 class AIModel extends Model {
@@ -53,7 +52,7 @@ export const initializeAIModel = (sequelize: Sequelize) => {
             allowNull: false,
         },
     }, {
-        tableName: "ai_models",
+        tableName: "AIModels",
         sequelize,
     });
 }

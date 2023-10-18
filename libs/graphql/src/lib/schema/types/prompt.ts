@@ -9,8 +9,24 @@ export const PromptType = gql`
     updatedAt: String!
   }
 
+  input CreatePromptInput {
+    content: String!
+    name: String!
+  }
+
+  input UpdatePromptInput {
+    content: String
+    name: String
+  }
+
   type Query {
-    getAllPrompts: [Prompt!]!
+    getAllPrompts: [Prompt!]
     getPrompt(id: Int!): Prompt
+  }
+
+  type Mutation {
+    createPrompt(input: CreatePromptInput!): Prompt!
+    updatePrompt(id: Int!, input: UpdatePromptInput!): Prompt
+    deletePrompt(id: Int!): Boolean
   }
 `;

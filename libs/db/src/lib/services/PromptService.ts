@@ -12,6 +12,7 @@ class PromptService {
     }
 
     async getAllPrompts(): Promise<Prompt[]> {
+        console.log("getAllPrompts");
         return await PromptRepository.findAll();
     }
 
