@@ -1,0 +1,50 @@
+.layout-wrapper {
+    @apply h-full;
+
+    .logo {
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        line-height: 28px;
+        color: #fff;
+        margin: 16px 0;
+        margin: 16px 0;
+    }
+
+    .toggle-icon {
+        color: #fff !important;
+        border-radius: 50% !important;
+        position: absolute;
+        top: 26px;
+        left: 244px;
+        z-index: 99;
+        transition: all 0.2s, background 0s;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .toggle-icon-collapsed {
+        left: 68px;
+    }
+
+    .menu {
+        margin-top: 24px;
+
+        li {
+            font-size: 16px;
+            margin-top: 6px;
+            margin-bottom: 6px;
+
+            svg {
+                font-size: 18px;
+            }
+        }
+    }
+
+    .content {
+        margin: 24px 16px;
+        padding: 24px;
+    }
+}

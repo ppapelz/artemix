@@ -16,6 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@promptus/admin-db": ["libs/admin-db/src/index.ts"],
+      "@promptus/ui": ["libs/web-libs/ui/src/index.ts"],
+      "@promptus/ui/server": ["libs/web-libs/ui/src/server.ts"],
       "admin-db": ["libs/admin-db/src/index.ts"]
     }
   },
