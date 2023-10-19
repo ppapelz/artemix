@@ -14,11 +14,13 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "paths": {
-      "@promptus/admin-db": ["libs/admin-db/src/index.ts"],
       "@promptus/ui": ["libs/web-libs/ui/src/index.ts"],
       "@promptus/ui/server": ["libs/web-libs/ui/src/server.ts"],
-      "admin-db": ["libs/admin-db/src/index.ts"]
+      "@promptus/db": ["libs/db/src/index.ts"],
+      "@promptus/graphql": ["libs/graphql/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
