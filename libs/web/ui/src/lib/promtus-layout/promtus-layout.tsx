@@ -5,7 +5,7 @@ import { Layout, Menu, Button } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { useRouter, usePathname } from 'next/navigation';
 
-import styles from './dashboard-layout.module.scss';
+import styles from './promtus-layout.module.scss';
 
 const { Sider, Content } = Layout;
 const DEFAULT_SELECTED_PAGE_KEY = 'dashboard';
@@ -16,13 +16,13 @@ export type MenuItem = {
   icon: React.ReactNode;
 };
 
-export type DashboardLayoutProps = {
+export type PromtusLayoutProps = {
   children: React.ReactNode;
   menuItems: Array<MenuItem>;
   selectedPageKey?: string;
 };
 
-export function DashboardLayout(props: DashboardLayoutProps) {
+export function PromtusLayout(props: PromtusLayoutProps) {
   const [collapsed, setCollapsed] = useState(false);
   const [selectedPageKey, setSelectedPageKey] = useState('');
   const [mounted, setMounted] = useState(false);
@@ -77,4 +77,4 @@ export function DashboardLayout(props: DashboardLayoutProps) {
   );
 }
 
-export default DashboardLayout;
+export default PromtusLayout;

@@ -17,10 +17,10 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@promptus/ui": ["libs/web/ui/src/index.ts"],
-      "@promptus/ui/server": ["libs/web/ui/src/server.ts"],
       "@promptus/db": ["libs/db/src/index.ts"],
-      "@promptus/graphql": ["libs/graphql/src/index.ts"]
+      "@promptus/graphql": ["libs/graphql/src/index.ts"],
+      "@promptus/ui": ["libs/web/ui/src/index.ts"],
+      "@promptus/ui/server": ["libs/web/ui/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

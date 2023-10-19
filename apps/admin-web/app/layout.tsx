@@ -9,7 +9,7 @@ import {
   HomeOutlined,
 } from '@ant-design/icons';
 import StyledComponentsRegistry from '../lib/AntdRegistry';
-import { DashboardLayout, MenuItem } from '@promptus/ui';
+import { PromtusLayout, MenuItem } from '@promptus/ui';
 
 import './globals.css';
 
@@ -47,7 +47,7 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <ConfigProvider theme={defaultTheme}>
             <div className="h-full">
-              <DashboardLayout menuItems={MENU_ITEMS}>{children}</DashboardLayout>
+              <PromtusLayout menuItems={MENU_ITEMS}>{children}</PromtusLayout>
             </div>
           </ConfigProvider>
         </StyledComponentsRegistry>

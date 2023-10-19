@@ -1,7 +1,7 @@
 {
   "name": "ui",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/web-libs/ui/src",
+  "sourceRoot": "libs/web/ui/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -9,7 +9,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/web-libs/ui/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["libs/web/ui/**/*.{ts,tsx,js,jsx}"]
       }
     }
   }
