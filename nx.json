@@ -8,6 +8,11 @@
       }
     }
   },
+  "pluginsConfig": {
+    "@nx/js": {
+      "analyzeSourceFiles": true
+    }
+  },
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "affected": {
@@ -29,18 +34,14 @@
     "@nx/react": {
       "application": {
         "babel": true
-      }
+      },
+      "library": {}
     },
     "@nx/next": {
       "application": {
         "style": "scss",
         "linter": "eslint"
       }
-    }
-  },
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": true
     }
   }
 }
