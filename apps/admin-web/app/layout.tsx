@@ -9,7 +9,7 @@ import {
   HomeOutlined,
 } from '@ant-design/icons';
 import StyledComponentsRegistry from '../lib/AntdRegistry';
-import { DashboardLayout, MenuItem } from '@/libs/web-libs/ui/src';
+import { DashboardLayout, MenuItem } from '@promptus/ui';
 
 import './globals.css';
 
