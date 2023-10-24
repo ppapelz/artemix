@@ -1,13 +1,18 @@
-import "reflect-metadata";
-import { OpenAIApi } from '@promptus/openai';
-import { createApolloServer } from '@promptus/graphql';
+import 'reflect-metadata';
+import { OpenAIApi } from '@promptus/server/openai';
+import { createApolloServer } from '@promptus/server/graphql';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import { json } from 'body-parser';
-import { aiModelService, dataSource, promptService, variableService } from '@promptus/server/database';
+import {
+  aiModelService,
+  dataSource,
+  promptService,
+  variableService,
+} from '@promptus/server/database';
 
 import express from 'express';
-import { runSeeders } from "typeorm-extension";
+import { runSeeders } from 'typeorm-extension';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
@@ -20,7 +25,12 @@ const startServer = async () => {
   const gqlserver = await createApolloServer();
   await gqlserver.start();
 
-  app.use('/graphql', cors<cors.CorsRequest>(), json(), expressMiddleware(gqlserver));
+  app.use(
+    '/graphql',
+    cors<cors.CorsRequest>(),
+    json(),
+    expressMiddleware(gqlserver)
+  );
 
   try {
     await dataSource.initialize();
@@ -36,7 +46,7 @@ const startServer = async () => {
 
     console.log('Connection has been established successfully.');
   } catch (error) {
-    console.error("Error during server initialization:", error);
+    console.error('Error during server initialization:', error);
   }
 
   app.listen({ host, port }, () => {
@@ -45,6 +55,6 @@ const startServer = async () => {
   });
 };
 
-startServer().catch(err => {
+startServer().catch((err) => {
   console.error('Error initializing the server:', err);
 });
