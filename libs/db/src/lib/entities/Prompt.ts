@@ -1,6 +1,6 @@
 import { Model, DataTypes, Sequelize } from "sequelize";
 
-class Prompt extends Model {
+export class Prompt extends Model {
     public id!: number;
     public content!: string;
     public name!: string;

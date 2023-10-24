@@ -1,14 +1,19 @@
-import { getSequelizeInstance, promptService } from '@promptus/db';
+import "reflect-metadata";
+import { OpenAIApi } from '@promptus/openai';
 import { createApolloServer } from '@promptus/graphql';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import { json } from 'body-parser';
+import { aiModelService, dataSource, promptService, variableService } from '@promptus/server/database';
 
 import express from 'express';
+import { runSeeders } from "typeorm-extension";
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
+
+OpenAIApi.initialize();
 const app = express();
 
 const server = createApolloServer();
@@ -16,12 +21,18 @@ server.start().then(() => {
   app.use('/graphql', cors<cors.CorsRequest>(), json(), expressMiddleware(server));
 });
 
-const sequelizeInstance = getSequelizeInstance();
-sequelizeInstance.authenticate()
+dataSource.initialize()
   .then(async () => {
     try {
-      const prompts = await promptService.getAllPrompts();
-      console.log(prompts);
+      await runSeeders(dataSource);
+      const variables = await variableService.getVariableById(1);
+      const prompt = await promptService.getPromptById(1);
+      const aimodel = await aiModelService.getAIModelByPromptId(1);
+
+      console.log(variables);
+      console.log(prompt);
+      console.log(aimodel);
+
     } catch (error) {
       console.error("Error fetching prompts:", error);
     }

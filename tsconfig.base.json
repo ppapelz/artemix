@@ -17,6 +17,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
+      "@promptus/server/database": ["libs/server/database/src/index.ts"],
+      "@promptus/server/models": ["libs/server/models/src/index.ts"],
       "@promptus/db": ["libs/db/src/index.ts"],
       "@promptus/graphql": ["libs/graphql/src/index.ts"],
       "@promptus/openai": ["libs/openai/src/index.ts"],

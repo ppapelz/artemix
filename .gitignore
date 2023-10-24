@@ -4,7 +4,7 @@
 dist
 tmp
 /out-tsc
-database
+/database
 
 # dependencies
 node_modules
@@ -17,6 +17,7 @@ node_modules
 *.launch
 .settings/
 *.sublime-workspace
+.env
 
 # IDE - VSCode
 .vscode/*

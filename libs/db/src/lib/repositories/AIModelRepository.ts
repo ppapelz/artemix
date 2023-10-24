@@ -1,5 +1,3 @@
-// src/repositories/AIModelRepository.ts
-
 import { BaseRepository } from "./BaseRepository";
 import AIModel from "../entities/AIModel";
 

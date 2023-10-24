@@ -1,4 +1,3 @@
-// src/models/Variable.ts
 import { Model, DataTypes, Sequelize } from "sequelize";
 
 class Variable extends Model {

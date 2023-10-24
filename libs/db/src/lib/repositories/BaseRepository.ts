@@ -1,5 +1,3 @@
-// src/repositories/BaseRepository.ts
-
 import { Model } from "sequelize";
 
 export abstract class BaseRepository<T extends Model> {
