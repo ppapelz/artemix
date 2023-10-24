@@ -1,9 +1,9 @@
 
-import { Prompt } from '@promptus/server/models';
+import { CreatePromptInput, Prompt, UpdatePromptInput } from '@promptus/server/models';
 import PromptRepository from '../repositories/PromptRepository';
 
 class PromptService {
-    async createPrompt(data: Prompt): Promise<Prompt> {
+    async createPrompt(data: CreatePromptInput): Promise<Prompt> {
         return await PromptRepository.create(data);
     }
 
@@ -15,11 +15,11 @@ class PromptService {
         return await PromptRepository.findAll();
     }
 
-    async updatePrompt(id: number, data: Prompt): Promise<void> {
+    async updatePrompt(id: number, data: UpdatePromptInput): Promise<number> {
         return await PromptRepository.update(id, data);
     }
 
-    async deletePrompt(id: number): Promise<void> {
+    async deletePrompt(id: number): Promise<boolean> {
         return await PromptRepository.delete(id);
     }
 }

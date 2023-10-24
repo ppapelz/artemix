@@ -1,9 +1,9 @@
 
-import { AIModel } from '@promptus/server/models';
+import { AIModel, CreateAIModelInput, UpdateAIModelInput } from '@promptus/server/models';
 import AIModelRepository from '../repositories/AIModelRepository';
 
 class AIModelService {
-    async createAIModel(data: AIModel): Promise<AIModel> {
+    async createAIModel(data: CreateAIModelInput): Promise<AIModel> {
         return await AIModelRepository.create(data);
     }
 
@@ -15,11 +15,11 @@ class AIModelService {
         return await AIModelRepository.findByPromptID(promptId);
     }
 
-    async updateAIModel(id: number, data: AIModel): Promise<void> {
+    async updateAIModel(id: number, data: UpdateAIModelInput): Promise<number> {
         return await AIModelRepository.update(id, data);
     }
 
-    async deleteAIModel(id: number): Promise<void> {
+    async deleteAIModel(id: number): Promise<boolean> {
         return await AIModelRepository.delete(id);
     }
 

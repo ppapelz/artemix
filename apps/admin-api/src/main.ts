@@ -12,38 +12,39 @@ import { runSeeders } from "typeorm-extension";
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
-
-OpenAIApi.initialize();
 const app = express();
 
-const server = createApolloServer();
-server.start().then(() => {
-  app.use('/graphql', cors<cors.CorsRequest>(), json(), expressMiddleware(server));
-});
+const startServer = async () => {
+  await OpenAIApi.initialize();
 
-dataSource.initialize()
-  .then(async () => {
-    try {
-      await runSeeders(dataSource);
-      const variables = await variableService.getVariableById(1);
-      const prompt = await promptService.getPromptById(1);
-      const aimodel = await aiModelService.getAIModelByPromptId(1);
+  const gqlserver = await createApolloServer();
+  await gqlserver.start();
 
-      console.log(variables);
-      console.log(prompt);
-      console.log(aimodel);
+  app.use('/graphql', cors<cors.CorsRequest>(), json(), expressMiddleware(gqlserver));
 
-    } catch (error) {
-      console.error("Error fetching prompts:", error);
-    }
+  try {
+    await dataSource.initialize();
+    await runSeeders(dataSource);
+
+    const variables = await variableService.getVariableById(1);
+    const prompt = await promptService.getPromptById(1);
+    const aimodel = await aiModelService.getAIModelByPromptId(1);
+
+    console.log(variables);
+    console.log(prompt);
+    console.log(aimodel);
 
     console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+  } catch (error) {
+    console.error("Error during server initialization:", error);
+  }
 
-app.listen({ host, port }, () => {
-  console.log(`🚀 Server ready at http://localhost:${port}/graphql`);
-  console.log(`🚀 REST API ready at http://localhost:${port}`);
+  app.listen({ host, port }, () => {
+    console.log(`🚀 Server ready at http://${host}:${port}/graphql`);
+    console.log(`🚀 REST API ready at http://${host}:${port}`);
+  });
+};
+
+startServer().catch(err => {
+  console.error('Error initializing the server:', err);
 });

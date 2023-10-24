@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, OneToOne, OneToMany } from "typeorm";
-import { ObjectType, Field, ID } from "type-graphql";
+import { ObjectType, Field, ID, InputType } from "type-graphql";
 import { AIModel } from "./AIModel";
 import { Variable } from "./Variable";
 
@@ -32,4 +32,22 @@ export class Prompt extends BaseEntity {
 
     @OneToMany(() => Variable, variable => variable.prompt)
     variables: Variable[];
+}
+
+@InputType()
+export class CreatePromptInput {
+    @Field(() => String)
+    content: string;
+
+    @Field(() => String)
+    name: string;
+}
+
+@InputType()
+export class UpdatePromptInput {
+    @Field(() => String, { nullable: true })
+    content?: string;
+
+    @Field(() => String, { nullable: true })
+    name?: string;
 }

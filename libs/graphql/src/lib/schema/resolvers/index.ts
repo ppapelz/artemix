@@ -1,16 +1,7 @@
-import {promptResolver} from './prompt.resolver';
-import { variableResolver} from './variable.resolver';
-import { aiModelResolver} from './aiModel.resolver';
+import { NonEmptyArray } from "type-graphql";
+import { AIModelResolver } from "./aiModel.resolver";
+import { PromptResolver } from "./prompt.resolver";
+import { VariableResolver } from "./variable.resolver";
+type ResolverType = typeof PromptResolver | typeof VariableResolver | typeof AIModelResolver;
 
-export const resolvers = {
-  Query: {
-    ...promptResolver.Query,
-    ...variableResolver.Query,
-    ...aiModelResolver.Query
-  },
-  Mutation: {
-    ...promptResolver.Mutation,
-    ...variableResolver.Mutation,
-    ...aiModelResolver.Mutation
-  }
-};
+export const resolvers: NonEmptyArray<ResolverType> = [PromptResolver, VariableResolver, AIModelResolver];

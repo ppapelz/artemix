@@ -15,12 +15,14 @@ export abstract class BaseRepository<Entity> {
         return await this.repository.save(item);
     }
 
-    async update(id: number, item: QueryDeepPartialEntity<Entity>): Promise<void> {
-        await this.repository.update(id, item);
+    async update(id: number, item: QueryDeepPartialEntity<Entity>): Promise<number> {
+        const { affected } = await this.repository.update(id, item);
+        return affected;
     }
 
-    async delete(id: number): Promise<void> {
-        await this.repository.delete(id);
+    async delete(id: number): Promise<boolean> {
+        const { affected } = await this.repository.delete(id);
+        return !!affected;
     }
 
     async findAll(): Promise<Entity[]> {

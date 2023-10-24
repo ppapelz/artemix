@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { ObjectType, Field, ID, Int } from "type-graphql";
+import { ObjectType, Field, ID, Int, InputType } from "type-graphql";
 import { Prompt } from "./Prompt";
 
-@ObjectType() 
+@ObjectType()
 @Entity("Variables")
 export class Variable extends BaseEntity {
     @Field(() => ID)
@@ -13,15 +13,15 @@ export class Variable extends BaseEntity {
     @Column("int")
     promptId: number;
 
-    @Field(() => String) 
+    @Field(() => String)
     @Column("text")
     label: string;
 
-    @Field(() => String) 
+    @Field(() => String)
     @Column("text")
     type: string;
 
-    @Field(() => String) 
+    @Field(() => String)
     @Column("text")
     name: string;
 
@@ -48,4 +48,56 @@ export class Variable extends BaseEntity {
     // Relations
     @ManyToOne(() => Prompt, prompt => prompt.id)
     prompt: Prompt;
+}
+
+@InputType()
+export class CreateVariableInput {
+
+    @Field(() => Int)
+    promptId: number;
+
+    @Field(() => String)
+    label: string;
+
+    @Field(() => String)
+    type: string;
+
+    @Field(() => String)
+    name: string;
+
+    @Field(() => String, { nullable: true })
+    description?: string;
+
+    @Field(() => String, { nullable: true })
+    defaultValue?: string;
+
+    @Field(() => Int, { nullable: true })
+    contentLimit?: number;
+
+}
+
+@InputType()
+export class UpdateVariableInput {
+
+    @Field(() => Int, { nullable: true })
+    promptId?: number;
+
+    @Field(() => String,{ nullable: true })
+    label?: string;
+
+    @Field(() => String,{ nullable: true })
+    type?: string;
+
+    @Field(() => String,{ nullable: true })
+    name?: string;
+
+    @Field(() => String,{ nullable: true })
+    description?: string;
+
+    @Field(() => String,{ nullable: true })
+    defaultValue?: string;
+
+    @Field(() => Int,{ nullable: true })
+    contentLimit?: number;
+
 }
