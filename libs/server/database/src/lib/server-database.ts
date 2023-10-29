@@ -8,7 +8,6 @@ import PromptsSeeder from "./seeders/prompt/prompts.seeder";
 import { AIModelFactory } from "./seeders/aimodel/aiModel.factory";
 import AIModelSeeder from "./seeders/aimodel/aiModel.seeder";
 
-
 const options: DataSourceOptions & SeederOptions = {
     type: "sqlite",
     database: "./database/dev.sqlite3",
@@ -18,6 +17,5 @@ const options: DataSourceOptions & SeederOptions = {
     synchronize: true,
     logging: false,
 };
-
 
 export const dataSource = new DataSource(options);
