@@ -1,7 +1,7 @@
 {
-  "name": "admin-web",
+  "name": "client-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/admin-web",
+  "sourceRoot": "apps/client-app",
   "projectType": "application",
   "targets": {
     "build": {
@@ -9,11 +9,12 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/admin-web"
+        "outputPath": "dist/apps/client-app",
+        "postcssConfig": "apps/client-app/postcss.config.js"
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/admin-web"
+          "outputPath": "apps/client-app"
         },
         "production": {}
       }
@@ -22,16 +23,16 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "admin-web:build",
+        "buildTarget": "client-app:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "admin-web:build:development",
+          "buildTarget": "client-app:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "admin-web:build:production",
+          "buildTarget": "client-app:build:production",
           "dev": false
         }
       }
@@ -39,14 +40,14 @@
     "export": {
       "executor": "@nx/next:export",
       "options": {
-        "buildTarget": "admin-web:build:production"
+        "buildTarget": "client-app:build:production"
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/admin-web/jest.config.ts",
+        "jestConfig": "apps/client-app/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -60,7 +61,7 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/admin-web/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": ["apps/client-app/**/*.{ts,tsx,js,jsx}"]
       }
     }
   },
