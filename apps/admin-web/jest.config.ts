@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: 'client-app',
+  displayName: 'admin-web',
   preset: '../../jest.preset.js',
   transform: {
     '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '@nx/react/plugins/jest',
     '^.+\\.[tj]sx?$': ['babel-jest', { presets: ['@nx/next/babel'] }],
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/apps/client-app',
+  coverageDirectory: '../../coverage/apps/admin-web',
 };
