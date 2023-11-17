@@ -13,7 +13,7 @@ export default async function Index() {
           <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             <span className="block">Ready to dive in?</span>
             <span className="block text-indigo-600">
-              Start your free trial today.
+              Start your free trial today test.
             </span>
           </h2>
           <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
