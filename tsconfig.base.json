@@ -20,7 +20,9 @@
       "@promptus/server/database": ["libs/server/database/src/index.ts"],
       "@promptus/server/graphql": ["libs/server/graphql/src/index.ts"],
       "@promptus/server/models": ["libs/server/models/src/index.ts"],
-      "@promptus/server/openai": ["libs/server/openai/src/index.ts"]
+      "@promptus/server/openai": ["libs/server/openai/src/index.ts"],
+      "@promptus/ui": ["libs/web/ui/src/index.ts"],
+      "@promptus/ui/server": ["libs/web/ui/src/server.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
