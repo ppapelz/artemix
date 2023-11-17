@@ -1,12 +1,4 @@
 import './global.css';
-import '@mantine/core/styles.css';
-
-import { MantineProvider, createTheme } from '@mantine/core';
-import Layout from './components/Layout/layout';
-
-const theme = createTheme({
-  /** Put your mantine theme override here */
-});
 
 export const metadata = {
   title: 'Welcome to admin-web',
@@ -20,13 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <MantineProvider theme={theme} defaultColorScheme="dark">
-          <Layout>
-            {children}
-          </Layout>
-        </MantineProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
