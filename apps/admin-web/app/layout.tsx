@@ -1,4 +1,6 @@
 import { cn } from '@promptus/utils';
+import { Layout } from '@promptus/ui';
+
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
 
@@ -25,7 +27,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
