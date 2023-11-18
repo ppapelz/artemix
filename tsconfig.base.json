@@ -22,6 +22,7 @@
       "@promptus/server/models": ["libs/server/models/src/index.ts"],
       "@promptus/server/openai": ["libs/server/openai/src/index.ts"],
       "@promptus/ui": ["libs/web/ui/src/index.ts"],
+      "@promptus/ui/server": ["libs/web/ui/src/server.ts"],
       "@promptus/utils": ["libs/web/utils/src/index.ts"],
       "@promptus/utils/server": ["libs/web/utils/src/server.ts"]
     }
