@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@promptus/ui": ["libs/web/ui/src/index.ts"],
+        "@promptus/ui/*": ["libs/web/ui/src/*"]
+      }
+    }
+  }
+  
