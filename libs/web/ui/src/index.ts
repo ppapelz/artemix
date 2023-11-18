@@ -2,3 +2,4 @@
 
 export * from './lib/ui/button';
 export * from './lib/navbar/navbar';
+export * from './lib/layout/layout';
