@@ -1,4 +1,8 @@
+'use client';
+
+import { useState } from 'react';
 import Navbar from '../navbar/navbar';
+import Sidebar from '../sidebar/sidebar';
 
 import styles from './layout.module.scss';
 
@@ -8,10 +12,15 @@ export interface LayoutProps {
 }
 
 export function Layout(props: LayoutProps) {
+  const [title, setTitle] = useState('');
+
   return (
     <div className="flex min-h-screen">
-      <Navbar></Navbar>
-      <div className="w-full m-8 place-content-center">{props.children}</div>
+      <Sidebar setTitle={setTitle}></Sidebar>
+      <div className="w-full mx-8 my-6 place-content-center">
+        <Navbar title={title}></Navbar>
+        {props.children}
+      </div>
     </div>
   );
 }
