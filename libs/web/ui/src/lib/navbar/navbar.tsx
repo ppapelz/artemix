@@ -32,9 +32,6 @@ import {
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
 
-import styles from './navbar.module.scss';
-
-
 export interface NavbarProps {
   title?: string;
 }
