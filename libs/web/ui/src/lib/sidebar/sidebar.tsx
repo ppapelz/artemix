@@ -1,16 +1,9 @@
-'use client';
-
 import { cn } from '@promptus/utils';
 import {
-  BellDot,
-  DollarSign,
-  Fingerprint,
   Github,
   Linkedin,
-  LayoutDashboard,
+  LucideIcon,
 } from 'lucide-react';
-import { useState } from 'react';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './sidebar.module.scss';
@@ -18,34 +11,32 @@ import logo from './../../assets/dummy-logo-5b.png';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 
-export interface SidebarProps {
-  setTitle: (title: string) => void;
+export interface SidebarItem {
+  link: string;
+  label: string;
+  icon: LucideIcon;
 }
 
-const data = [
-  { link: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { link: '/notifications', label: 'Notifications', icon: BellDot },
-  { link: '/billing', label: 'Billing', icon: DollarSign },
-  { link: '/security', label: 'Security', icon: Fingerprint },
-];
+export interface SidebarProps {
+  sidebarItems: Array<SidebarItem>;
+  setActive: (active: string) => void;
+  active: string
+}
 
 export function Sidebar(props: SidebarProps) {
-  const currentPath = usePathname();
-  const [active, setActive] = useState(currentPath);
 
-  const links = data.map((item) => (
+  const links = props.sidebarItems.map((item) => (
     <Link
       className={cn(
         `
         flex items-center text-lg font-medium px-2.5 
         py-3.5 rounded-sm hover:bg-zinc-100`,
-        item.link === active ? `bg-sky-500 bg-opacity-20` : ''
+        item.label === props.active ? `bg-sky-500 bg-opacity-20` : ''
       )}
       href={item.link}
       key={item.label}
       onClick={() => {
-        setActive(item.link);
-        props.setTitle(item.label);
+        props.setActive(item.label);
       }}
     >
       <item.icon className={cn('mr-4 h-6 w-6')} />
