@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Billing() {
+export default function Logs() {
   return (
-    <div>billing</div>
+    <div>logs</div>
   )
 }

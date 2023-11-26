@@ -1,4 +1,3 @@
-import { cn } from '@promptus/utils';
 import {
   Cloud,
   CreditCard,
@@ -7,6 +6,7 @@ import {
   LifeBuoy,
   LogOut,
   Mail,
+  Menu,
   MessageSquare,
   MoonStar,
   Plus,
@@ -34,13 +34,26 @@ import { Button } from '../ui/button';
 
 export interface NavbarProps {
   title?: string;
+  toggleSidebar: () => void;
 }
 
-export function Navbar(props: NavbarProps) {
+export function Navbar({ title, toggleSidebar }: NavbarProps) {
   return (
-    <div className={cn('flex justify-between items-center mb-6 pb-6 border-b')}>
-      <h1 className={cn('text-xl font-semibold')}>{props?.title}</h1>
-      <div className={cn('flex mr-4')}>
+    <div className="flex justify-between items-center mb-6 pb-6 border-b">
+      <div className="flex items-center">
+        <Button
+          className="md:hidden mr-2"
+          variant="ghost"
+          size="icon"
+          onClick={() => {
+            toggleSidebar();
+          }}
+        >
+          <Menu></Menu>
+        </Button>
+        <h1 className="text-xl font-semibold">{title}</h1>
+      </div>
+      <div className="flex mr-4">
         <Button variant="ghost">
           <MoonStar></MoonStar>
         </Button>
@@ -50,7 +63,7 @@ export function Navbar(props: NavbarProps) {
               <Settings></Settings>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className={cn('w-56 mr-4')}>
+          <DropdownMenuContent className="w-56 mr-4">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>

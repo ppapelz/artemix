@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Notifications() {
+export default function Prompts() {
   return (
-    <div>notifications</div>
+    <div>prompts</div>
   )
 }
