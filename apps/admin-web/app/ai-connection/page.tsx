@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Security() {
+export default function AiConnection() {
   return (
-    <div>security</div>
+    <div>ai connection</div>
   )
 }
