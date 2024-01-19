@@ -1,84 +1,151 @@
-'use client';
-
-import { cn } from '@promptus/utils';
 import {
-  BellDot,
-  DollarSign,
-  Fingerprint,
-  KeySquare,
-  Database,
-  ScanFace,
+  Cloud,
+  CreditCard,
+  Github,
+  Keyboard,
+  LifeBuoy,
+  LogOut,
+  Mail,
+  Menu,
+  MessageSquare,
+  MoonStar,
+  Plus,
+  PlusCircle,
   Settings,
+  User,
+  UserPlus,
+  Users,
 } from 'lucide-react';
-import { useState } from 'react';
-import Link from 'next/link';
-import styles from './navbar.module.scss';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
+import { Button } from '../ui/button';
 
-/* eslint-disable-next-line */
-export interface NavbarProps {}
+export interface NavbarProps {
+  title?: string;
+  toggleSidebar: () => void;
+}
 
-const data = [
-  { link: '', label: 'Notifications', icon: BellDot },
-  { link: '', label: 'Billing', icon: DollarSign },
-  { link: '', label: 'Security', icon: Fingerprint },
-  { link: '', label: 'SSH Keys', icon: KeySquare },
-  { link: '', label: 'Databases', icon: Database },
-  { link: '', label: 'Authentication', icon: ScanFace },
-  { link: '', label: 'Other Settings', icon: Settings },
-];
-
-export function Navbar(props: NavbarProps) {
-  const [active, setActive] = useState('Billing');
-
-  const links = data.map((item) => (
-    <Link
-      className={cn(`
-        flex items-center text-lg font-medium px-2.5 
-        py-3 rounded-sm hover:bg-zinc-100
-        active:bg-sky-500 active:bg-opacity-20`,
-        styles.link
-      )}
-      data-active={item.label === active || undefined}
-      href={item.link}
-      key={item.label}
-      onClick={(event) => {
-        setActive(item.label);
-      }}
-    >
-      <item.icon className={cn('mr-4 h-6 w-6')} />
-      <span>{item.label}</span>
-    </Link>
-  ));
-
+export function Navbar({ title, toggleSidebar }: NavbarProps) {
   return (
-    <aside className={cn('flex flex-col h-screen p-4 border-r', styles.navbar)}>
-      <div className={cn('flex-1')}>
-        <div className={cn('pb-4 mb-6 border-b')}>
-          <h1>Welcome to Navbar!</h1>
-        </div>
-        {links}
-      </div>
-
-      <div className={cn(styles.footer)}>
-        {/* <a
-          href="#"
-          className={classes.link}
-          onClick={(event) => event.preventDefault()}
+    <div className="flex justify-between items-center mb-6 pb-6 border-b">
+      <div className="flex items-center">
+        <Button
+          className="md:hidden mr-2"
+          variant="ghost"
+          size="icon"
+          onClick={() => {
+            toggleSidebar();
+          }}
         >
-          <span>icon - </span>
-          <span>Change account</span>
-        </a>
-
-        <a
-          href="#"
-          className={classes.link}
-          onClick={(event) => event.preventDefault()}
-        >
-          <span>icon</span>
-          <span>Logout</span>
-        </a> */}
+          <Menu></Menu>
+        </Button>
+        <h1 className="text-xl font-semibold">{title}</h1>
       </div>
-    </aside>
+      <div className="flex mr-4">
+        <Button variant="ghost">
+          <MoonStar></MoonStar>
+        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost">
+              <Settings></Settings>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-56 mr-4">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <User className="mr-2 h-4 w-4" />
+                <span>Profile</span>
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <CreditCard className="mr-2 h-4 w-4" />
+                <span>Billing</span>
+                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings className="mr-2 h-4 w-4" />
+                <span>Settings</span>
+                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Keyboard className="mr-2 h-4 w-4" />
+                <span>Keyboard shortcuts</span>
+                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem>
+                <Users className="mr-2 h-4 w-4" />
+                <span>Team</span>
+              </DropdownMenuItem>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <UserPlus className="mr-2 h-4 w-4" />
+                  <span>Invite users</span>
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem>
+                      <Mail className="mr-2 h-4 w-4" />
+                      <span>Email</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <MessageSquare className="mr-2 h-4 w-4" />
+                      <span>Message</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                      <PlusCircle className="mr-2 h-4 w-4" />
+                      <span>More...</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+              <DropdownMenuItem>
+                <Plus className="mr-2 h-4 w-4" />
+                <span>New Team</span>
+                <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Github className="mr-2 h-4 w-4" />
+              <span>GitHub</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <LifeBuoy className="mr-2 h-4 w-4" />
+              <span>Support</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem disabled>
+              <Cloud className="mr-2 h-4 w-4" />
+              <span>API</span>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>Log out</span>
+              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+    </div>
   );
 }
 

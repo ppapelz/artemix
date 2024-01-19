@@ -35,7 +35,9 @@
       "application": {
         "babel": true
       },
-      "library": {}
+      "library": {
+        "unitTestRunner": "jest"
+      }
     },
     "@nx/next": {
       "application": {
