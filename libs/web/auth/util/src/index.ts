@@ -1,1 +1,1 @@
-export * from './lib/supertokenInit';
+export * from './lib/superTokenInit'

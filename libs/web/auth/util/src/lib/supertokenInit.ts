@@ -1,35 +1,41 @@
-"use client";
+import EmailPasswordReact from 'supertokens-auth-react/recipe/emailpassword'
+import SessionReact from 'supertokens-auth-react/recipe/session'
+import { useRouter } from "next/navigation";
+import { SuperTokensConfig } from 'supertokens-auth-react/lib/build/types'
+import { SPT_API_DOMAIN, SPT_NX_WEBSITE_DOMAIN } from '@promptus/web/shared/util';
 
-import SuperTokens from "supertokens-auth-react";
-import {
-    SPT_API_DOMAIN,
-    SPT_NX_WEBSITE_DOMAIN,
-} from "@promptus/web/shared/util";
-import ThirdPartyEmailPassword, {
-    Google,
-} from "supertokens-auth-react/recipe/thirdpartyemailpassword";
-import Session from "supertokens-auth-react/recipe/session";
+const routerInfo: { router?: ReturnType<typeof useRouter>; pathName?: string } =
+  {};
 
-export const initSPT = () => {
-    const providers = [];
+export function setRouter(
+  router: ReturnType<typeof useRouter>,
+  pathName: string,
+) {
+  routerInfo.router = router;
+  routerInfo.pathName = pathName;
+}
 
-    providers.push(Google.init());
-
-    SuperTokens.init({
-        appInfo: {
-            appName: "Promptus",
-            apiDomain: SPT_API_DOMAIN,
-            websiteDomain: SPT_NX_WEBSITE_DOMAIN,
-            apiBasePath: "/api/auth",
-            websiteBasePath: "/login",
-        },
-        recipeList: [
-            ThirdPartyEmailPassword.init({
-                signInAndUpFeature: {
-                    providers,
-                },
-            }),
-            Session.init(),
-        ],
-    });
-};
+export const superTokenInit = (): SuperTokensConfig => {
+  return {
+    appInfo: {
+        appName: "Promptus",
+        apiDomain: 'http://localhost:3000',
+        websiteDomain: 'http://localhost:4200',
+        apiBasePath: "/api/auth",
+        websiteBasePath: "/login",
+    },
+    recipeList: [
+      EmailPasswordReact.init(),
+      SessionReact.init(),
+    ],
+    windowHandler: (original) => ({
+      ...original,
+      location: {
+        ...original.location,
+        getPathName: () => routerInfo.pathName!,
+        assign: (url) => routerInfo.router!.push(url.toString()),
+        setHref: (url) => routerInfo.router!.push(url.toString()),
+      },
+    }),
+  }
+}

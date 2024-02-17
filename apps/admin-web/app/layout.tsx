@@ -3,6 +3,7 @@ import { Layout } from '@promptus/ui';
 
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
+import { SuperTokensProvider } from './superTokensProvider';
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -21,14 +22,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          'min-h-screen bg-background font-sans antialiased',
-          fontSans.variable
-        )}
-      >
-        <Layout>{children}</Layout>
-      </body>
+      <SuperTokensProvider>
+        <body
+          className={cn(
+            'min-h-screen bg-background font-sans antialiased',
+            fontSans.variable
+          )}
+        >
+          <Layout>{children}</Layout>
+        </body>
+      </SuperTokensProvider>
     </html>
   );
 }
