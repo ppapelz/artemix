@@ -3,7 +3,7 @@ import { Layout } from '@promptus/ui';
 
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
-import { SuperTokensProvider } from './superTokensProvider';
+import { SuperTokensProvider } from '@promptus/feature';
 
 export const fontSans = FontSans({
   subsets: ['latin'],

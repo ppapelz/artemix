@@ -2,7 +2,6 @@ import EmailPasswordReact from 'supertokens-auth-react/recipe/emailpassword'
 import SessionReact from 'supertokens-auth-react/recipe/session'
 import { useRouter } from "next/navigation";
 import { SuperTokensConfig } from 'supertokens-auth-react/lib/build/types'
-import { SPT_API_DOMAIN, SPT_NX_WEBSITE_DOMAIN } from '@promptus/web/shared/util';
 
 const routerInfo: { router?: ReturnType<typeof useRouter>; pathName?: string } =
   {};
@@ -19,8 +18,8 @@ export const superTokenInit = (): SuperTokensConfig => {
   return {
     appInfo: {
         appName: "Promptus",
-        apiDomain: 'http://localhost:3000',
-        websiteDomain: 'http://localhost:4200',
+        apiDomain: 'http://localhost:3000', // TODO: move to .env file
+        websiteDomain: 'http://localhost:4200', // TODO: move to .env file
         apiBasePath: "/api/auth",
         websiteBasePath: "/login",
     },
