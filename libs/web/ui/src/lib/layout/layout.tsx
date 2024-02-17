@@ -5,7 +5,6 @@ import Navbar from '../navbar/navbar';
 import Sidebar, { SidebarItem } from '../sidebar/sidebar';
 import { LayoutDashboard, FileJson, ScrollText, Bot } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-
 export interface LayoutProps {
   children: React.ReactNode;
 }
@@ -25,7 +24,6 @@ export function Layout({ children }: LayoutProps) {
   const currentPath = usePathname();
   const [activeLink, setActiveLink] = useState<string>(getActiveLink(currentPath));
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
-
   const toggleSidebar = useCallback(() => {
     setShowSidebar(prev => !prev);
   }, []);
