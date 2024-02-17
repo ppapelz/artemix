@@ -3,10 +3,10 @@ import React from 'react';
 import { SuperTokensWrapper } from 'supertokens-auth-react';
 import SuperTokensReact from 'supertokens-auth-react';
 import { usePathname, useRouter } from 'next/navigation';
-import { superTokenInit, setRouter } from '@promptus/web/auth/util';
+import { SuperTokenFrontendConfig, setRouter } from '@promptus/web/auth/util';
 
 if (typeof window !== 'undefined') {
-  SuperTokensReact.init(superTokenInit());
+  SuperTokensReact.init(SuperTokenFrontendConfig());
 }
 
 export const SuperTokensProvider: React.FC<React.PropsWithChildren> = ({
