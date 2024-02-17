@@ -43,6 +43,7 @@
       "@promptus/web/auth/ui": ["libs/web/auth/ui/src/index.ts"],
       "@promptus/web/auth/ui/server": ["libs/web/auth/ui/src/server.ts"],
       "@promptus/web/auth/util": ["libs/web/auth/util/src/index.ts"],
+      "@promptus/web/auth/util/server": ["libs/web/auth/util/src/server.ts"],
       "@promptus/web/shared/util": ["libs/web/shared/util/src/index.ts"]
     }
   },
