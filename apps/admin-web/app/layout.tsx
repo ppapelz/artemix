@@ -1,5 +1,4 @@
 import { cn } from '@promptus/utils';
-import { Layout } from '@promptus/ui';
 
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
@@ -29,7 +28,7 @@ export default function RootLayout({
             fontSans.variable
           )}
         >
-          <Layout>{children}</Layout>
+          {children}
         </body>
       </SuperTokensProvider>
     </html>
