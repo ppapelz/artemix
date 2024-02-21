@@ -1,0 +1,16 @@
+{
+  "name": "web-shared-data-access",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/shared/data-access/src",
+  "projectType": "library",
+  "tags": ["type:data-access", "scope:shared"],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/web/shared/data-access/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

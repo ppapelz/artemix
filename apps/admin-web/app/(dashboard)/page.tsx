@@ -1,4 +1,4 @@
-import styles from './page.module.scss';
+import styles from './../page.module.scss';
 import { Button } from '@promptus/ui';
 
 export default async function Index() {

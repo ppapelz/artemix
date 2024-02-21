@@ -2,19 +2,15 @@ import { cookies, headers } from 'next/headers';
 import React from 'react';
 import { getSSRSession } from 'supertokens-node/nextjs';
 import { SessionContainer } from 'supertokens-node/recipe/session';
-import { getClient } from '../../ApolloClient';
 import gql from 'graphql-tag';
-import LogsChild from '../../components/logsChild';
+import { getApolloServerClient } from '@promptus/web/shared/data-access/server';
 
-export default async function Logs() {
-  let promptsData = null;
-  const prompts = gql`
+const LogsChild = async () => {
+  let aiModelsData = null;
+  const aiModels = gql`
     {
-      getAllPrompts {
-        content
-        id
-        name
-        updatedAt
+      getAllAIModels {
+        promptId
       }
     }
   `;
@@ -29,16 +25,19 @@ export default async function Logs() {
       headers()
     ));
     const token = session?.getAccessToken();
-    const { data } = await getClient().query({ query: prompts });
-    promptsData = data?.getAllPrompts;
+    const apolloClient = getApolloServerClient();
+    
+    const { data } = await apolloClient.query({ query: aiModels });
+    aiModelsData = data?.getAllAIModels;
     console.log('data', data);
   } catch (err: any) {
     error = err;
   }
   return (
     <div>
-      {promptsData[0]?.content}
-      <LogsChild />
+      <h1>{aiModelsData[0]?.promptId}</h1>
     </div>
   );
-}
+};
+
+export default LogsChild;
