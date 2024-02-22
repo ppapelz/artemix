@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import SuperTokensProvider from './super-tokens-provider';
+import SuperTokensProvider from './SuperTokensProvider';
 
 describe('SuperTokensProvider', () => {
   it('should render successfully', () => {

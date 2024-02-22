@@ -1,1 +1,3 @@
-export * from './lib/super-tokens-provider/super-tokens-provider';
+export * from './lib/SuperTokensProvider/SuperTokensProvider';
+export * from './lib/SessionAuthForNextJS/SessionAuthForNextJS';
+export * from './lib/TryRefreshComponent/TryRefreshComponent';
