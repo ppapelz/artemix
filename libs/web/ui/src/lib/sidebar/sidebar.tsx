@@ -1,4 +1,4 @@
-import { cn } from '@promptus/utils';
+import { cn } from '@promptus/web/shared/util';
 import { Github, Linkedin, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';

@@ -3,7 +3,7 @@ import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rs
 import { getSSRSessionHelper } from "@promptus/web/auth/util/server";
 
 export async function getApolloClient(): Promise<ApolloClient<unknown>> {
-    const {session} = await getSSRSessionHelper();
+    const { session } = await getSSRSessionHelper();
     const authorization = session?.getAccessToken();
 
     const link = new HttpLink({
