@@ -1,5 +1,5 @@
 import styles from './../page.module.scss';
-import { Button } from '@promptus/ui';
+import { Button } from '@promptus/web-shared-ui';
 
 export default async function Index() {
   return (

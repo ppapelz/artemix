@@ -17,22 +17,22 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@promptus/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
-      "@promptus/web/auth/feature/server": [
-        "libs/web/auth/feature/src/server.ts"
-      ],
       "@promptus/server/database": ["libs/server/database/src/index.ts"],
       "@promptus/server/graphql": ["libs/server/graphql/src/index.ts"],
       "@promptus/server/models": ["libs/server/models/src/index.ts"],
       "@promptus/server/openai": ["libs/server/openai/src/index.ts"],
-      "@promptus/ui": ["libs/web/ui/src/index.ts"],
       "@promptus/ui-ai-connections": [
         "libs/web/ai-connections/ui-ai-connections/src/index.ts"
       ],
       "@promptus/ui-ai-connections/server": [
         "libs/web/ai-connections/ui-ai-connections/src/server.ts"
       ],
-      "@promptus/ui/server": ["libs/web/ui/src/server.ts"],
+      "@promptus/web-shared-ui": ["libs/web/shared/ui/src/index.ts"],
+      "@promptus/web-shared-ui/server": ["libs/web/shared/ui/src/server.ts"],
+      "@promptus/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
+      "@promptus/web/auth/feature/server": [
+        "libs/web/auth/feature/src/server.ts"
+      ],
       "@promptus/web/auth/ui": ["libs/web/auth/ui/src/index.ts"],
       "@promptus/web/auth/ui/server": ["libs/web/auth/ui/src/server.ts"],
       "@promptus/web/auth/util": ["libs/web/auth/util/src/index.ts"],

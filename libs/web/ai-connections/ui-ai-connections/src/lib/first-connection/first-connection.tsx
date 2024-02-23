@@ -2,7 +2,7 @@ import styles from './first-connection.module.scss';
 import Image from 'next/image';
 import firstConnection from './../../assets/empty_connection.png';
 import { cn } from '@promptus/web/shared/util';
-import { Button } from '@promptus/ui';
+import { Button } from '@promptus/web-shared-ui';
 
 /* eslint-disable-next-line */
 export interface FirstConnectionProps {}

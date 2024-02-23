@@ -1,6 +1,6 @@
 import React from 'react';
 import { redirect } from 'next/navigation';
-import { Layout } from '@promptus/ui';
+import { Layout } from '@promptus/web-shared-ui';
 import { SessionAuthForNextJS, TryRefreshComponent } from '@promptus/web/auth/feature';
 import { getSSRSessionHelper } from '@promptus/web/auth/util/server';
 
