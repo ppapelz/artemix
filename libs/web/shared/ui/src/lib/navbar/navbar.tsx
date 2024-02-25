@@ -8,7 +8,6 @@ import {
   Mail,
   Menu,
   MessageSquare,
-  MoonStar,
   Plus,
   PlusCircle,
   Settings,
@@ -31,6 +30,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
+import { ThemeModeToggle } from '../ThemeModeToggle/ThemeModeToggle';
 
 export interface NavbarProps {
   title?: string;
@@ -54,9 +54,7 @@ export function Navbar({ title, toggleSidebar }: NavbarProps) {
         <h1 className="text-xl font-semibold">{title}</h1>
       </div>
       <div className="flex mr-4">
-        <Button variant="ghost">
-          <MoonStar></MoonStar>
-        </Button>
+        <ThemeModeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost">

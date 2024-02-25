@@ -7,6 +7,13 @@ import logo from './../../assets/dummy-logo-5b.png';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { FunctionComponent } from 'react';
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from '../ui/navigation-menu';
 
 export interface SidebarItem {
   link: string;
@@ -38,29 +45,40 @@ export function Sidebar({
   toggleSidebar,
 }: SidebarProps) {
   const links = sidebarItems.map((item) => (
-    <Link
-      className={cn(
-        `flex items-center text-lg font-medium px-2.5 
-        py-3 rounded-sm hover:bg-zinc-100`,
-        item.label === activeLink && `bg-sky-500 bg-opacity-20`
-      )}
-      href={item.link}
-      key={item.label}
-      onClick={() => {
-        setActiveLink(item.label);
-        toggleSidebar();
-      }}
-    >
-      <item.icon className="mr-4 h-6 w-6" />
-      <span>{item.label}</span>
-    </Link>
+    <NavigationMenuItem key={item.label}>
+      <Link href={item.link} legacyBehavior passHref>
+        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+          <item.icon className="mr-4 h-6 w-6" />
+          {item.label}
+        </NavigationMenuLink>
+      </Link>
+    </NavigationMenuItem>
+
+    // <Button variant="ghost" asChild>
+    //   <Link
+    //     className={cn(
+    //       `flex items-center text-lg font-medium px-2.5
+    //     py-3`,
+    //       item.label === activeLink && `bg-sky-500 bg-opacity-20`
+    //     )}
+    //     href={item.link}
+    //     key={item.label}
+    //     onClick={() => {
+    //       setActiveLink(item.label);
+    //       toggleSidebar();
+    //     }}
+    //   >
+    //     <item.icon className="mr-4 h-6 w-6" />
+    //     {item.label}
+    //   </Link>
+    // </Button>
   ));
 
   return (
     <>
-      <nav
+      <div
         className={cn(
-          `flex flex-col min-h-screen p-4 border-r bg-white transition-[margin-left] ease-in-out duration-500 
+          `flex flex-col min-h-screen p-4 border-r transition-[margin-left] ease-in-out duration-500 
           fixed md:static top-0 bottom-0 left-0 z-40`,
           show ? `ml-0` : `ml-[-300px] md:ml-0`,
           styles.sidebar
@@ -70,7 +88,11 @@ export function Sidebar({
           <div className="pb-4 mb-10">
             <Image src={logo} alt="logo" priority={true} />
           </div>
-          {links}
+          <NavigationMenu>
+            <NavigationMenuList className="flex flex-col items-start">
+              {links}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         <div className="flex justify-between items-center border-t">
@@ -90,7 +112,7 @@ export function Sidebar({
             v3.1.1
           </Badge>
         </div>
-      </nav>
+      </div>
       {show && <ModalOverlay onClick={toggleSidebar} />}
     </>
   );
