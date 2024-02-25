@@ -5,5 +5,8 @@ export * from './lib/navbar/navbar';
 export * from './lib/sidebar/sidebar';
 export * from './lib/layout/layout';
 export * from './lib/ui/table';
+export * from './lib/ui/input';
+export * from './lib/ui/dropdown-menu';
+export * from './lib/ui/checkbox';
 export { ThemeProvider } from './lib/ThemeProvider/ThemeProvider';
 export { ThemeModeToggle } from './lib/ThemeModeToggle/ThemeModeToggle';
