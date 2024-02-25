@@ -43,7 +43,13 @@
       "@promptus/web/shared/data-access/server": [
         "libs/web/shared/data-access/src/server.ts"
       ],
-      "@promptus/web/shared/util": ["libs/web/shared/util/src/index.ts"]
+      "@promptus/web/shared/util": ["libs/web/shared/util/src/index.ts"],
+      "@promptus/web/ui-examples/ui-elements": [
+        "libs/web/ui-examples/ui-elements/src/index.ts"
+      ],
+      "@promptus/web/ui-examples/ui-elements/server": [
+        "libs/web/ui-examples/ui-elements/src/server.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
