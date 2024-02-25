@@ -24,6 +24,7 @@ class AIModelService {
     }
 
     async getAllAIModels(): Promise<AIModel[]> {
+        console.log('AIModelService -> getAllAIModels');
         return await AIModelRepository.findAll();
     }
 }

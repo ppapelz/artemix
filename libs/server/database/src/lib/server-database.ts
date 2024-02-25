@@ -9,8 +9,12 @@ import { AIModelFactory } from "./seeders/aimodel/aiModel.factory";
 import AIModelSeeder from "./seeders/aimodel/aiModel.seeder";
 
 const options: DataSourceOptions & SeederOptions = {
-    type: "sqlite",
-    database: "./database/dev.sqlite3",
+    type: "postgres",
+    host: "localhost",
+    port: 5432,
+    database: "promptus",
+    username: "postgres",
+    password: "postgres",
     entities: [Prompt, AIModel, Variable],
     factories: [PromptsFactory, AIModelFactory, VariablesFactory],
     seeds: [PromptsSeeder, AIModelSeeder, VariablesSeeder],

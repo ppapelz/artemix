@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/admin-web",
   "projectType": "application",
+  "tags": ["type:app", "scope:admin-web"],
   "targets": {
     "build": {
       "executor": "@nx/next:build",
@@ -64,6 +65,5 @@
         "lintFilePatterns": ["apps/admin-web/**/*.{ts,tsx,js,jsx}"]
       }
     }
-  },
-  "tags": []
+  }
 }

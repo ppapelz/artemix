@@ -11,6 +11,6 @@
   },
   "aliases": {
     "components": "@promptus/ui",
-    "utils": "@promptus/utils"
+    "utils": "@promptus/web/shared/util"
   }
 }
