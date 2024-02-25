@@ -46,7 +46,7 @@ export function Sidebar({
 }: SidebarProps) {
   const links = sidebarItems.map((item) => (
     <NavigationMenuItem key={item.label}>
-      <Link href={item.link} legacyBehavior passHref>
+      <Link href={item.link} legacyBehavior passHref prefetch={false}>
         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
           <item.icon className="mr-4 h-6 w-6" />
           {item.label}
