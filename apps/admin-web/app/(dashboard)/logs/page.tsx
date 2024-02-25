@@ -20,7 +20,6 @@ export default async function Logs() {
     const apolloClient = await getApolloClient();
     const { data } = await apolloClient.query({ query: prompts });
     promptsData = data?.getAllPrompts;
-    console.log('data', data);
   } catch (err: any) {
     error = err;
   }
