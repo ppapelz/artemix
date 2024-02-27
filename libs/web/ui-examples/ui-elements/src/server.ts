@@ -2,3 +2,4 @@
 export * from './lib/hello-server';
 export * from './lib/CardDemo';
 export * from './lib/SliderDemo';
+export * from './lib/DataTable';

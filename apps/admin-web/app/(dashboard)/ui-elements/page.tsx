@@ -1,5 +1,5 @@
 import { Button } from '@promptus/web-shared-ui';
-import { CardDemo, SliderDemo } from '@promptus/web/ui-examples/ui-elements/server';
+import { CardDemo, SliderDemo, DataTableDemo } from '@promptus/web/ui-examples/ui-elements/server';
 
 const UIElements = () => {
   return (
@@ -7,6 +7,7 @@ const UIElements = () => {
       <Button> Test Button </Button>
       <CardDemo />
       <SliderDemo />
+      <DataTableDemo />
     </div>
   );
 };

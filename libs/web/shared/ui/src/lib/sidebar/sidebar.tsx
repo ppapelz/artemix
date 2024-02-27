@@ -53,32 +53,13 @@ export function Sidebar({
         </NavigationMenuLink>
       </Link>
     </NavigationMenuItem>
-
-    // <Button variant="ghost" asChild>
-    //   <Link
-    //     className={cn(
-    //       `flex items-center text-lg font-medium px-2.5
-    //     py-3`,
-    //       item.label === activeLink && `bg-sky-500 bg-opacity-20`
-    //     )}
-    //     href={item.link}
-    //     key={item.label}
-    //     onClick={() => {
-    //       setActiveLink(item.label);
-    //       toggleSidebar();
-    //     }}
-    //   >
-    //     <item.icon className="mr-4 h-6 w-6" />
-    //     {item.label}
-    //   </Link>
-    // </Button>
   ));
 
   return (
     <>
       <div
         className={cn(
-          `flex flex-col min-h-screen p-4 border-r transition-[margin-left] ease-in-out duration-500 
+          `flex bg-background flex-col min-h-screen p-4 border-r transition-[margin-left] ease-in-out duration-500 
           fixed md:static top-0 bottom-0 left-0 z-40`,
           show ? `ml-0` : `ml-[-300px] md:ml-0`,
           styles.sidebar
