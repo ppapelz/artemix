@@ -1,3 +1,13 @@
-.sidebar {
-    width: 300px;
+.nav-menu {
+    div:first-child {
+        width: 268px;
+
+        li {
+            width: 100%;
+
+            a {
+                width: 100%;
+            }
+        }
+    }
 }

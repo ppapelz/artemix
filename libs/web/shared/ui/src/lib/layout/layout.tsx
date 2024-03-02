@@ -3,7 +3,13 @@
 import { useCallback, useState } from 'react';
 import Navbar from '../navbar/navbar';
 import Sidebar, { SidebarItem } from '../sidebar/sidebar';
-import { LayoutDashboard, FileJson, ScrollText, Bot } from 'lucide-react';
+import {
+  LayoutDashboard,
+  FileJson,
+  ScrollText,
+  Bot,
+  Figma,
+} from 'lucide-react';
 import { usePathname } from 'next/navigation';
 export interface LayoutProps {
   children: React.ReactNode;
@@ -14,20 +20,21 @@ const sidebarItems: Array<SidebarItem> = [
   { link: '/prompts', label: 'Prompts', icon: FileJson },
   { link: '/logs', label: 'Logs', icon: ScrollText },
   { link: '/ai-connections', label: 'AI Connections', icon: Bot },
-  { link: '/ui-elements', label: 'Ui Elements', icon: Bot },
-
+  { link: '/ui-elements', label: 'Ui Elements', icon: Figma },
 ];
 
 const getActiveLink = (currentPath: string): string => {
-  return sidebarItems.find((item) => item.link === currentPath)?.label || ''
-}
+  return sidebarItems.find((item) => item.link === currentPath)?.label || '';
+};
 
 export function Layout({ children }: LayoutProps) {
   const currentPath = usePathname();
-  const [activeLink, setActiveLink] = useState<string>(getActiveLink(currentPath));
+  const [activeLink, setActiveLink] = useState<string>(
+    getActiveLink(currentPath)
+  );
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
   const toggleSidebar = useCallback(() => {
-    setShowSidebar(prev => !prev);
+    setShowSidebar((prev) => !prev);
   }, []);
 
   return (
@@ -40,10 +47,7 @@ export function Layout({ children }: LayoutProps) {
         toggleSidebar={toggleSidebar}
       ></Sidebar>
       <div className="flex flex-col flex-grow w-screen md:w-full mx-8 my-6">
-        <Navbar
-          title={activeLink}
-          toggleSidebar={toggleSidebar}
-        ></Navbar>
+        <Navbar title={activeLink} toggleSidebar={toggleSidebar}></Navbar>
         {children}
       </div>
     </div>
