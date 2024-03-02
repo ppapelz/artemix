@@ -14,6 +14,8 @@ const sidebarItems: Array<SidebarItem> = [
   { link: '/prompts', label: 'Prompts', icon: FileJson },
   { link: '/logs', label: 'Logs', icon: ScrollText },
   { link: '/ai-connections', label: 'AI Connections', icon: Bot },
+  { link: '/ui-elements', label: 'Ui Elements', icon: Bot },
+
 ];
 
 const getActiveLink = (currentPath: string): string => {

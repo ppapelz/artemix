@@ -37,6 +37,10 @@
                 "onlyDependOnLibsWithTags": ["type:ui", "type:util"]
               },
               {
+                "sourceTag": "type:data-access",
+                "onlyDependOnLibsWithTags": ["type:util", "type:data-access"]
+              },
+              {
                 "sourceTag": "type:util",
                 "onlyDependOnLibsWithTags": ["type:util"]
               }

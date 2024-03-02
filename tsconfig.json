@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@promptus/ui": [
-        "libs/web/ui/src/lib"
+        "libs/web/shared/ui/src/lib"
       ]
     }
   }

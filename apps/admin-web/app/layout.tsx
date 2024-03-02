@@ -1,8 +1,8 @@
-import { cn } from '@promptus/web/shared/util';
-
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
 import { SuperTokensProvider } from '@promptus/web/auth/feature';
+import { cn } from '@promptus/web/shared/util';
+import { ThemeProvider } from '@promptus/web-shared-ui';
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -20,15 +20,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <SuperTokensProvider>
         <body
           className={cn(
-            'min-h-screen bg-background font-sans antialiased',
+            'min-h-screen font-sans antialiased',
             fontSans.variable
           )}
+          suppressHydrationWarning={true}
         >
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         </body>
       </SuperTokensProvider>
     </html>

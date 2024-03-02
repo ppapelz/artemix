@@ -1,5 +1,13 @@
-// Use this file to export React client components (e.g. those with 'use client' directive) or other non-server utilities
 export * from './lib/ui/button';
+export * from './lib/ui/card';
+export * from './lib/ui/switch';
 export * from './lib/navbar/navbar';
 export * from './lib/sidebar/sidebar';
 export * from './lib/layout/layout';
+export * from './lib/ui/table';
+export * from './lib/ui/slider';
+export * from './lib/ui/input';
+export * from './lib/ui/dropdown-menu';
+export * from './lib/ui/checkbox';
+export { ThemeProvider } from './lib/ThemeProvider/ThemeProvider';
+export { ThemeModeToggle } from './lib/ThemeModeToggle/ThemeModeToggle';
