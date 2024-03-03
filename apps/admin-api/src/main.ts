@@ -1,14 +1,11 @@
 import 'reflect-metadata';
-import { OpenAIApi, createChatCompletion } from '@promptus/server/openai';
+import { OpenAIApi } from '@promptus/server/openai';
 import { createApolloServer } from '@promptus/server/graphql';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import { json } from 'body-parser';
 import {
-  aiModelService,
   dataSource,
-  promptService,
-  variableService,
 } from '@promptus/server/database';
 
 import express from 'express';
@@ -35,16 +32,6 @@ const startServer = async () => {
   try {
     await dataSource.initialize();
     await runSeeders(dataSource);
-
-    //const variables = await variableService.getVariableById(1);
-    //const prompt = await promptService.getPromptById(1);
-    //const aimodel = await aiModelService.getAIModelByPromptId(1);
-
-    //const aa = createChatCompletion(1);
-    //console.log(variables);
-    //console.log(prompt);
-    //console.log(aimodel);
-    //console.log(aa);
 
     console.log('Connection has been established successfully.');
   } catch (error) {
