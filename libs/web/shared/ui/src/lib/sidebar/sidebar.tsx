@@ -45,9 +45,21 @@ export function Sidebar({
   toggleSidebar,
 }: SidebarProps) {
   const links = sidebarItems.map((item) => (
-    <NavigationMenuItem key={item.label}>
+    <NavigationMenuItem
+      key={item.label}
+      onClick={() => {
+        setActiveLink(item.label);
+        toggleSidebar();
+      }}
+    >
       <Link href={item.link} legacyBehavior passHref prefetch={false}>
-        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+        <NavigationMenuLink
+          className={cn(
+            navigationMenuTriggerStyle(),
+            `items-start justify-start mb-1`,
+            item.label === activeLink && `bg-accent`
+          )}
+        >
           <item.icon className="mr-4 h-6 w-6" />
           {item.label}
         </NavigationMenuLink>
@@ -59,17 +71,16 @@ export function Sidebar({
     <>
       <div
         className={cn(
-          `flex bg-background flex-col min-h-screen p-4 border-r transition-[margin-left] ease-in-out duration-500 
-          fixed md:static top-0 bottom-0 left-0 z-40`,
-          show ? `ml-0` : `ml-[-300px] md:ml-0`,
-          styles.sidebar
+          `flex bg-background flex-col min-h-screen p-4 border-r transition-[margin-left] 
+          ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40`,
+          show ? `ml-0` : `ml-[-340px] md:ml-0`
         )}
       >
         <div className="flex-1">
           <div className="pb-4 mb-10">
             <Image src={logo} alt="logo" priority={true} />
           </div>
-          <NavigationMenu>
+          <NavigationMenu className={cn(styles['nav-menu'])}>
             <NavigationMenuList className="flex flex-col items-start">
               {links}
             </NavigationMenuList>
