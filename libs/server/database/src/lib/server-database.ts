@@ -1,5 +1,5 @@
 import { DataSource, DataSourceOptions } from "typeorm";
-import { Prompt, Variable, AIModel } from "@promptus/server/models";
+import { Prompt, Variable, AIModel, Account, Organization } from "@promptus/server/models";
 import { SeederOptions } from "typeorm-extension";
 import { VariablesFactory } from "./seeders/variables/variables.factory";
 import { PromptsFactory } from "./seeders/prompt/prompts.factory";
@@ -15,7 +15,7 @@ const options: DataSourceOptions & SeederOptions = {
     database: "promptus",
     username: "postgres",
     password: "postgres",
-    entities: [Prompt, AIModel, Variable],
+    entities: [Prompt, AIModel, Variable, Account, Organization],
     factories: [PromptsFactory, AIModelFactory, VariablesFactory],
     seeds: [PromptsSeeder, AIModelSeeder, VariablesSeeder],
     synchronize: true,
