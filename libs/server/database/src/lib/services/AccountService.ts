@@ -8,6 +8,10 @@ class AccountService {
         return await AccountRepository.create(data);
     }
 
+    async getAccountById(id: number): Promise<Account | null> {
+        return await AccountRepository.findById(id);
+    }
+
     async createFirstAccount(data: CreateAccountInput): Promise<Account> {
         return await dataSource.transaction(async transactionalEntityManager => {
             const orgName = data?.displayName ? data.displayName : data.email;
