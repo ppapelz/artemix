@@ -5,3 +5,5 @@ export * from './lib/repositories/AIModelRepository';
 export * from './lib/services/PromptService';
 export * from './lib/services/VariableService';
 export * from './lib/services/AIModelService';
+export * from './lib/services/AccountService';
+export * from './lib/services/OrganizationService';

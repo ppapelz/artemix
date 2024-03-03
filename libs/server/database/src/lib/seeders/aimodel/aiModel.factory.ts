@@ -13,6 +13,5 @@ export const AIModelFactory = setSeederFactory(AIModel, () => {
   aiModel.promptId = 1;
   aiModel.createdAt = new Date();
   aiModel.updatedAt = new Date();
-
   return aiModel;
 });

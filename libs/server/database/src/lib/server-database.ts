@@ -1,12 +1,10 @@
 import { DataSource, DataSourceOptions } from "typeorm";
-import { Prompt, Variable, AIModel } from "@promptus/server/models";
+import { Account, Organization } from "@promptus/server/models";
 import { SeederOptions } from "typeorm-extension";
-import { VariablesFactory } from "./seeders/variables/variables.factory";
-import { PromptsFactory } from "./seeders/prompt/prompts.factory";
-import VariablesSeeder from "./seeders/variables/variables.seeder";
-import PromptsSeeder from "./seeders/prompt/prompts.seeder";
-import { AIModelFactory } from "./seeders/aimodel/aiModel.factory";
-import AIModelSeeder from "./seeders/aimodel/aiModel.seeder";
+import { AccountFactory } from "./seeders/account/account.factory";
+import { OrganizationFactory } from "./seeders/organization/organization.factory";
+import OrganizationSeeder from "./seeders/organization/organization.seeder";
+import AccountSeeder from "./seeders/account/account.seeder";
 
 const options: DataSourceOptions & SeederOptions = {
     type: "postgres",
@@ -15,9 +13,9 @@ const options: DataSourceOptions & SeederOptions = {
     database: "promptus",
     username: "postgres",
     password: "postgres",
-    entities: [Prompt, AIModel, Variable],
-    factories: [PromptsFactory, AIModelFactory, VariablesFactory],
-    seeds: [PromptsSeeder, AIModelSeeder, VariablesSeeder],
+    entities: [Organization, Account],
+    factories: [OrganizationFactory, AccountFactory],
+    seeds: [OrganizationSeeder, AccountSeeder],
     synchronize: true,
     logging: false,
 };
