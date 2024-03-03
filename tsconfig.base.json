@@ -17,6 +17,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
+      "@promptus/auth-ui": ["libs/web/auth/ui/src/index.ts"],
+      "@promptus/auth-ui/server": ["libs/web/auth/ui/src/server.ts"],
       "@promptus/server/database": ["libs/server/database/src/index.ts"],
       "@promptus/server/graphql": ["libs/server/graphql/src/index.ts"],
       "@promptus/server/models": ["libs/server/models/src/index.ts"],
