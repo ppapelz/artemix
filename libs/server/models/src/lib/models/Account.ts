@@ -6,8 +6,8 @@ import { Organization } from "./Organization";
 @Entity("Account")
 export class Account extends BaseEntity {
     @Field(() => ID)
-    @PrimaryColumn('int')
-    id: number;
+    @PrimaryColumn('text')
+    id: string;
 
     @Field(() => String)
     @Column("text")
@@ -33,8 +33,8 @@ export class Account extends BaseEntity {
 
 @InputType()
 export class CreateAccountInput {
-    @Field(() => Number)
-    id: number;
+    @Field(() => ID)
+    id: string;
 
     @Field(() => String, { nullable: true })
     displayName?: string;
@@ -45,8 +45,8 @@ export class CreateAccountInput {
 
 @InputType()
 export class UpdateAccountInput {
-    @Field(() => Number)
-    id: number;
+    @Field(() => ID)
+    id: string;
 
     @Field(() => String, { nullable: true })
     displayName?: string;

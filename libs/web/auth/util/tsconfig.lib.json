@@ -20,5 +20,5 @@
     "src/**/*.spec.jsx",
     "src/**/*.test.jsx"
   ],
-  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx", "../../shared/data-access/src/lib/superTokenBackendConfig.ts", "../../shared/data-access/src/lib/getSSRSessionHelper.ts", "../../shared/data-access/src/lib/superTokenFrontendConfig.ts", "../../shared/data-access/src/lib/appInfo.ts"]
 }

@@ -8,10 +8,10 @@ export default class AccountSeeder implements Seeder {
     ): Promise<any> {
         const accountFactory = factoryManager.get(Account);
         const orgRepo = dataSource.getRepository(Organization);
-        const orgData = await orgRepo.findOneBy({ id: 1 })
+        const orgData = await orgRepo.findOneBy({ id: "1" })
 
         await accountFactory.save({
-            id: 1,
+            id: "1",
             email: "ozkanlang@gmail.com",
             displayName: 'Ozkan Canli',
             organizations: [orgData],

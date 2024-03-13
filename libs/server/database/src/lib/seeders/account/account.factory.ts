@@ -3,7 +3,7 @@ import { setSeederFactory } from "typeorm-extension";
 
 export const AccountFactory = setSeederFactory(Account, () => {
     const account = new Account();
-    account.id = 1;
+    account.id = "1";
     account.email = "ozkanlang@gmail.com"
     account.displayName = "Ozkan Canli";
     account.createdAt = new Date();

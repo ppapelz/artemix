@@ -11,6 +11,7 @@ import {
   Figma,
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { signOut } from 'supertokens-auth-react/recipe/session';
 export interface LayoutProps {
   children: React.ReactNode;
 }
@@ -37,9 +38,15 @@ export function Layout({ children }: LayoutProps) {
     setShowSidebar((prev) => !prev);
   }, []);
 
+  const onLogout = async () => {
+    await signOut();
+    window.location.href = '/';
+  };
+
   return (
     <div className="flex min-h-screen">
       <Sidebar
+        onLogout={onLogout}
         activeLink={activeLink}
         setActiveLink={setActiveLink}
         sidebarItems={sidebarItems}

@@ -27,6 +27,7 @@ export interface SidebarProps {
   activeLink: string;
   show: boolean;
   toggleSidebar: () => void;
+  onLogout: () => void;
 }
 
 interface ModalOverlayProps {
@@ -43,6 +44,7 @@ export function Sidebar({
   activeLink,
   show,
   toggleSidebar,
+  onLogout
 }: SidebarProps) {
   const links = sidebarItems.map((item) => (
     <NavigationMenuItem
@@ -66,6 +68,7 @@ export function Sidebar({
       </Link>
     </NavigationMenuItem>
   ));
+
 
   return (
     <>
@@ -94,7 +97,7 @@ export function Sidebar({
                 <Linkedin className="h-4 w-4"></Linkedin>
               </Button>
             </a>
-            <a href="/" onClick={(event) => event.preventDefault()}>
+            <a href="/" onClick={onLogout}>
               <Button variant="ghost" size="icon">
                 <Github className="h-4 w-4"></Github>
               </Button>

@@ -17,6 +17,4 @@ export async function createChatCompletion(promptId: number) {
     { "role": "user", "content": "Where was it played?" }],
   });
 
-  console.log(gptResponse);
-
 }

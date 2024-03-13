@@ -10,7 +10,7 @@ export default class OrganizationSeeder implements Seeder {
         const organizationFactory = factoryManager.get(Organization);
 
         await organizationFactory.save({
-            id: 1,
+            id: "1",
             name: "Ozkan Organization",
             createdAt: new Date(),
             updatedAt: new Date()
