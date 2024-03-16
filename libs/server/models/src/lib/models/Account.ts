@@ -1,38 +1,38 @@
 import { Entity, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, PrimaryColumn, ManyToMany, JoinTable } from "typeorm";
 import { ObjectType, Field, ID, InputType } from "type-graphql";
-import { Organization } from "./Organization";
+import { OrganizationEntity } from "./Organization";
 
-@ObjectType()
+class Account {
+    id: string;
+    displayName?: string;
+    email: string;
+}
+
 @Entity("Account")
-export class Account extends BaseEntity {
-    @Field(() => ID)
+class AccountEntity extends BaseEntity implements Account {
     @PrimaryColumn('text')
     id: string;
 
-    @Field(() => String)
     @Column("text")
     displayName?: string;
 
-    @Field(() => String)
     @Column("text")
     email: string;
 
-    @Field(() => Date)
     @CreateDateColumn()
     createdAt?: Date;
 
-    @Field(() => Date)
     @UpdateDateColumn()
     updatedAt?: Date;
 
     // Relations
-    @ManyToMany(() => Organization, organization => organization.accounts)
+    @ManyToMany(() => OrganizationEntity, organization => organization.accounts)
     @JoinTable()
-    organizations?: Organization[];
+    organizations?: OrganizationEntity[];
 }
 
-@InputType()
-export class CreateAccountInput {
+@ObjectType()
+class AccountType implements Account {
     @Field(() => ID)
     id: string;
 
@@ -44,7 +44,19 @@ export class CreateAccountInput {
 }
 
 @InputType()
-export class UpdateAccountInput {
+class CreateAccountInput {
+    @Field(() => ID)
+    id: string;
+
+    @Field(() => String, { nullable: true })
+    displayName?: string;
+
+    @Field(() => String)
+    email: string;
+}
+
+@InputType()
+class UpdateAccountInput {
     @Field(() => ID)
     id: string;
 
@@ -53,4 +65,13 @@ export class UpdateAccountInput {
 
     @Field(() => String, { nullable: true })
     email?: string;
+}
+
+
+export {
+    Account,
+    AccountEntity,
+    AccountType,
+    CreateAccountInput,
+    UpdateAccountInput
 }

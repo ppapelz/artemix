@@ -1,17 +1,17 @@
 import { organizationService } from '@promptus/server/database';
 import {
     CreateOrganizationInput,
-    Organization,
+    OrganizationType,
 } from '@promptus/server/models';
 import { Resolver, Arg, Mutation } from 'type-graphql';
- 
-@Resolver(Organization)
+
+@Resolver(OrganizationType)
 export class OrganizationResolver {
 
-    @Mutation(() => Organization)
+    @Mutation(() => OrganizationType)
     async createOrganization(
         @Arg('input', () => CreateOrganizationInput) input: CreateOrganizationInput
-    ): Promise<Organization> {
+    ): Promise<OrganizationType> {
         return await organizationService.createOrganization(input);
     }
 }

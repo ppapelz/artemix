@@ -1,4 +1,4 @@
-import { Organization } from "@promptus/server/models";
+import { OrganizationEntity } from "@promptus/server/models";
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 
@@ -7,7 +7,7 @@ export default class OrganizationSeeder implements Seeder {
         dataSource: DataSource,
         factoryManager: SeederFactoryManager,
     ): Promise<any> {
-        const organizationFactory = factoryManager.get(Organization);
+        const organizationFactory = factoryManager.get(OrganizationEntity);
 
         await organizationFactory.save({
             id: "1",

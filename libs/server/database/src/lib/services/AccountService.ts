@@ -1,30 +1,30 @@
 
-import { Account, CreateAccountInput, Organization } from '@promptus/server/models';
+import { AccountEntity, CreateAccountInput, OrganizationEntity } from '@promptus/server/models';
 import AccountRepository from '../repositories/AccountRepository';
 import { dataSource } from '../server-database';
 
 class AccountService {
-    async createAccount(data: CreateAccountInput): Promise<Account> {
+    async createAccount(data: CreateAccountInput): Promise<AccountEntity> {
         return await AccountRepository.create(data);
     }
 
-    async getAccountById(id: number): Promise<Account | null> {
+    async getAccountById(id: number): Promise<AccountEntity | null> {
         return await AccountRepository.findById(id);
     }
 
-    async createFirstAccount(data: CreateAccountInput): Promise<Account> {
+    async createFirstAccount(data: CreateAccountInput): Promise<AccountEntity> {
         return await dataSource.transaction(async transactionalEntityManager => {
             const orgName = data?.displayName ? data.displayName : data.email;
 
-            const org = transactionalEntityManager.create(Organization, { name: orgName });
-            await transactionalEntityManager.save(Organization, org);
+            const org = transactionalEntityManager.create(OrganizationEntity, { name: orgName });
+            await transactionalEntityManager.save(OrganizationEntity, org);
 
             const accountData = {
                 ...data,
                 organizations: [org],
             };
-            const account = transactionalEntityManager.create(Account, accountData as Account);
-            await transactionalEntityManager.save(Account, account);
+            const account = transactionalEntityManager.create(AccountEntity, accountData as AccountEntity);
+            await transactionalEntityManager.save(AccountEntity, account);
 
             return account;
         });
