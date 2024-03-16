@@ -54,7 +54,6 @@ export const backendConfig = (): TypeInput => {
 
                 if (existingUsers.length === 0) {
                   // this means that the email is new and is a sign up
-                  console.log('sign up successful');
                   const result = await apolloClient.mutate({
                     mutation: createFirstAccount,
                     variables: {
@@ -65,7 +64,6 @@ export const backendConfig = (): TypeInput => {
                       },
                     },
                   });
-                  console.log(result);
                 }
                 // We allow the sign in / up operation
                 return oI.thirdPartySignInUp(input);

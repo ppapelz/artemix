@@ -1,0 +1,23 @@
+{
+  "name": "web-organizations-feature",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/organizations/feature/src",
+  "projectType": "library",
+  "tags": [
+    "type:feature",
+    "scope:organizations"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/organizations/feature/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}

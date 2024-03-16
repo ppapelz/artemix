@@ -39,6 +39,12 @@
       "@promptus/web/auth/ui/server": ["libs/web/auth/ui/src/server.ts"],
       "@promptus/web/auth/util": ["libs/web/auth/util/src/index.ts"],
       "@promptus/web/auth/util/server": ["libs/web/auth/util/src/server.ts"],
+      "@promptus/web/organizations/feature": [
+        "libs/web/organizations/feature/src/index.ts"
+      ],
+      "@promptus/web/organizations/feature/server": [
+        "libs/web/organizations/feature/src/server.ts"
+      ],
       "@promptus/web/shared/data-access": [
         "libs/web/shared/data-access/src/index.ts"
       ],
