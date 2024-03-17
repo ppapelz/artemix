@@ -5,6 +5,8 @@ import { AccountEntity } from "./Account";
 class Organization {
     id: string;
     name: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 @Entity("Organization")

@@ -7,13 +7,27 @@ export default class OrganizationSeeder implements Seeder {
         dataSource: DataSource,
         factoryManager: SeederFactoryManager,
     ): Promise<any> {
-        const organizationFactory = factoryManager.get(OrganizationEntity);
 
-        await organizationFactory.save({
-            id: "1",
-            name: "Ozkan Organization",
-            createdAt: new Date(),
-            updatedAt: new Date()
+
+        const organizationRepository = dataSource.getRepository(OrganizationEntity);
+
+        const existingOrganization = await organizationRepository.findOne({
+            where: [
+                { id: "1" },
+                { name: "First Org" }
+            ],
         });
+
+        if (!existingOrganization) {
+            const organizationFactory = factoryManager.get(OrganizationEntity);
+
+            await organizationFactory.save({
+                id: "1",
+                name: "First Org",
+                createdAt: new Date(),
+                updatedAt: new Date()
+            });
+        }
+
     }
 }

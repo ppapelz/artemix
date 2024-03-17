@@ -8,7 +8,7 @@ class AccountService {
         return await AccountRepository.create(data);
     }
 
-    async getAccountById(id: number): Promise<AccountEntity | null> {
+    async getAccountById(id: string): Promise<AccountEntity | null> {
         return await AccountRepository.findById(id);
     }
 
