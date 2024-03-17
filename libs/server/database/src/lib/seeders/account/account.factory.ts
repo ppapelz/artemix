@@ -1,8 +1,8 @@
-import { Account } from "@promptus/server/models";
+import { AccountEntity } from "@promptus/server/models";
 import { setSeederFactory } from "typeorm-extension";
 
-export const AccountFactory = setSeederFactory(Account, () => {
-    const account = new Account();
+export const AccountFactory = setSeederFactory(AccountEntity, () => {
+    const account = new AccountEntity();
     account.id = "1";
     account.email = "ozkanlang@gmail.com"
     account.displayName = "Ozkan Canli";

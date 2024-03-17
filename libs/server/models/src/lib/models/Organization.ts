@@ -1,42 +1,67 @@
 import { Entity, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, PrimaryGeneratedColumn, ManyToMany } from "typeorm";
 import { ObjectType, Field, ID, InputType } from "type-graphql";
-import { Account } from "./Account";
+import { AccountEntity } from "./Account";
 
-@ObjectType()
+class Organization {
+    id: string;
+    name: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
 @Entity("Organization")
-export class Organization extends BaseEntity {
-    @Field(() => ID)
+class OrganizationEntity extends BaseEntity implements Organization {
     @PrimaryGeneratedColumn()
     id: string;
 
-    @Field(() => String)
     @Column("text")
     name: string;
 
-    @Field(() => Date)
     @CreateDateColumn()
     createdAt: Date;
 
-    @Field(() => Date)
     @UpdateDateColumn()
     updatedAt: Date;
 
     // Relations
-    @ManyToMany(() => Account, account => account.organizations)
-    accounts: Account[];
+    @ManyToMany(() => AccountEntity, account => account.organizations)
+    accounts: AccountEntity[];
+}
+
+@ObjectType()
+class OrganizationType implements Organization {
+    @Field(() => ID)
+    id: string;
+
+    @Field(() => String)
+    name: string;
+
+    @Field(() => Date)
+    createdAt: Date;
+
+    @Field(() => Date)
+    updatedAt: Date;
 }
 
 @InputType()
-export class CreateOrganizationInput {
+class CreateOrganizationInput {
     @Field(() => String)
     name: string;
 }
 
 @InputType()
-export class UpdateOrganizationInput {
+class UpdateOrganizationInput {
     @Field(() => ID)
     id: string;
 
-    @Field(() => String)
+    @Field(() => String, { nullable: true })
     name?: string;
+}
+
+export {
+    Organization,
+    OrganizationEntity,
+    OrganizationType,
+    CreateOrganizationInput,
+    UpdateOrganizationInput
 }
