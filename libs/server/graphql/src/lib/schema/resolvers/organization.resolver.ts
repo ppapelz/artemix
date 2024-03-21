@@ -1,7 +1,6 @@
 import { organizationService } from '@promptus/server/database';
 import {
     CreateOrganizationInput,
-    Organization,
     OrganizationType,
 } from '@promptus/server/models';
 import { Resolver, Arg, Mutation, Query, ID } from 'type-graphql';
