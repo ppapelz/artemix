@@ -1,0 +1,23 @@
+{
+  "name": "web-organizations-data-access",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/web/organizations/data-access/src",
+  "projectType": "library",
+  "tags": [
+    "type:data-access",
+    "scope:organizations"
+  ],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/organizations/data-access/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    }
+  }
+}
