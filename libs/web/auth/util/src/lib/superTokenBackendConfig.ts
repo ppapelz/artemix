@@ -7,6 +7,7 @@ import { appInfo } from "./appInfo";
 import Dashboard from "supertokens-node/recipe/dashboard";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
+import { google } from "googleapis";
 
 const createFirstAccount = gql`
 mutation CreateFirstAccount($input: CreateAccountInput!) {
@@ -16,7 +17,19 @@ mutation CreateFirstAccount($input: CreateAccountInput!) {
 }
 `;
 
+const getAccount = gql`
+query getAccount($accountId: ID!) {
+  getAccount(id: $accountId) {
+    displayName
+    email
+  }
+}
+`;
+
 export const backendConfig = (): TypeInput => {
+  const clientId = '1060725074195-kmeum4crr01uirfl2op9kd5acmi9jutn.apps.googleusercontent.com';
+  const clientSecret = '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';
+
   return {
     appInfo,
     supertokens: {
@@ -29,8 +42,8 @@ export const backendConfig = (): TypeInput => {
             config: {
               thirdPartyId: "google",
               clients: [{
-                clientId: "1060725074195-kmeum4crr01uirfl2op9kd5acmi9jutn.apps.googleusercontent.com",
-                clientSecret: "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",
+                clientId: clientId,
+                clientSecret: clientSecret,
                 scope: ["email", "profile"]
               }]
             }
@@ -44,32 +57,69 @@ export const backendConfig = (): TypeInput => {
             return {
               ...oI,
               thirdPartySignInUp: async function (input) {
-                const apolloClient = await getApolloClient();
-                const fullName = input?.rawUserInfoFromProvider?.fromUserInfoAPI?.name;
-                const email = input?.email;
-                const thirdPartyUserId = input?.thirdPartyUserId;
-                const existingUsers = await SuperTokens.listUsersByAccountInfo(input.tenantId, {
-                  email: input.email
-                });
-
-                if (existingUsers.length === 0) {
-                  // this means that the email is new and is a sign up
-                  const result = await apolloClient.mutate({
-                    mutation: createFirstAccount,
-                    variables: {
-                      input: {
-                        id: Number(thirdPartyUserId),
-                        email: email,
-                        displayName: fullName,
-                      },
-                    },
-                  });
-                }
-                // We allow the sign in / up operation
-                return oI.thirdPartySignInUp(input);
+                return oI.thirdPartySignInUp(input)
               },
             }
-          }
+          },
+          apis: (oI) => {
+            return {
+              ...oI,
+              thirdPartySignInUpPOST: async (input) => {
+                const apolloClient = await getApolloClient();
+                try {
+                  if (!oI.thirdPartySignInUpPOST) {
+                    throw 'No thirdPartySignInUpPOST defined';
+                  }
+                  const res =
+                    await oI.thirdPartySignInUpPOST(
+                      input
+                    );
+
+                  if (res.status === "OK") {
+                    const userId = res.user.id;
+                    const result = await apolloClient.query({
+                      query: getAccount,
+                      variables: {
+                        accountId: userId
+                      },
+                    });
+                    if (!result.data.getAccount) {
+                      const googleClient = new google.auth.OAuth2(
+                        clientId,
+                        clientSecret
+                      );
+                      const token = res.oAuthTokens.access_token;
+                      googleClient.setCredentials({ access_token: token });
+                      const { data } = await google.oauth2("v2").userinfo.get({
+                        auth: googleClient,
+                        fields: "given_name,family_name,picture,email",
+                      });
+
+                      const givenName = data?.given_name;
+                      const familyName = data?.family_name;
+                      const displayName = [givenName, familyName].filter(Boolean).join(" ");
+
+                      await apolloClient.mutate({
+                        mutation: createFirstAccount,
+                        variables: {
+                          input: {
+                            id: userId,
+                            email: data.email,
+                            displayName: displayName,
+                          },
+                        },
+                      });
+                    }
+                  }
+                  return res;
+                } catch (e: any) {
+                  console.error(e.message);
+                  throw e;
+                }
+              },
+            };
+          },
+
         }
       }),
       Dashboard.init(),

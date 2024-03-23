@@ -254,52 +254,57 @@ export type Variable = {
   updatedAt: Scalars['DateTimeISO']['output'];
 };
 
-export type GetOrganizationsByAccountIdQueryVariables = Exact<{
+export type GetAccountOrgsQueryVariables = Exact<{
   accountId: Scalars['ID']['input'];
 }>;
 
 
-export type GetOrganizationsByAccountIdQuery = { __typename?: 'Query', getOrganizationsByAccountID?: Array<{ __typename?: 'OrganizationType', id: string, name: string }> | null };
+export type GetAccountOrgsQuery = { __typename?: 'Query', getOrganizationsByAccountID?: Array<{ __typename?: 'OrganizationType', id: string, name: string }> | null, getAccount?: { __typename?: 'AccountType', displayName?: string | null, email: string, id: string } | null };
 
 
-export const GetOrganizationsByAccountIdDocument = gql`
-    query GetOrganizationsByAccountID($accountId: ID!) {
+export const GetAccountOrgsDocument = gql`
+    query GetAccountOrgs($accountId: ID!) {
   getOrganizationsByAccountID(id: $accountId) {
     id
     name
+  }
+  getAccount(id: $accountId) {
+    displayName
+    email
+    id
   }
 }
     `;
 
 /**
- * __useGetOrganizationsByAccountIdQuery__
+ * __useGetAccountOrgsQuery__
  *
- * To run a query within a React component, call `useGetOrganizationsByAccountIdQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetOrganizationsByAccountIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useGetAccountOrgsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAccountOrgsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useGetOrganizationsByAccountIdQuery({
+ * const { data, loading, error } = useGetAccountOrgsQuery({
  *   variables: {
  *      accountId: // value for 'accountId'
  *   },
  * });
  */
-export function useGetOrganizationsByAccountIdQuery(baseOptions: Apollo.QueryHookOptions<GetOrganizationsByAccountIdQuery, GetOrganizationsByAccountIdQueryVariables> & ({ variables: GetOrganizationsByAccountIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetAccountOrgsQuery(baseOptions: Apollo.QueryHookOptions<GetAccountOrgsQuery, GetAccountOrgsQueryVariables> & ({ variables: GetAccountOrgsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetOrganizationsByAccountIdQuery, GetOrganizationsByAccountIdQueryVariables>(GetOrganizationsByAccountIdDocument, options);
+        return Apollo.useQuery<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
       }
-export function useGetOrganizationsByAccountIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetOrganizationsByAccountIdQuery, GetOrganizationsByAccountIdQueryVariables>) {
+export function useGetAccountOrgsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetOrganizationsByAccountIdQuery, GetOrganizationsByAccountIdQueryVariables>(GetOrganizationsByAccountIdDocument, options);
+          return Apollo.useLazyQuery<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
         }
-export function useGetOrganizationsByAccountIdSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetOrganizationsByAccountIdQuery, GetOrganizationsByAccountIdQueryVariables>) {
+export function useGetAccountOrgsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetOrganizationsByAccountIdQuery, GetOrganizationsByAccountIdQueryVariables>(GetOrganizationsByAccountIdDocument, options);
+          return Apollo.useSuspenseQuery<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
         }
-export type GetOrganizationsByAccountIdQueryHookResult = ReturnType<typeof useGetOrganizationsByAccountIdQuery>;
-export type GetOrganizationsByAccountIdLazyQueryHookResult = ReturnType<typeof useGetOrganizationsByAccountIdLazyQuery>;
-export type GetOrganizationsByAccountIdSuspenseQueryHookResult = ReturnType<typeof useGetOrganizationsByAccountIdSuspenseQuery>;
-export type GetOrganizationsByAccountIdQueryResult = Apollo.QueryResult<GetOrganizationsByAccountIdQuery, GetOrganizationsByAccountIdQueryVariables>;
+export type GetAccountOrgsQueryHookResult = ReturnType<typeof useGetAccountOrgsQuery>;
+export type GetAccountOrgsLazyQueryHookResult = ReturnType<typeof useGetAccountOrgsLazyQuery>;
+export type GetAccountOrgsSuspenseQueryHookResult = ReturnType<typeof useGetAccountOrgsSuspenseQuery>;
+export type GetAccountOrgsQueryResult = Apollo.QueryResult<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>;
