@@ -10,11 +10,12 @@ import {
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuPortal,
-  DropdownMenuSubContent
+  DropdownMenuSubContent,
 } from '@promptus/web-shared-ui';
 import styles from './SelectOrganization.module.scss';
 import React from 'react';
 import { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
+import { ChevronsUpDown } from 'lucide-react';
 
 type Checked = DropdownMenuCheckboxItemProps['checked'];
 
@@ -29,7 +30,10 @@ export function SelectOrganization(props: SelectOrganizationProps) {
     <div className={styles['container']}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost">halil sallabas's organization</Button>
+          <Button variant="link">
+            <span className='mr-3'>halil sallabas's organization</span>
+            <ChevronsUpDown></ChevronsUpDown>
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>Organizations</DropdownMenuLabel>

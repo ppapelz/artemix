@@ -8,7 +8,9 @@ const Organizations = () => {
       <Navbar>
         <SelectOrganization></SelectOrganization>
       </Navbar>
-      <OrganizationsFeature />
+      <div className="pt-6">
+        <OrganizationsFeature />
+      </div>
     </>
   );
 };
