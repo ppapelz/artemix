@@ -33,25 +33,29 @@ import { Button } from '../ui/button';
 import { ThemeModeToggle } from '../ThemeModeToggle/ThemeModeToggle';
 
 export interface NavbarProps {
-  title?: string;
-  toggleSidebar: () => void;
+  children?: string | React.ReactNode;
+  toggleSidebar?: () => void;
 }
 
-export function Navbar({ title, toggleSidebar }: NavbarProps) {
+export function Navbar({ children, toggleSidebar }: NavbarProps) {
   return (
-    <div className="flex justify-between items-center mb-6 pb-6 border-b">
+    <div className="flex justify-between items-center border-b px-6 py-4 mx-2">
       <div className="flex items-center">
-        <Button
-          className="md:hidden mr-2"
-          variant="ghost"
-          size="icon"
-          onClick={() => {
-            toggleSidebar();
-          }}
-        >
-          <Menu></Menu>
-        </Button>
-        <h1 className="text-xl font-semibold">{title}</h1>
+        {toggleSidebar ? (
+          <Button
+            className="md:hidden mr-2"
+            variant="ghost"
+            size="icon"
+            onClick={() => {
+              toggleSidebar();
+            }}
+          >
+            <Menu></Menu>
+          </Button>
+        ) : (
+          ''
+        )}
+        {children}
       </div>
       <div className="flex mr-4">
         <ThemeModeToggle />
