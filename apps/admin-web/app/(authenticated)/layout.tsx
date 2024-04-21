@@ -1,6 +1,5 @@
 import React from 'react';
 import { redirect } from 'next/navigation';
-import { Layout } from '@promptus/web-shared-ui';
 import {
   SessionAuthForNextJS,
   TryRefreshComponent,
@@ -36,5 +35,5 @@ export default async function RootLayout({
     return <TryRefreshComponent />;
   }
 
-  return <Layout>{children}</Layout>;
+  return <>{children}</>;
 }
