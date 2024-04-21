@@ -1,5 +1,5 @@
 import { DataSource, DataSourceOptions } from "typeorm";
-import { AccountEntity, OrganizationEntity } from "@promptus/server/models";
+import { AccountEntity, OrganizationEntity, ProjectEntity } from "@promptus/server/models";
 import { SeederOptions } from "typeorm-extension";
 import { AccountFactory } from "./seeders/account/account.factory";
 import { OrganizationFactory } from "./seeders/organization/organization.factory";
@@ -13,7 +13,7 @@ const options: DataSourceOptions & SeederOptions = {
     database: "promptus",
     username: "postgres",
     password: "postgres",
-    entities: [OrganizationEntity, AccountEntity],
+    entities: [OrganizationEntity, AccountEntity, ProjectEntity],
     factories: [OrganizationFactory, AccountFactory],
     seeds: [OrganizationSeeder, AccountSeeder],
     synchronize: true,

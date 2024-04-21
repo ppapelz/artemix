@@ -1,6 +1,8 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, PrimaryGeneratedColumn, ManyToMany } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, PrimaryGeneratedColumn, ManyToMany, OneToMany } from "typeorm";
 import { ObjectType, Field, ID, InputType } from "type-graphql";
 import { AccountEntity } from "./Account";
+import { ProjectEntity } from "./Project";
+
 
 class Organization {
     id: string;
@@ -26,6 +28,9 @@ class OrganizationEntity extends BaseEntity implements Organization {
     // Relations
     @ManyToMany(() => AccountEntity, account => account.organizations)
     accounts: AccountEntity[];
+
+    @OneToMany(() => ProjectEntity, project => project.organization)
+    projects: ProjectEntity[];
 }
 
 @ObjectType()
