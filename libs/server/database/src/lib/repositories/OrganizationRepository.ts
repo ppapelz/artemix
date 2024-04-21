@@ -10,6 +10,7 @@ class OrganizationRepository extends BaseRepository<OrganizationEntity> {
         const organizations = await this.repository
             .createQueryBuilder('organization')
             .leftJoinAndSelect('organization.accounts', 'account')
+            .leftJoinAndSelect('organization.projects', 'project')
             .where('account.id = :accountID', { accountID })
             .getMany();
 
