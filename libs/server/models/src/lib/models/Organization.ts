@@ -1,7 +1,7 @@
 import { Entity, Column, CreateDateColumn, UpdateDateColumn, BaseEntity, PrimaryGeneratedColumn, ManyToMany, OneToMany } from "typeorm";
 import { ObjectType, Field, ID, InputType } from "type-graphql";
 import { AccountEntity } from "./Account";
-import { ProjectEntity } from "./Project";
+import { Project, ProjectEntity, ProjectType } from "./Project";
 
 
 class Organization {
@@ -9,6 +9,7 @@ class Organization {
     name: string;
     createdAt: Date;
     updatedAt: Date;
+    projects: Project[];
 }
 
 @Entity("Organization")
@@ -46,6 +47,9 @@ class OrganizationType implements Organization {
 
     @Field(() => Date)
     updatedAt: Date;
+
+    @Field(() => [ProjectType])
+    projects: ProjectType[];
 }
 
 @InputType()
