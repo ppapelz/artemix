@@ -7,3 +7,4 @@ export * from './lib/services/VariableService';
 export * from './lib/services/AIModelService';
 export * from './lib/services/AccountService';
 export * from './lib/services/OrganizationService';
+export * from './lib/services/ProjectService';

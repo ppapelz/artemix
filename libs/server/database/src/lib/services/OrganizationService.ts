@@ -4,7 +4,7 @@ import OrganizationRepository from '../repositories/OrganizationRepository';
 
 class OrganizationService {
 
-    async getOrganizationById(id: number): Promise<OrganizationEntity | null> {
+    async getOrganizationById(id: string): Promise<OrganizationEntity | null> {
         return await OrganizationRepository.findById(id);
     }
 
