@@ -1357,10 +1357,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@esbuild/win32-x64@0.19.5":
+"@esbuild/darwin-arm64@0.19.5":
   version "0.19.5"
-  resolved "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.19.5.tgz"
-  integrity sha512-czTrygUsB/jlM8qEW5MD8bgYU2Xg14lo6kBDXW6HdxKjh8M5PzETGiSHaz9MtbXBYDloHNUAUW2tMiKW4KM9Mw==
+  resolved "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.19.5.tgz"
+  integrity sha512-mvXGcKqqIqyKoxq26qEDPHJuBYUA5KizJncKOAf9eJQez+L9O+KfvNFu6nl7SCZ/gFb2QPaRqqmG0doSWlgkqw==
 
 "@eslint-community/eslint-utils@^4.2.0":
   version "4.4.0"
@@ -2348,10 +2348,10 @@
   dependencies:
     glob "7.1.7"
 
-"@next/swc-win32-x64-msvc@13.4.1":
+"@next/swc-darwin-arm64@13.4.1":
   version "13.4.1"
-  resolved "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.4.1.tgz"
-  integrity sha512-n8V5ImLQZibKTu10UUdI3nIeTLkliEXe628qxqW9v8My3BAH2a7H0SaCqkV2OgqFnn8sG1wxKYw9/SNJ632kSA==
+  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-13.4.1.tgz"
+  integrity sha512-eF8ARHtYfnoYtDa6xFHriUKA/Mfj/cCbmKb3NofeKhMccs65G6/loZ15a6wYCCx4rPAd6x4t1WmVYtri7EdeBg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2814,15 +2814,15 @@
     "@nx/js" "17.0.1"
     tslib "^2.3.0"
 
-"@nx/nx-win32-x64-msvc@16.9.0":
+"@nx/nx-darwin-arm64@16.9.0":
   version "16.9.0"
-  resolved "https://registry.npmjs.org/@nx/nx-win32-x64-msvc/-/nx-win32-x64-msvc-16.9.0.tgz"
-  integrity sha512-YTYDZIvqo+2aZl6/ovnBFsEfxoQ/M2sYICJ3zyp00i13VkMdttrIqf8MFqNCD4K+usDQxSpq5M9QLSZ4yltydQ==
+  resolved "https://registry.npmjs.org/@nx/nx-darwin-arm64/-/nx-darwin-arm64-16.9.0.tgz"
+  integrity sha512-I+045kSIQgdHMfqpJ/bplWzTc82DM/c7VOM/XlrBUwaM9nsDchIC2mo1F93HDe/oJ+oxz9awHbED4GUzS6uc5g==
 
-"@nx/nx-win32-x64-msvc@17.0.1":
+"@nx/nx-darwin-arm64@17.0.1":
   version "17.0.1"
-  resolved "https://registry.npmjs.org/@nx/nx-win32-x64-msvc/-/nx-win32-x64-msvc-17.0.1.tgz"
-  integrity sha512-0W1Hk7tbAOrou6ScTRo6hlZiIIBt0ECdn6rALEDWN4lNKheu0pb2gHZO/hSYMwGj3XUpNvApvUCCdcSTBjegRQ==
+  resolved "https://registry.npmjs.org/@nx/nx-darwin-arm64/-/nx-darwin-arm64-17.0.1.tgz"
+  integrity sha512-Ksgrtck+vZtdh4mFw+IF4ECh4VGQktuHZNT7MwzKQTzLc7gQgjt3OyC97rDWoTb8qgUNc857Hor6ZAZpqHkItA==
 
 "@nx/react@16.9.0":
   version "16.9.0"
@@ -2917,10 +2917,10 @@
   resolved "https://registry.npmjs.org/@one-ini/wasm/-/wasm-0.1.1.tgz"
   integrity sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==
 
-"@parcel/watcher-win32-x64@2.4.1":
+"@parcel/watcher-darwin-arm64@2.4.1":
   version "2.4.1"
-  resolved "https://registry.npmjs.org/@parcel/watcher-win32-x64/-/watcher-win32-x64-2.4.1.tgz"
-  integrity sha512-+DvS92F9ezicfswqrvIRM2njcYJbd5mb9CUgtrHCHmvn7pPPa+nMDRu1o1bYYz/l5IB2NVGNJWiH7h1E58IF2A==
+  resolved "https://registry.npmjs.org/@parcel/watcher-darwin-arm64/-/watcher-darwin-arm64-2.4.1.tgz"
+  integrity sha512-ln41eihm5YXIY043vBrrHfn94SIBlqOWmoROhsMVTSXGh0QahKGy77tfEywQ7v3NywyxBBkGIfrWRHm0hsKtzA==
 
 "@parcel/watcher@^2.1.0":
   version "2.4.1"
@@ -3563,10 +3563,10 @@
     slash "3.0.0"
     source-map "^0.7.3"
 
-"@swc/core-win32-x64-msvc@1.3.94":
+"@swc/core-darwin-arm64@1.3.94":
   version "1.3.94"
-  resolved "https://registry.npmjs.org/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.3.94.tgz"
-  integrity sha512-Ba0ZLcGMnqPWWF9Xa+rWhhnkpvE7XoQegMP/VCF2JIHb2ieGBC8jChO6nKRFKZjib/3wghGzxakyDQx3LDhDug==
+  resolved "https://registry.npmjs.org/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.94.tgz"
+  integrity sha512-KNuE6opIy/wAXiGUWLhGWhCG3wA/AdjG6eYkv6dstrAURLaQMAoD8vDfVm8pxS8FA8Kx+0Z4QiDNPqk5aKIsqg==
 
 "@swc/core@*", "@swc/core@^1.2.66", "@swc/core@^1.3.85", "@swc/core@>=1.2.50", "@swc/core@~1.3.85":
   version "1.3.94"
@@ -7488,6 +7488,11 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
+
+fsevents@^2.3.2, fsevents@~2.3.2:
+  version "2.3.3"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.2:
   version "1.1.2"

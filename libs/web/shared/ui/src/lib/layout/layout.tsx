@@ -54,7 +54,9 @@ export function Layout({ children }: LayoutProps) {
         toggleSidebar={toggleSidebar}
       ></Sidebar>
       <div className="flex flex-col flex-grow w-screen md:w-full mx-8 my-6">
-        <Navbar title={activeLink} toggleSidebar={toggleSidebar}></Navbar>
+        <Navbar toggleSidebar={toggleSidebar}>
+          <h1 className="text-xl font-semibold">{activeLink}</h1>
+        </Navbar>
         {children}
       </div>
     </div>
