@@ -16,5 +16,21 @@ class OrganizationRepository extends BaseRepository<OrganizationEntity> {
 
         return organizations.length > 0 ? organizations : null;
     }
+
+    async findByOrgId(orgID: string): Promise<Organization | null> {
+        try {
+            const organization = await this.repository
+                .createQueryBuilder('organization')
+                .leftJoinAndSelect('organization.projects', 'project')
+                .where('organization.id = :orgID', { orgID })
+                .getOne();
+
+            return organization;
+        } catch (error) {
+            console.error('Failed to find organization by ID:', error);
+            throw new Error('Database operation failed');
+        }
+    }
+
 }
 export default new OrganizationRepository();
