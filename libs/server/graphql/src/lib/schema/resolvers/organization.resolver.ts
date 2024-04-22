@@ -19,4 +19,9 @@ export class OrganizationResolver {
     async getOrganizationsByAccountID(@Arg('id', () => ID) id: string): Promise<OrganizationType[] | null> {
         return await organizationService.getOrganizationsByAccountID(id);
     }
+
+    @Query(() => OrganizationType, { nullable: true })
+    async getOrganization(@Arg('id', () => ID) id: string): Promise<OrganizationType | null> {
+        return await organizationService.getOrganizationById(id);
+    }
 }
