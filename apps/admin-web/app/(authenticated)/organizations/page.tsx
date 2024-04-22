@@ -1,12 +1,11 @@
 import { Navbar } from '@promptus/web-shared-ui';
-import { OrganizationsFeature } from '@promptus/web/organizations/feature/server';
-import { SelectOrganization } from '@promptus/web/organizations/feature';
+import { OrganizationsFeature, SelectOrgWrapper } from '@promptus/web/organizations/feature/server';
 
 const Organizations = () => {
   return (
     <>
       <Navbar>
-        <SelectOrganization></SelectOrganization>
+        <SelectOrgWrapper></SelectOrgWrapper>
       </Navbar>
       <div className="pt-6">
         <OrganizationsFeature />

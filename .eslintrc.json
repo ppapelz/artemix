@@ -25,7 +25,8 @@
                 "onlyDependOnLibsWithTags": [
                   "type:feature",
                   "type:ui",
-                  "type:util"
+                  "type:util",
+                  "type:data-access"
                 ]
               },
               {

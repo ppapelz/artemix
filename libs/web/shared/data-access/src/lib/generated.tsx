@@ -61,6 +61,12 @@ export type CreateOrganizationInput = {
   name: Scalars['String']['input'];
 };
 
+export type CreateProjectInput = {
+  description?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+  organizationId: Scalars['ID']['input'];
+};
+
 export type CreatePromptInput = {
   content: Scalars['String']['input'];
   name: Scalars['String']['input'];
@@ -82,6 +88,7 @@ export type Mutation = {
   createAccount: AccountType;
   createFirstAccount: AccountType;
   createOrganization: OrganizationType;
+  createProject: ProjectType;
   createPrompt: Prompt;
   createVariable: Variable;
   deleteAIModel: Scalars['Boolean']['output'];
@@ -110,6 +117,11 @@ export type MutationCreateFirstAccountArgs = {
 
 export type MutationCreateOrganizationArgs = {
   input: CreateOrganizationInput;
+};
+
+
+export type MutationCreateProjectArgs = {
+  input: CreateProjectInput;
 };
 
 
@@ -160,6 +172,16 @@ export type OrganizationType = {
   createdAt: Scalars['DateTimeISO']['output'];
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
+  projects: Array<ProjectType>;
+  updatedAt: Scalars['DateTimeISO']['output'];
+};
+
+export type ProjectType = {
+  __typename?: 'ProjectType';
+  createdAt: Scalars['DateTimeISO']['output'];
+  description: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
   updatedAt: Scalars['DateTimeISO']['output'];
 };
 
@@ -179,6 +201,7 @@ export type Query = {
   getAllAIModels: Array<AiModel>;
   getAllPrompts: Array<Prompt>;
   getOrganizationsByAccountID?: Maybe<Array<OrganizationType>>;
+  getProjectsByOrgID?: Maybe<Array<ProjectType>>;
   getPrompt?: Maybe<Prompt>;
   getVariable?: Maybe<Variable>;
   getVariablesByPromptId: Array<Variable>;
@@ -196,6 +219,11 @@ export type QueryGetAccountArgs = {
 
 
 export type QueryGetOrganizationsByAccountIdArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type QueryGetProjectsByOrgIdArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -259,7 +287,7 @@ export type GetAccountOrgsQueryVariables = Exact<{
 }>;
 
 
-export type GetAccountOrgsQuery = { __typename?: 'Query', getOrganizationsByAccountID?: Array<{ __typename?: 'OrganizationType', id: string, name: string }> | null, getAccount?: { __typename?: 'AccountType', displayName?: string | null, email: string, id: string } | null };
+export type GetAccountOrgsQuery = { __typename?: 'Query', getOrganizationsByAccountID?: Array<{ __typename?: 'OrganizationType', id: string, name: string, projects: Array<{ __typename?: 'ProjectType', id: string, name: string }> }> | null, getAccount?: { __typename?: 'AccountType', displayName?: string | null, email: string, id: string } | null };
 
 
 export const GetAccountOrgsDocument = gql`
@@ -267,6 +295,10 @@ export const GetAccountOrgsDocument = gql`
   getOrganizationsByAccountID(id: $accountId) {
     id
     name
+    projects {
+      id
+      name
+    }
   }
   getAccount(id: $accountId) {
     displayName
