@@ -7,7 +7,7 @@ import {
 } from '@promptus/web/shared/data-access/server';
 
 interface GetAccountOrgsProps {
-  children: (data: GetAccountOrgsQuery) => JSX.Element; // Expecting direct query data now
+  children: (data: GetAccountOrgsQuery) => JSX.Element;
 }
 
 export const GetAccountOrgs = async ({ children }: GetAccountOrgsProps) => {

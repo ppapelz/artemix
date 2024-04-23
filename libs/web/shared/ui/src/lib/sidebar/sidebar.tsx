@@ -14,6 +14,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '../ui/navigation-menu';
+import { SelectOrganization } from '@promptus/web/organizations/feature';
 
 export interface SidebarItem {
   link: string;
@@ -44,7 +45,7 @@ export function Sidebar({
   activeLink,
   show,
   toggleSidebar,
-  onLogout
+  onLogout,
 }: SidebarProps) {
   const links = sidebarItems.map((item) => (
     <NavigationMenuItem
@@ -69,7 +70,6 @@ export function Sidebar({
     </NavigationMenuItem>
   ));
 
-
   return (
     <>
       <div
@@ -90,8 +90,11 @@ export function Sidebar({
           </NavigationMenu>
         </div>
 
-        <div className="flex justify-between items-center border-t">
-          <div className="mt-3">
+        <div className="flex justify-center items-center border-t">
+          <div className="mt-2">
+            <SelectOrganization></SelectOrganization>
+          </div>
+          {/* <div className="mt-3">
             <a href="/" onClick={(event) => event.preventDefault()}>
               <Button variant="ghost" size="icon">
                 <Linkedin className="h-4 w-4"></Linkedin>
@@ -105,7 +108,7 @@ export function Sidebar({
           </div>
           <Badge variant="outline" className="mt-3 px-4 max-h-6">
             v3.1.1
-          </Badge>
+          </Badge> */}
         </div>
       </div>
       {show && <ModalOverlay onClick={toggleSidebar} />}
