@@ -1,5 +1,5 @@
-import { Navbar } from '@promptus/web-shared-ui';
 import { OrganizationsFeature, SelectOrgWrapper } from '@promptus/web/organizations/feature/server';
+import { Navbar } from '@promtus/web-feature-layout';
 
 const Organizations = () => {
   return (

@@ -1,20 +1,19 @@
-import { cn } from '@promptus/web/shared/util';
 import { Github, Linkedin, LucideIcon } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './sidebar.module.scss';
+import styles from './Sidebar.module.scss';
 import logo from './../../assets/dummy-logo-5b.png';
-import { Badge } from '../ui/badge';
-import { Button } from '../ui/button';
 import { FunctionComponent } from 'react';
+import { cn } from '@promptus/web/shared/util';
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from '../ui/navigation-menu';
-import { SelectOrganization } from '@promptus/web/organizations/feature';
+} from '@promptus/web-shared-ui';
+// import { SelectOrganization } from '@promptus/web/organizations/feature';
+
 
 export interface SidebarItem {
   link: string;
@@ -92,7 +91,7 @@ export function Sidebar({
 
         <div className="flex justify-center items-center border-t">
           <div className="mt-2">
-            <SelectOrganization></SelectOrganization>
+            {/* <SelectOrganization></SelectOrganization> */}
           </div>
           {/* <div className="mt-3">
             <a href="/" onClick={(event) => event.preventDefault()}>

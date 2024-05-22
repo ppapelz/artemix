@@ -1,4 +1,20 @@
 import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+  ThemeModeToggle,
+} from '@promptus/web-shared-ui';
+import {
   Cloud,
   CreditCard,
   Github,
@@ -15,22 +31,6 @@ import {
   UserPlus,
   Users,
 } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
-import { Button } from '../ui/button';
-import { ThemeModeToggle } from '../ThemeModeToggle/ThemeModeToggle';
 
 export interface NavbarProps {
   children?: string | React.ReactNode;
