@@ -1,5 +1,5 @@
+import { SelectOrganization } from '@promptus/web-shared-ui';
 import { GetAccountOrgs } from '@promptus/web/organizations/data-access/server';
-import SelectOrganization from './SelectOrganization';
 
 export const SelectOrgWrapper = () => {
   return (

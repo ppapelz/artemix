@@ -1,6 +1,9 @@
 'use client';
 
-import { Button, DropdownMenuItem } from '@promptus/web-shared-ui';
+import styles from './SelectOrganization.module.scss';
+import React, { useEffect } from 'react';
+import { Check, ChevronsUpDown } from 'lucide-react';
+import { cn } from '@promptus/web/shared/util';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -11,12 +14,9 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuPortal,
   DropdownMenuSubContent,
-} from '@promptus/web-shared-ui';
-import styles from './SelectOrganization.module.scss';
-import React, { useEffect } from 'react';
-import { Check, ChevronsUpDown } from 'lucide-react';
-import { GetAccountOrgsQuery } from '@promptus/web/shared/data-access/server';
-import { cn } from '@promptus/web/shared/util';
+  DropdownMenuItem,
+} from '../ui/dropdown-menu';
+import { Button } from '../ui/button';
 
 export interface BaseObject {
   id: string;
@@ -31,7 +31,8 @@ export interface Project extends BaseObject {
 }
 
 export interface SelectOrganizationProps {
-  data: GetAccountOrgsQuery['getOrganizationsByAccountID'];
+  // data: GetAccountOrgsQuery['getOrganizationsByAccountID'];
+  data: any;
 }
 
 export interface DropdownItemContentProps {

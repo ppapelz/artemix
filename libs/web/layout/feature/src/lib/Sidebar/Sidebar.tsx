@@ -10,10 +10,9 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  SelectOrganization,
   navigationMenuTriggerStyle,
 } from '@promptus/web-shared-ui';
-// import { SelectOrganization } from '@promptus/web/organizations/feature';
-
 
 export interface SidebarItem {
   link: string;
@@ -91,7 +90,7 @@ export function Sidebar({
 
         <div className="flex justify-center items-center border-t">
           <div className="mt-2">
-            {/* <SelectOrganization></SelectOrganization> */}
+            <SelectOrganization data={[]}></SelectOrganization>
           </div>
           {/* <div className="mt-3">
             <a href="/" onClick={(event) => event.preventDefault()}>
