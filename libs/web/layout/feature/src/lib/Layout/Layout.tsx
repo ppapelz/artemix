@@ -1,8 +1,6 @@
 'use client';
 
 import { useCallback, useState } from 'react';
-import Navbar from '../navbar/navbar';
-import Sidebar, { SidebarItem } from '../sidebar/sidebar';
 import {
   LayoutDashboard,
   FileJson,
@@ -12,6 +10,9 @@ import {
 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'supertokens-auth-react/recipe/session';
+import Sidebar, { SidebarItem } from '../Sidebar/Sidebar';
+import Navbar from '../Navbar/Navbar';
+
 export interface LayoutProps {
   children: React.ReactNode;
 }

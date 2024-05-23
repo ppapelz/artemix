@@ -1,7 +1,7 @@
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { GetAccountOrgs } from '@promptus/web/organizations/data-access/server';
 import Projects from '../Projects/Projects';
-import { Page } from '@promptus/web-shared-ui/server';
+import { Page } from '@promtus/web-feature-layout/server';
 
 export function OrganizationsFeature() {
   return (

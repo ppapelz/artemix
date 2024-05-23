@@ -1,5 +1,5 @@
+import { Layout } from '@promtus/web-feature-layout';
 import React from 'react';
-import { Layout } from '@promptus/web-shared-ui';
 
 export default async function RootLayout({
   children,
