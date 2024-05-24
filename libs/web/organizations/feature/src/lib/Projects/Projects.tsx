@@ -1,7 +1,12 @@
+'use client';
+
 import { Card } from '@promptus/web-shared-ui';
 import AddProject from '../AddProject/AddProject';
+import { useOrganization } from '@promptus/web/organizations/data-access';
 
 export function Projects() {
+  const { organization } = useOrganization();
+  console.log('project', organization);
   return (
     <div className="flex flex-col">
       <div className="flex justify-end w-auto mb-4">

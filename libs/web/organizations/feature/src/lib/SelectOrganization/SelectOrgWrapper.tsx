@@ -1,7 +1,7 @@
 import { SelectOrganization } from '@promptus/web-shared-ui';
 import { GetAccountOrgs } from '@promptus/web/organizations/data-access/server';
 
-export const SelectOrgWrapper = () => {
+export const SelectOrgWrapper = (updateOrgId: any) => {
   return (
     <GetAccountOrgs>
       {(response) => {

@@ -8,6 +8,7 @@ import Dashboard from "supertokens-node/recipe/dashboard";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 import { google } from "googleapis";
+import UserMetadata from "supertokens-node/recipe/usermetadata";
 
 const createFirstAccount = gql`
 mutation CreateFirstAccount($input: CreateAccountInput!) {
@@ -25,6 +26,19 @@ query getAccount($accountId: ID!) {
   }
 }
 `;
+
+const GetAccountOrgsDocument = gql`
+    query GetAccountOrgs($accountId: ID!) {
+  getOrganizationsByAccountID(id: $accountId) {
+    id
+    name
+    projects {
+      id
+      name
+    }
+  }
+}
+    `;
 
 export const backendConfig = (): TypeInput => {
   const clientId = '1060725074195-kmeum4crr01uirfl2op9kd5acmi9jutn.apps.googleusercontent.com';
@@ -83,6 +97,20 @@ export const backendConfig = (): TypeInput => {
                         accountId: userId
                       },
                     });
+
+
+                    const result2 = await apolloClient.query({
+                      query: GetAccountOrgsDocument,
+                      variables: {
+                        accountId: userId
+                      },
+                    });
+                    await UserMetadata.updateUserMetadata(userId, { orgId: result2.data?.getOrganizationsByAccountID[0].id });
+                    const { metadata } = await UserMetadata.getUserMetadata(userId);
+
+                    console.log(metadata)
+
+
                     if (!result.data.getAccount) {
                       const googleClient = new google.auth.OAuth2(
                         clientId,
@@ -109,6 +137,8 @@ export const backendConfig = (): TypeInput => {
                           },
                         },
                       });
+
+
                     }
                   }
                   return res;
@@ -124,6 +154,7 @@ export const backendConfig = (): TypeInput => {
       }),
       Dashboard.init(),
       Session.init(),
+      UserMetadata.init(),
     ],
   };
 }

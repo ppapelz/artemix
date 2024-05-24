@@ -17,6 +17,8 @@ import {
   DropdownMenuItem,
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { useOrganization } from '@promptus/web/organizations/data-access';
 
 export interface BaseObject {
   id: string;
@@ -59,6 +61,7 @@ export function SelectOrganization({ data }: SelectOrganizationProps) {
   const [selectedProject, setSelectedProject] = React.useState<Project | null>(
     null
   );
+  const { updateOrganization } = useOrganization();
 
   useEffect(() => {
     if (data && data.length) {
@@ -68,7 +71,27 @@ export function SelectOrganization({ data }: SelectOrganizationProps) {
 
   const handleSelectOrg = (org: Organization) => {
     setSelectedOrg(org);
-    setSelectedProject(null);
+    setSelectedProject(org.projects[0]);
+    updateOrgIDMetaData(org.id);
+    updateOrganization(org);
+  };
+
+  const updateOrgIDMetaData = async (orgID: string) => {
+    const response = await fetch('/api/user-metadata', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ key: 'orgId', value: orgID }),
+      credentials: 'include',
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      alert('Metadata updated successfully');
+    } else {
+      alert(`Error updating metadata: ${result.error}`);
+    }
   };
 
   const handleSelectProject = (project: Project) => {
