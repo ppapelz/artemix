@@ -1,5 +1,5 @@
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { OrganizationProvider } from '@artemix/web/organizations/data-access';
+import { SelectedOrganizationProvider } from '@artemix/web/organizations/data-access';
 import Projects from '../Projects/Projects';
 import { Page } from '@promtus/web-feature-layout/server';
 import { Navbar } from '@promtus/web-feature-layout';
@@ -11,7 +11,7 @@ export function OrganizationsFeature() {
   return (
     <GetOrganizationId>
       {(organizationId) => (
-        <OrganizationProvider>
+        <SelectedOrganizationProvider>
           <Navbar>
             <SelectOrgWrapper
               organizationId={organizationId}
@@ -22,7 +22,7 @@ export function OrganizationsFeature() {
               {(response) => <Projects data={response.getProjectsByOrgID} />}
             </GetProjects>
           </Page>
-        </OrganizationProvider>
+        </SelectedOrganizationProvider>
       )}
     </GetOrganizationId>
   );
