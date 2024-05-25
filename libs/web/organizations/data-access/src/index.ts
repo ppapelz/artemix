@@ -1,1 +1,1 @@
-export { useOrganization, OrganizationProvider } from './lib/OrganizationProvider/OrganizationProvider';
+export { useSeletedOrganization, SelectedOrganizationProvider } from './lib/SelectedOrganizationProvider/SelectedOrganizationProvider';

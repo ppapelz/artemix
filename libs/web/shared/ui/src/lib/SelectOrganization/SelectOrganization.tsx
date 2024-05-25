@@ -18,7 +18,7 @@ import {
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { useOrganization } from '@artemix/web/organizations/data-access';
+import { useSeletedOrganization } from '@artemix/web/organizations/data-access';
 
 export interface BaseObject {
   id: string;
@@ -34,7 +34,7 @@ export interface Project extends BaseObject {
 
 export interface SelectOrganizationProps {
   // data: GetAccountOrgsQuery['getOrganizationsByAccountID'];
-  data: any;
+  data: Array<Organization>;
   organizationId: string;
 }
 
@@ -65,15 +65,16 @@ export function SelectOrganization({
   const [selectedProject, setSelectedProject] = React.useState<Project | null>(
     null
   );
-  const { updateOrganization } = useOrganization();
+  const { updateSelectedOrganization } = useSeletedOrganization();
 
   useEffect(() => {
-    console.log('organizationId', organizationId);
     if (data && data.length && organizationId) {
       const selectedOrganization = data.find(
         (org: Organization) => org.id === organizationId
       );
-      setSelectedOrg(selectedOrganization);
+      if (selectedOrganization) {
+        setSelectedOrg(selectedOrganization);
+      }
     }
   }, [data, organizationId]);
 
@@ -81,17 +82,17 @@ export function SelectOrganization({
     setSelectedOrg(org);
     setSelectedProject(org.projects[0]);
     updateOrgIDMetaData(org.id);
-    updateOrganization(org);
+    updateSelectedOrganization(org);
   };
 
-  const updateOrgIDMetaData = async (orgID: string) => {
+  const updateOrgIDMetaData = async (orgId: string) => {
     try {
       await fetch('/api/user-metadata', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ key: 'orgId', value: orgID }),
+        body: JSON.stringify({ key: 'orgId', value: orgId }),
         credentials: 'include',
       });
     } catch (err) {
