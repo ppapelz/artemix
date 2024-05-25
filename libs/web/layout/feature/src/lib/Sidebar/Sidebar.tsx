@@ -10,7 +10,6 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  SelectOrganization,
   navigationMenuTriggerStyle,
 } from '@promptus/web-shared-ui';
 
@@ -89,9 +88,7 @@ export function Sidebar({
         </div>
 
         <div className="flex justify-center items-center border-t">
-          <div className="mt-2">
-            <SelectOrganization data={[]}></SelectOrganization>
-          </div>
+          <div className="mt-2"></div>
           {/* <div className="mt-3">
             <a href="/" onClick={(event) => event.preventDefault()}>
               <Button variant="ghost" size="icon">

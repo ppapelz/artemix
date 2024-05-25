@@ -8,11 +8,13 @@ import Dashboard from "supertokens-node/recipe/dashboard";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 import { google } from "googleapis";
+import UserMetadata from "supertokens-node/recipe/usermetadata";
 
 const createFirstAccount = gql`
 mutation CreateFirstAccount($input: CreateAccountInput!) {
   createFirstAccount(input: $input) {
-    id
+    accountId
+    orgId
   }
 }
 `;
@@ -25,6 +27,7 @@ query getAccount($accountId: ID!) {
   }
 }
 `;
+
 
 export const backendConfig = (): TypeInput => {
   const clientId = '1060725074195-kmeum4crr01uirfl2op9kd5acmi9jutn.apps.googleusercontent.com';
@@ -77,17 +80,19 @@ export const backendConfig = (): TypeInput => {
 
                   if (res.status === "OK") {
                     const userId = res.user.id;
-                    const result = await apolloClient.query({
+                    const accountData = await apolloClient.query({
                       query: getAccount,
                       variables: {
                         accountId: userId
                       },
                     });
-                    if (!result.data.getAccount) {
+
+                    if (!accountData.data.getAccount) {
                       const googleClient = new google.auth.OAuth2(
                         clientId,
                         clientSecret
                       );
+
                       const token = res.oAuthTokens.access_token;
                       googleClient.setCredentials({ access_token: token });
                       const { data } = await google.oauth2("v2").userinfo.get({
@@ -99,7 +104,7 @@ export const backendConfig = (): TypeInput => {
                       const familyName = data?.family_name;
                       const displayName = [givenName, familyName].filter(Boolean).join(" ");
 
-                      await apolloClient.mutate({
+                      const createFirstAccountResponse = await apolloClient.mutate({
                         mutation: createFirstAccount,
                         variables: {
                           input: {
@@ -109,6 +114,10 @@ export const backendConfig = (): TypeInput => {
                           },
                         },
                       });
+                      console.log(createFirstAccountResponse);
+                      console.log(createFirstAccountResponse.data?.createFirstAccount);
+                      await UserMetadata.updateUserMetadata(userId, { orgId: createFirstAccountResponse.data?.createFirstAccount.orgId });
+
                     }
                   }
                   return res;
@@ -124,6 +133,7 @@ export const backendConfig = (): TypeInput => {
       }),
       Dashboard.init(),
       Session.init(),
+      UserMetadata.init(),
     ],
   };
 }

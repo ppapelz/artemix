@@ -1,5 +1,5 @@
 
-import { AccountEntity, CreateAccountInput, OrganizationEntity } from '@promptus/server/models';
+import { AccountEntity, CreateAccountInput, FirstAccountReturnType, OrganizationEntity } from '@promptus/server/models';
 import AccountRepository from '../repositories/AccountRepository';
 import { dataSource } from '../server-database';
 
@@ -12,7 +12,7 @@ class AccountService {
         return await AccountRepository.findById(id);
     }
 
-    async createFirstAccount(data: CreateAccountInput): Promise<AccountEntity> {
+    async createFirstAccount(data: CreateAccountInput): Promise<FirstAccountReturnType> {
         return await dataSource.transaction(async transactionalEntityManager => {
             const orgName = data?.displayName ? data.displayName : data.email;
 
@@ -26,7 +26,7 @@ class AccountService {
             const account = transactionalEntityManager.create(AccountEntity, accountData as AccountEntity);
             await transactionalEntityManager.save(AccountEntity, account);
 
-            return account;
+            return {accountId: account.id, orgId: org.id};
         });
     }
 }

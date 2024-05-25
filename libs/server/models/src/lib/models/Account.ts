@@ -8,6 +8,14 @@ class Account {
     email: string;
 }
 
+@ObjectType()
+class FirstAccountReturnType {
+    @Field(() => ID)
+    accountId: string;
+    @Field(() => ID)
+    orgId: string;
+}
+
 @Entity("Account")
 class AccountEntity extends BaseEntity implements Account {
     @PrimaryColumn('text')
@@ -73,5 +81,6 @@ export {
     AccountEntity,
     AccountType,
     CreateAccountInput,
-    UpdateAccountInput
+    UpdateAccountInput,
+    FirstAccountReturnType
 }

@@ -25,7 +25,6 @@ export const GetAccountOrgs = async ({ children }: GetAccountOrgsProps) => {
       {({ data, loading, error }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error! {error.message}</p>;
-        console.log(data.getOrganizationsByAccountID);
         return data ? children(data) : <p>No data found</p>;
       }}
     </ApolloQuery>
