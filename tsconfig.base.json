@@ -64,13 +64,13 @@
       "@artemix/web/ui-examples/ui-elements/server": [
         "libs/web/ui-examples/ui-elements/src/server.ts"
       ],
-      "@promtus/web-feature-layout": ["libs/web/layout/feature/src/index.ts"],
-      "@promtus/web-feature-layout/server": [
-        "libs/web/layout/feature/src/server.ts"
-      ],
       "@promtus/organizations-ui": ["libs/web/organizations/ui/src/index.ts"],
       "@promtus/organizations-ui/server": [
         "libs/web/organizations/ui/src/server.ts"
+      ],
+      "@promtus/web-feature-layout": ["libs/web/layout/feature/src/index.ts"],
+      "@promtus/web-feature-layout/server": [
+        "libs/web/layout/feature/src/server.ts"
       ]
     }
   },
