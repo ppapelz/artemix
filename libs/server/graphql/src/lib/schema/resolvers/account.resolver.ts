@@ -1,9 +1,9 @@
-import { accountService } from '@promptus/server/database';
+import { accountService } from '@artemix/server/database';
 import {
   AccountType,
   CreateAccountInput,
   FirstAccountReturnType,
-} from '@promptus/server/models';
+} from '@artemix/server/models';
 import { Resolver, Arg, Mutation, Query, ID } from 'type-graphql';
 
 @Resolver(AccountType)

@@ -1,8 +1,8 @@
-import { organizationService } from '@promptus/server/database';
+import { organizationService } from '@artemix/server/database';
 import {
     CreateOrganizationInput,
     OrganizationType,
-} from '@promptus/server/models';
+} from '@artemix/server/models';
 import { Resolver, Arg, Mutation, Query, ID } from 'type-graphql';
 
 @Resolver(OrganizationType)

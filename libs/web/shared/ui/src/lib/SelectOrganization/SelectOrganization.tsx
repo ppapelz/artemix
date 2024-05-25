@@ -3,7 +3,7 @@
 import styles from './SelectOrganization.module.scss';
 import React, { useEffect } from 'react';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { cn } from '@promptus/web/shared/util';
+import { cn } from '@artemix/web/shared/util';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -18,7 +18,7 @@ import {
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { useOrganization } from '@promptus/web/organizations/data-access';
+import { useOrganization } from '@artemix/web/organizations/data-access';
 
 export interface BaseObject {
   id: string;
@@ -35,6 +35,7 @@ export interface Project extends BaseObject {
 export interface SelectOrganizationProps {
   // data: GetAccountOrgsQuery['getOrganizationsByAccountID'];
   data: any;
+  organizationId: string;
 }
 
 export interface DropdownItemContentProps {
@@ -54,7 +55,10 @@ export function DropdownItemContent({
   );
 }
 
-export function SelectOrganization({ data }: SelectOrganizationProps) {
+export function SelectOrganization({
+  data,
+  organizationId,
+}: SelectOrganizationProps) {
   const [selectedOrg, setSelectedOrg] = React.useState<Organization | null>(
     null
   );
@@ -64,10 +68,14 @@ export function SelectOrganization({ data }: SelectOrganizationProps) {
   const { updateOrganization } = useOrganization();
 
   useEffect(() => {
-    if (data && data.length) {
-      setSelectedOrg(data[0]);
+    console.log('organizationId', organizationId);
+    if (data && data.length && organizationId) {
+      const selectedOrganization = data.find(
+        (org: Organization) => org.id === organizationId
+      );
+      setSelectedOrg(selectedOrganization);
     }
-  }, [data]);
+  }, [data, organizationId]);
 
   const handleSelectOrg = (org: Organization) => {
     setSelectedOrg(org);

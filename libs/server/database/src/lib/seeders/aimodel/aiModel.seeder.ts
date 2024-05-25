@@ -1,4 +1,4 @@
-import { AIModel } from "@promptus/server/models";
+import { AIModel } from "@artemix/server/models";
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 

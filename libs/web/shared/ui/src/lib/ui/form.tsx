@@ -12,7 +12,7 @@ import {
   useFormContext,
 } from "react-hook-form"
 
-import { cn } from "@promptus/web/shared/util"
+import { cn } from "@artemix/web/shared/util"
 import { Label } from "./label"
 
 const Form = FormProvider

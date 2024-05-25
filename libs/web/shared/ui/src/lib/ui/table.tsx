@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@promptus/web/shared/util"
+import { cn } from "@artemix/web/shared/util"
 
 const Table = React.forwardRef<
   HTMLTableElement,

@@ -31,7 +31,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@promptus/web-shared-ui';
+} from '@artemix/web-shared-ui';
 
 const data: Payment[] = [
   {

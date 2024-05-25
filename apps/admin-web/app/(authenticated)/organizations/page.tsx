@@ -1,4 +1,4 @@
-import { OrganizationsFeature } from '@promptus/web/organizations/feature/server';
+import { OrganizationsFeature } from '@artemix/web/organizations/feature/server';
 
 const Organizations = async () => {
   return (

@@ -1,25 +1,30 @@
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { OrganizationProvider } from '@promptus/web/organizations/data-access';
+import { OrganizationProvider } from '@artemix/web/organizations/data-access';
 import Projects from '../Projects/Projects';
 import { Page } from '@promtus/web-feature-layout/server';
 import { Navbar } from '@promtus/web-feature-layout';
 import { SelectOrgWrapper } from '../SelectOrganization/SelectOrgWrapper';
-import { GetProjects } from '@promptus/web/organizations/data-access/server';
+import { GetProjects } from '@artemix/web/organizations/data-access/server';
+import { GetOrganizationId } from '@artemix/web/shared/data-access/server';
 
 export function OrganizationsFeature() {
   return (
-    <OrganizationProvider>
-      <Navbar>
-        <SelectOrgWrapper></SelectOrgWrapper>
-      </Navbar>
-      <Page>
-        <GetProjects>
-          {(response) => {
-            return <Projects data={response.getProjectsByOrgID} />;
-          }}
-        </GetProjects>
-      </Page>
-    </OrganizationProvider>
+    <GetOrganizationId>
+      {(organizationId) => (
+        <OrganizationProvider>
+          <Navbar>
+            <SelectOrgWrapper
+              organizationId={organizationId}
+            ></SelectOrgWrapper>
+          </Navbar>
+          <Page>
+            <GetProjects organizationId={organizationId}>
+              {(response) => <Projects data={response.getProjectsByOrgID} />}
+            </GetProjects>
+          </Page>
+        </OrganizationProvider>
+      )}
+    </GetOrganizationId>
   );
 }
 

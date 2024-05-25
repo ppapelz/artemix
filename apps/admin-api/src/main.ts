@@ -1,12 +1,12 @@
 import 'reflect-metadata';
-import { OpenAIApi } from '@promptus/server/openai';
-import { createApolloServer } from '@promptus/server/graphql';
+import { OpenAIApi } from '@artemix/server/openai';
+import { createApolloServer } from '@artemix/server/graphql';
 import { expressMiddleware } from '@apollo/server/express4';
 import cors from 'cors';
 import { json } from 'body-parser';
 import {
   dataSource,
-} from '@promptus/server/database';
+} from '@artemix/server/database';
 
 import express from 'express';
 import { runSeeders } from 'typeorm-extension';

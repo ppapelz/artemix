@@ -1,5 +1,5 @@
 import { BaseRepository } from './BaseRepository';
-import { Variable } from '@promptus/server/models';
+import { Variable } from '@artemix/server/models';
 
 class VariableRepository extends BaseRepository<Variable> {
     constructor() {

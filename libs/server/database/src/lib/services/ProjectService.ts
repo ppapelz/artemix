@@ -1,5 +1,5 @@
 
-import { CreateProjectInput, Project, ProjectEntity } from '@promptus/server/models';
+import { CreateProjectInput, Project, ProjectEntity } from '@artemix/server/models';
 import ProjectRepository from '../repositories/ProjectRepository';
 import { organizationService } from './OrganizationService';
 

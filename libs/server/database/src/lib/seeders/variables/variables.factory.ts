@@ -1,4 +1,4 @@
-import { Variable } from "@promptus/server/models";
+import { Variable } from "@artemix/server/models";
 import { setSeederFactory } from "typeorm-extension";
 
 export const VariablesFactory = setSeederFactory(Variable, () => {

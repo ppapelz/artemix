@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@promptus/web-shared-ui';
+import { Button } from '@artemix/web-shared-ui';
 import Image from 'next/image';
 import googleLogo from './../../assets/google-logo.svg';
 import logo from './../../assets/logoipsum-317.svg';

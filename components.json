@@ -10,7 +10,7 @@
     "cssVariables": true
   },
   "aliases": {
-    "components": "@promptus/ui",
-    "utils": "@promptus/web/shared/util"
+    "components": "@artemix/ui",
+    "utils": "@artemix/web/shared/util"
   }
 }

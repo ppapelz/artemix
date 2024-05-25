@@ -1,5 +1,5 @@
-import { Slider } from "@promptus/web-shared-ui"
-import { cn } from "@promptus/web/shared/util"
+import { Slider } from "@artemix/web-shared-ui"
+import { cn } from "@artemix/web/shared/util"
 
 type SliderProps = React.ComponentProps<typeof Slider>
 

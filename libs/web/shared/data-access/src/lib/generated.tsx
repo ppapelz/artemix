@@ -302,7 +302,7 @@ export type GetAccountOrgsQueryVariables = Exact<{
 export type GetAccountOrgsQuery = { __typename?: 'Query', getOrganizationsByAccountID?: Array<{ __typename?: 'OrganizationType', id: string, name: string, projects: Array<{ __typename?: 'ProjectType', id: string, name: string, description?: string | null }> }> | null };
 
 export type GetProjectsByOrgIdQueryVariables = Exact<{
-  orgId: Scalars['ID']['input'];
+  organizationId: Scalars['ID']['input'];
 }>;
 
 
@@ -356,8 +356,8 @@ export type GetAccountOrgsLazyQueryHookResult = ReturnType<typeof useGetAccountO
 export type GetAccountOrgsSuspenseQueryHookResult = ReturnType<typeof useGetAccountOrgsSuspenseQuery>;
 export type GetAccountOrgsQueryResult = Apollo.QueryResult<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>;
 export const GetProjectsByOrgIdDocument = gql`
-    query GetProjectsByOrgId($orgId: ID!) {
-  getProjectsByOrgID(id: $orgId) {
+    query GetProjectsByOrgId($organizationId: ID!) {
+  getProjectsByOrgID(id: $organizationId) {
     name
     description
     id
@@ -377,7 +377,7 @@ export const GetProjectsByOrgIdDocument = gql`
  * @example
  * const { data, loading, error } = useGetProjectsByOrgIdQuery({
  *   variables: {
- *      orgId: // value for 'orgId'
+ *      organizationId: // value for 'organizationId'
  *   },
  * });
  */

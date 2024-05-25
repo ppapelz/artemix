@@ -1,5 +1,5 @@
 import { BaseRepository } from './BaseRepository';
-import { AIModel } from '@promptus/server/models';
+import { AIModel } from '@artemix/server/models';
 
 class AIModelRepository extends BaseRepository<AIModel> {
     constructor() {

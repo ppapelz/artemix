@@ -1,5 +1,5 @@
 
-import { AccountEntity, CreateAccountInput, FirstAccountReturnType, OrganizationEntity } from '@promptus/server/models';
+import { AccountEntity, CreateAccountInput, FirstAccountReturnType, OrganizationEntity } from '@artemix/server/models';
 import AccountRepository from '../repositories/AccountRepository';
 import { dataSource } from '../server-database';
 

@@ -1,10 +1,10 @@
-import { getSSRSessionHelper } from '@promptus/web/auth/util/server';
+import { getSSRSessionHelper } from '@artemix/web/auth/util/server';
 import {
   ApolloQuery,
   GetAccountOrgsQueryVariables,
   GetAccountOrgsQuery,
   GetAccountOrgsDocument,
-} from '@promptus/web/shared/data-access/server';
+} from '@artemix/web/shared/data-access/server';
 
 interface GetAccountOrgsProps {
   children: (data: GetAccountOrgsQuery) => JSX.Element;

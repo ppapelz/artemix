@@ -1,5 +1,5 @@
 import { BellRing, Check } from 'lucide-react';
-import { cn } from '@promptus/web/shared/util';
+import { cn } from '@artemix/web/shared/util';
 import {
   Button,
   Card,
@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
   Switch,
-} from '@promptus/web-shared-ui';
+} from '@artemix/web-shared-ui';
 
 const notifications = [
   {

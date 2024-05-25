@@ -4,14 +4,14 @@ import Image from 'next/image';
 import styles from './Sidebar.module.scss';
 import logo from './../../assets/dummy-logo-5b.png';
 import { FunctionComponent } from 'react';
-import { cn } from '@promptus/web/shared/util';
+import { cn } from '@artemix/web/shared/util';
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from '@promptus/web-shared-ui';
+} from '@artemix/web-shared-ui';
 
 export interface SidebarItem {
   link: string;

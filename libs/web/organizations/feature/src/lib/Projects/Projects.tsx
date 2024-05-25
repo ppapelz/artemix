@@ -1,8 +1,8 @@
 'use client';
 
-import { Card } from '@promptus/web-shared-ui';
+import { Card } from '@artemix/web-shared-ui';
 import AddProject from '../AddProject/AddProject';
-import { useOrganization } from '@promptus/web/organizations/data-access';
+import { useOrganization } from '@artemix/web/organizations/data-access';
 
 export interface ProjectsProps {
   // data: GetAccountOrgsQuery['getOrganizationsByAccountID'];
