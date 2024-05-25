@@ -1,5 +1,5 @@
 
-import { AIModel, CreateAIModelInput, UpdateAIModelInput } from '@promptus/server/models';
+import { AIModel, CreateAIModelInput, UpdateAIModelInput } from '@artemix/server/models';
 import AIModelRepository from '../repositories/AIModelRepository';
 
 class AIModelService {

@@ -3,8 +3,8 @@ import { redirect } from 'next/navigation';
 import {
   SessionAuthForNextJS,
   TryRefreshComponent,
-} from '@promptus/web/auth/feature';
-import { getSSRSessionHelper } from '@promptus/web/auth/util/server';
+} from '@artemix/web/auth/feature';
+import { getSSRSessionHelper } from '@artemix/web/auth/util/server';
 
 export default async function RootLayout({
   children,

@@ -1,5 +1,5 @@
 
-import { CreateVariableInput, UpdateVariableInput, Variable } from '@promptus/server/models';
+import { CreateVariableInput, UpdateVariableInput, Variable } from '@artemix/server/models';
 import VariableRepository from '../repositories/VariableRepository';
 
 class VariableService {

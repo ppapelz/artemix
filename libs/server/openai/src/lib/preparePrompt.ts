@@ -1,4 +1,4 @@
-import { aiModelService, promptService, variableService } from '@promptus/server/database';
+import { aiModelService, promptService, variableService } from '@artemix/server/database';
 import { PromptDTO } from '../models/prompt';
 
 export async function getPromptData(promptId: number): Promise<PromptDTO | null> {

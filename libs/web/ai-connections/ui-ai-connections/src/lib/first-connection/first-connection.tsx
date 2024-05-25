@@ -1,8 +1,8 @@
 import styles from './first-connection.module.scss';
 import Image from 'next/image';
 import firstConnection from './../../assets/empty_connection.png';
-import { cn } from '@promptus/web/shared/util';
-import { Button } from '@promptus/web-shared-ui';
+import { cn } from '@artemix/web/shared/util';
+import { Button } from '@artemix/web-shared-ui';
 
 /* eslint-disable-next-line */
 export interface FirstConnectionProps {}

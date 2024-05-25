@@ -1,5 +1,5 @@
 
-import { CreatePromptInput, Prompt, UpdatePromptInput } from '@promptus/server/models';
+import { CreatePromptInput, Prompt, UpdatePromptInput } from '@artemix/server/models';
 import PromptRepository from '../repositories/PromptRepository';
 
 class PromptService {

@@ -1,4 +1,4 @@
-import { AccountEntity } from "@promptus/server/models";
+import { AccountEntity } from "@artemix/server/models";
 import { setSeederFactory } from "typeorm-extension";
 
 export const AccountFactory = setSeederFactory(AccountEntity, () => {

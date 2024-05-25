@@ -3,8 +3,8 @@ import {
   CreateVariableInput,
   UpdateVariableInput,
   Variable,
-} from '@promptus/server/models';
-import { variableService } from '@promptus/server/database';
+} from '@artemix/server/models';
+import { variableService } from '@artemix/server/database';
 
 @Resolver(Variable)
 export class VariableResolver {

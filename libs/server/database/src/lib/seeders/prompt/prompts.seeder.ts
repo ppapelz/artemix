@@ -1,5 +1,5 @@
 // prompts.seeder.ts
-import { Prompt } from "@promptus/server/models";
+import { Prompt } from "@artemix/server/models";
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from 'typeorm-extension';
 

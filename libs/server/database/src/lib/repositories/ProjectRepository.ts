@@ -1,5 +1,5 @@
 import { BaseRepository } from './BaseRepository';
-import { Project, ProjectEntity } from '@promptus/server/models';
+import { Project, ProjectEntity } from '@artemix/server/models';
 
 class ProjectRepository extends BaseRepository<ProjectEntity> {
     constructor() {

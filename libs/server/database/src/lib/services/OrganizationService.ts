@@ -1,5 +1,5 @@
 
-import { CreateOrganizationInput, Organization } from '@promptus/server/models';
+import { CreateOrganizationInput, Organization } from '@artemix/server/models';
 import OrganizationRepository from '../repositories/OrganizationRepository';
 
 class OrganizationService {

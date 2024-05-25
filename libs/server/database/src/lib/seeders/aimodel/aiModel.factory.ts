@@ -1,4 +1,4 @@
-import { AIModel } from "@promptus/server/models";
+import { AIModel } from "@artemix/server/models";
 import { setSeederFactory } from "typeorm-extension";
 
 export const AIModelFactory = setSeederFactory(AIModel, () => {

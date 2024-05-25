@@ -1,10 +1,10 @@
 import { Resolver, Query, Mutation, Arg, Int } from 'type-graphql';
-import { promptService } from '@promptus/server/database';
+import { promptService } from '@artemix/server/database';
 import {
   CreatePromptInput,
   Prompt,
   UpdatePromptInput,
-} from '@promptus/server/models';
+} from '@artemix/server/models';
 
 @Resolver(Prompt)
 export class PromptResolver {

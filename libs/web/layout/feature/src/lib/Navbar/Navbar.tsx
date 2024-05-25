@@ -13,7 +13,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
   ThemeModeToggle,
-} from '@promptus/web-shared-ui';
+} from '@artemix/web-shared-ui';
 import {
   Cloud,
   CreditCard,

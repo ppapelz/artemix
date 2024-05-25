@@ -1,5 +1,5 @@
 // prompts.factory.ts
-import { Prompt } from "@promptus/server/models";
+import { Prompt } from "@artemix/server/models";
 import { setSeederFactory } from "typeorm-extension";
 
 export const PromptsFactory = setSeederFactory(Prompt, () => {

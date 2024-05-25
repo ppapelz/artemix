@@ -1,4 +1,4 @@
-import { OrganizationEntity } from "@promptus/server/models";
+import { OrganizationEntity } from "@artemix/server/models";
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 

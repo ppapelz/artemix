@@ -1,9 +1,9 @@
-import { Button } from '@promptus/web-shared-ui';
+import { Button } from '@artemix/web-shared-ui';
 import {
   CardDemo,
   SliderDemo,
   DataTableDemo,
-} from '@promptus/web/ui-examples/ui-elements/server';
+} from '@artemix/web/ui-examples/ui-elements/server';
 
 const UIElements = () => {
   return (

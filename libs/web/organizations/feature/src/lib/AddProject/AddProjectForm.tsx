@@ -8,7 +8,7 @@ import {
   FormItem,
   FormMessage,
   Input,
-} from '@promptus/web-shared-ui';
+} from '@artemix/web-shared-ui';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';

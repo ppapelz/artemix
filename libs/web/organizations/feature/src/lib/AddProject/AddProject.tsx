@@ -6,7 +6,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@promptus/web-shared-ui';
+} from '@artemix/web-shared-ui';
 import { AddProjectForm } from './AddProjectForm';
 
 export function AddProject() {

@@ -1,8 +1,8 @@
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
-import { SuperTokensProvider } from '@promptus/web/auth/feature';
-import { cn } from '@promptus/web/shared/util';
-import { ThemeProvider } from '@promptus/web-shared-ui';
+import { SuperTokensProvider } from '@artemix/web/auth/feature';
+import { cn } from '@artemix/web/shared/util';
+import { ThemeProvider } from '@artemix/web-shared-ui';
 
 export const fontSans = FontSans({
   subsets: ['latin'],

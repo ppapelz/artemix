@@ -1,4 +1,4 @@
-import { Variable } from "@promptus/server/models";
+import { Variable } from "@artemix/server/models";
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 

@@ -1,8 +1,8 @@
-import { projectService } from '@promptus/server/database';
+import { projectService } from '@artemix/server/database';
 import {
     CreateProjectInput,
     ProjectType,
-} from '@promptus/server/models';
+} from '@artemix/server/models';
 import { Resolver, Arg, Mutation, Query, ID } from 'type-graphql';
 
 @Resolver(ProjectType)

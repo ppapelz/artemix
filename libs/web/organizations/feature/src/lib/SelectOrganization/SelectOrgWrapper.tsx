@@ -1,12 +1,19 @@
-import { SelectOrganization } from '@promptus/web-shared-ui';
-import { GetAccountOrgs } from '@promptus/web/organizations/data-access/server';
+import { SelectOrganization } from '@artemix/web-shared-ui';
+import { GetAccountOrgs } from '@artemix/web/organizations/data-access/server';
 
-export const SelectOrgWrapper = () => {
+interface SelectOrgWrapperProps {
+  organizationId: string;
+}
+
+export const SelectOrgWrapper = ({ organizationId }: SelectOrgWrapperProps) => {
   return (
     <GetAccountOrgs>
       {(response) => {
         return (
-          <SelectOrganization data={response.getOrganizationsByAccountID} />
+          <SelectOrganization
+            organizationId={organizationId}
+            data={response.getOrganizationsByAccountID}
+          />
         );
       }}
     </GetAccountOrgs>

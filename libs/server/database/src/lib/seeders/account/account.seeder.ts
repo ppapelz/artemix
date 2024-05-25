@@ -1,4 +1,4 @@
-import { AccountEntity, OrganizationEntity } from "@promptus/server/models";
+import { AccountEntity, OrganizationEntity } from "@artemix/server/models";
 import { DataSource } from "typeorm";
 import { Seeder, SeederFactoryManager } from "typeorm-extension";
 export default class AccountSeeder implements Seeder {

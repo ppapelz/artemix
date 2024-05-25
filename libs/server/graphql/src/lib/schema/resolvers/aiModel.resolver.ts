@@ -1,9 +1,9 @@
-import { aiModelService } from '@promptus/server/database';
+import { aiModelService } from '@artemix/server/database';
 import {
   AIModel,
   CreateAIModelInput,
   UpdateAIModelInput,
-} from '@promptus/server/models';
+} from '@artemix/server/models';
 import { Resolver, Query, Arg, Mutation, Int } from 'type-graphql';
 
 @Resolver(AIModel)
