@@ -2,6 +2,7 @@ import { accountService } from '@promptus/server/database';
 import {
   AccountType,
   CreateAccountInput,
+  FirstAccountReturnType,
 } from '@promptus/server/models';
 import { Resolver, Arg, Mutation, Query, ID } from 'type-graphql';
 
@@ -20,10 +21,10 @@ export class AccountResolver {
     return await accountService.createAccount(input);
   }
 
-  @Mutation(() => AccountType)
+  @Mutation(() => FirstAccountReturnType)
   async createFirstAccount(
     @Arg('input', () => CreateAccountInput) input: CreateAccountInput
-  ): Promise<AccountType> {
+  ): Promise<FirstAccountReturnType> {
     return await accountService.createFirstAccount(input);
   }
 }

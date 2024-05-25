@@ -1,13 +1,4 @@
 {
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "ZGMyYjBhZTAtYzUwMy00OTQ5LTliMTUtNzg0ZWZjODBmOWIyfHJlYWQtd3JpdGU="
-      }
-    }
-  },
   "pluginsConfig": {
     "@nx/js": {
       "analyzeSourceFiles": true
@@ -15,19 +6,33 @@
   },
   "extends": "nx/presets/npm.json",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "affected": {
-    "defaultBase": "master"
-  },
   "targetDefaults": {
-    "test": {
-      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+    "build": {
+      "cache": true
     },
-    "lint": {
+    "e2e": {
+      "cache": true
+    },
+    "@nx/jest:jest": {
+      "cache": true,
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"],
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "@nx/eslint:lint": {
       "inputs": [
         "default",
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore"
-      ]
+      ],
+      "cache": true
     }
   },
   "generators": {
@@ -45,5 +50,8 @@
         "linter": "eslint"
       }
     }
-  }
+  },
+  "nxCloudAccessToken": "ZGMyYjBhZTAtYzUwMy00OTQ5LTliMTUtNzg0ZWZjODBmOWIyfHJlYWQtd3JpdGU=",
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }

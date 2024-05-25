@@ -23,6 +23,7 @@ const sidebarItems: Array<SidebarItem> = [
   { link: '/logs', label: 'Logs', icon: ScrollText },
   { link: '/ai-connections', label: 'AI Connections', icon: Bot },
   { link: '/ui-elements', label: 'Ui Elements', icon: Figma },
+  { link: '/organizations', label: 'Organizations', icon: Figma },
 ];
 
 const getActiveLink = (currentPath: string): string => {

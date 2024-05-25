@@ -1,16 +1,10 @@
-import { OrganizationsFeature, SelectOrgWrapper } from '@promptus/web/organizations/feature/server';
-import { Navbar } from '@promtus/web-feature-layout';
+import { OrganizationsFeature } from '@promptus/web/organizations/feature/server';
 
-const Organizations = () => {
+const Organizations = async () => {
   return (
-    <>
-      <Navbar>
-        <SelectOrgWrapper></SelectOrgWrapper>
-      </Navbar>
-      <div className="pt-6">
-        <OrganizationsFeature />
-      </div>
-    </>
+    <div className="pt-6">
+      <OrganizationsFeature />
+    </div>
   );
 };
 

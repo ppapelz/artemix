@@ -82,11 +82,17 @@ export type CreateVariableInput = {
   type: Scalars['String']['input'];
 };
 
+export type FirstAccountReturnType = {
+  __typename?: 'FirstAccountReturnType';
+  accountId: Scalars['ID']['output'];
+  orgId: Scalars['ID']['output'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   createAIModel: AiModel;
   createAccount: AccountType;
-  createFirstAccount: AccountType;
+  createFirstAccount: FirstAccountReturnType;
   createOrganization: OrganizationType;
   createProject: ProjectType;
   createPrompt: Prompt;
@@ -179,7 +185,7 @@ export type OrganizationType = {
 export type ProjectType = {
   __typename?: 'ProjectType';
   createdAt: Scalars['DateTimeISO']['output'];
-  description: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
   updatedAt: Scalars['DateTimeISO']['output'];
@@ -200,6 +206,7 @@ export type Query = {
   getAccount?: Maybe<AccountType>;
   getAllAIModels: Array<AiModel>;
   getAllPrompts: Array<Prompt>;
+  getOrganization?: Maybe<OrganizationType>;
   getOrganizationsByAccountID?: Maybe<Array<OrganizationType>>;
   getProjectsByOrgID?: Maybe<Array<ProjectType>>;
   getPrompt?: Maybe<Prompt>;
@@ -214,6 +221,11 @@ export type QueryGetAiModelArgs = {
 
 
 export type QueryGetAccountArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type QueryGetOrganizationArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -287,7 +299,14 @@ export type GetAccountOrgsQueryVariables = Exact<{
 }>;
 
 
-export type GetAccountOrgsQuery = { __typename?: 'Query', getOrganizationsByAccountID?: Array<{ __typename?: 'OrganizationType', id: string, name: string, projects: Array<{ __typename?: 'ProjectType', id: string, name: string }> }> | null, getAccount?: { __typename?: 'AccountType', displayName?: string | null, email: string, id: string } | null };
+export type GetAccountOrgsQuery = { __typename?: 'Query', getOrganizationsByAccountID?: Array<{ __typename?: 'OrganizationType', id: string, name: string, projects: Array<{ __typename?: 'ProjectType', id: string, name: string, description?: string | null }> }> | null };
+
+export type GetProjectsByOrgIdQueryVariables = Exact<{
+  orgId: Scalars['ID']['input'];
+}>;
+
+
+export type GetProjectsByOrgIdQuery = { __typename?: 'Query', getProjectsByOrgID?: Array<{ __typename?: 'ProjectType', name: string, description?: string | null, id: string }> | null };
 
 
 export const GetAccountOrgsDocument = gql`
@@ -298,12 +317,8 @@ export const GetAccountOrgsDocument = gql`
     projects {
       id
       name
+      description
     }
-  }
-  getAccount(id: $accountId) {
-    displayName
-    email
-    id
   }
 }
     `;
@@ -340,3 +355,45 @@ export type GetAccountOrgsQueryHookResult = ReturnType<typeof useGetAccountOrgsQ
 export type GetAccountOrgsLazyQueryHookResult = ReturnType<typeof useGetAccountOrgsLazyQuery>;
 export type GetAccountOrgsSuspenseQueryHookResult = ReturnType<typeof useGetAccountOrgsSuspenseQuery>;
 export type GetAccountOrgsQueryResult = Apollo.QueryResult<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>;
+export const GetProjectsByOrgIdDocument = gql`
+    query GetProjectsByOrgId($orgId: ID!) {
+  getProjectsByOrgID(id: $orgId) {
+    name
+    description
+    id
+  }
+}
+    `;
+
+/**
+ * __useGetProjectsByOrgIdQuery__
+ *
+ * To run a query within a React component, call `useGetProjectsByOrgIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProjectsByOrgIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProjectsByOrgIdQuery({
+ *   variables: {
+ *      orgId: // value for 'orgId'
+ *   },
+ * });
+ */
+export function useGetProjectsByOrgIdQuery(baseOptions: Apollo.QueryHookOptions<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables> & ({ variables: GetProjectsByOrgIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
+      }
+export function useGetProjectsByOrgIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
+        }
+export function useGetProjectsByOrgIdSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
+        }
+export type GetProjectsByOrgIdQueryHookResult = ReturnType<typeof useGetProjectsByOrgIdQuery>;
+export type GetProjectsByOrgIdLazyQueryHookResult = ReturnType<typeof useGetProjectsByOrgIdLazyQuery>;
+export type GetProjectsByOrgIdSuspenseQueryHookResult = ReturnType<typeof useGetProjectsByOrgIdSuspenseQuery>;
+export type GetProjectsByOrgIdQueryResult = Apollo.QueryResult<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>;
