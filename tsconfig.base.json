@@ -56,10 +56,10 @@
         "libs/web/organizations/feature/src/server.ts"
       ],
       "@artemix/web-ui-examples-ui": [
-        "libs/web/ui-examples/ui-elements/src/index.ts"
+        "libs/web/ui-elements/ui/src/index.ts"
       ],
       "@artemix/web-ui-examples-ui/server": [
-        "libs/web/ui-examples/ui-elements/src/server.ts"
+        "libs/web/ui-elements/ui/src/server.ts"
       ],
       "@artemix/web-organizations-ui": ["libs/web/organizations/ui/src/index.ts"],
       "@artemix/web-organizations-ui/server": [
