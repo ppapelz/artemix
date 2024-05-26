@@ -29,6 +29,10 @@
       "@artemix/ui-ai-connections/server": [
         "libs/web/ai-connections/ui-ai-connections/src/server.ts"
       ],
+      "@artemix/web-shared-feature": ["libs/web/shared/feature/src/index.ts"],
+      "@artemix/web-shared-feature/server": [
+        "libs/web/shared/feature/src/server.ts"
+      ],
       "@artemix/web-shared-ui": ["libs/web/shared/ui/src/index.ts"],
       "@artemix/web-shared-ui/server": ["libs/web/shared/ui/src/server.ts"],
       "@artemix/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
@@ -64,13 +68,13 @@
       "@artemix/web/ui-examples/ui-elements/server": [
         "libs/web/ui-examples/ui-elements/src/server.ts"
       ],
-      "@promtus/web-feature-layout": ["libs/web/layout/feature/src/index.ts"],
-      "@promtus/web-feature-layout/server": [
-        "libs/web/layout/feature/src/server.ts"
-      ],
       "@promtus/organizations-ui": ["libs/web/organizations/ui/src/index.ts"],
       "@promtus/organizations-ui/server": [
         "libs/web/organizations/ui/src/server.ts"
+      ],
+      "@promtus/web-feature-layout": ["libs/web/layout/feature/src/index.ts"],
+      "@promtus/web-feature-layout/server": [
+        "libs/web/layout/feature/src/server.ts"
       ]
     }
   },

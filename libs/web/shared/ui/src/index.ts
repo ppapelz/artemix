@@ -58,4 +58,4 @@ export { Slider } from './lib/ui/slider';
 export { Checkbox } from './lib/ui/checkbox';
 export { ThemeProvider } from './lib/ThemeProvider/ThemeProvider';
 export { ThemeModeToggle } from './lib/ThemeModeToggle/ThemeModeToggle';
-export { SelectOrganization } from './lib/SelectOrganization/SelectOrganization';
+export { OrganizationDropdown } from './lib/OrganizationDropdown/OrganizationDropdown';

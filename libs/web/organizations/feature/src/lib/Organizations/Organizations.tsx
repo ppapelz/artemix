@@ -3,7 +3,7 @@ import { SelectedOrganizationProvider } from '@artemix/web/organizations/data-ac
 import Projects from '../Projects/Projects';
 import { Page } from '@promtus/web-feature-layout/server';
 import { Navbar } from '@promtus/web-feature-layout';
-import { SelectOrgWrapper } from '../SelectOrganization/SelectOrgWrapper';
+import { OrganizationSelectWrapper } from '../OrganizationSelectWrapper/OrganizationSelectWrapper';
 import { GetProjects } from '@artemix/web/organizations/data-access/server';
 import { GetOrganizationId } from '@artemix/web/shared/data-access/server';
 
@@ -13,9 +13,9 @@ export function OrganizationsFeature() {
       {(organizationId) => (
         <SelectedOrganizationProvider>
           <Navbar>
-            <SelectOrgWrapper
+            <OrganizationSelectWrapper
               organizationId={organizationId}
-            ></SelectOrgWrapper>
+            ></OrganizationSelectWrapper>
           </Navbar>
           <Page>
             <GetProjects organizationId={organizationId}>
