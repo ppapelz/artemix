@@ -1,12 +1,10 @@
 import {
   ApolloQuery,
-  GetProjectsByOrgIdQueryVariables,
-  GetProjectsByOrgIdQuery,
-  GetProjectsByOrgIdDocument,
 } from '@artemix/web/shared/data-access/server';
+import { GetProjectsByOrgIdDocument, IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables } from '@artemix/web/shared/util';
 
 interface GetProjectsProps {
-  children: (data: GetProjectsByOrgIdQuery) => JSX.Element;
+  children: (data: IGetProjectsByOrgIdQuery) => JSX.Element;
   organizationId: string;
 }
 
@@ -14,11 +12,11 @@ export const GetProjects = async ({
   children,
   organizationId,
 }: GetProjectsProps) => {
-  const variables: GetProjectsByOrgIdQueryVariables = {
+  const variables: IGetProjectsByOrgIdQueryVariables = {
     organizationId,
   };
   return (
-    <ApolloQuery<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>
+    <ApolloQuery<IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables>
       query={GetProjectsByOrgIdDocument}
       variables={variables}
     >

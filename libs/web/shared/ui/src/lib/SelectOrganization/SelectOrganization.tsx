@@ -3,7 +3,7 @@
 import styles from './SelectOrganization.module.scss';
 import React, { useEffect } from 'react';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { cn, Organization } from '@artemix/web/shared/util';
+import { cn, Organization, Project } from '@artemix/web/shared/util';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -19,15 +19,6 @@ import {
 import { Button } from '../ui/button';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { useSeletedOrganization } from '@artemix/web/organizations/data-access';
-
-export interface BaseObject {
-  id: string;
-  name: string;
-}
-
-export interface Project extends BaseObject {
-  descripion?: string;
-}
 
 export interface SelectOrganizationProps {
   data: Array<Organization>;
