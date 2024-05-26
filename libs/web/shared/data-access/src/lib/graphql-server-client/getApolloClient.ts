@@ -1,6 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
-import { getSSRSessionHelper } from "libs/web/auth/util/src/server";
+import { getSSRSessionHelper } from "@artemix/web/auth/util/server";
 
 export async function getApolloClient(): Promise<ApolloClient<unknown>> {
     const { session } = await getSSRSessionHelper();
