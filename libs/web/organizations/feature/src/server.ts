@@ -1,3 +1,3 @@
 
 export * from './lib/Organizations/Organizations';
-export * from './lib/SelectOrganization/SelectOrgWrapper';
+export * from './lib/OrganizationSelectWrapper/OrganizationSelectWrapper';
