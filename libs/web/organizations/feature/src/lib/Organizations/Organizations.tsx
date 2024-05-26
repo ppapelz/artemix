@@ -19,7 +19,7 @@ export function OrganizationsFeature() {
           </Navbar>
           <Page>
             <GetProjects organizationId={organizationId}>
-              {(response) => <Projects data={response.getProjectsByOrgID} />}
+              {(response) => <Projects data={response} />}
             </GetProjects>
           </Page>
         </SelectedOrganizationProvider>

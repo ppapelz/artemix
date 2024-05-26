@@ -4,14 +4,14 @@ import { Card } from '@artemix/web-shared-ui';
 import AddProject from '../AddProject/AddProject';
 import { useSeletedOrganization } from '@artemix/web/organizations/data-access';
 import { useEffect, useState } from 'react';
+import { Project } from '@artemix/web/shared/util';
 
 export interface ProjectsProps {
-  // data: GetAccountOrgsQuery['getOrganizationsByAccountID'];
-  data: any;
+  data: Array<Project>;
 }
 
 export function Projects({ data }: ProjectsProps) {
-  const [projects, setProjects] = useState<any>(data);
+  const [projects, setProjects] = useState<Array<Project>>(data);
   const { selectedOrganization } = useSeletedOrganization();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export function Projects({ data }: ProjectsProps) {
       </div>
 
       <div className="flex space-x-3">
-        {projects?.map((project: any) => {
+        {projects?.map((project) => {
           return (
             <Card key={project.id} className="py-8 px-8">
               {project.name}

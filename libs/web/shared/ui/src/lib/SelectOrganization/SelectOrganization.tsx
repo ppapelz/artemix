@@ -17,7 +17,6 @@ import {
   DropdownMenuItem,
 } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
-// eslint-disable-next-line @nx/enforce-module-boundaries
 import { useSeletedOrganization } from '@artemix/web/organizations/data-access';
 
 export interface SelectOrganizationProps {
