@@ -2,7 +2,7 @@
 
 import styles from './OrganizationDropdown.module.scss';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { cn, Organization, Project } from '@artemix/web/shared/util';
+import { cn, Organization, Project } from '@artemix/web-shared-util';
 import {
   DropdownMenu,
   DropdownMenuTrigger,

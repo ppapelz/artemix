@@ -3,7 +3,7 @@ import {
   CardDemo,
   SliderDemo,
   DataTableDemo,
-} from '@artemix/web/ui-examples/ui-elements/server';
+} from 'libs/web/ui-elements/ui/src/server';
 
 const UIElements = () => {
   return (

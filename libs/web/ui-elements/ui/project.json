@@ -1,7 +1,7 @@
 {
-  "name": "web-ui-examples-ui-elements",
+  "name": "web-ui-examples-ui",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/web/ui-examples/ui-elements/src",
+  "sourceRoot": "libs/web/ui-elements/ui/src",
   "projectType": "library",
   "tags": ["type:ui"],
   "targets": {

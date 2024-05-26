@@ -1,5 +1,5 @@
 {
-  "name": "web-feature-layout",
+  "name": "web-layout-feature",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/web/layout/feature/src",
   "projectType": "library",

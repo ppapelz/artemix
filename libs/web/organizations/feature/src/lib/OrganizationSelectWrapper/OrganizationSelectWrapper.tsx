@@ -1,5 +1,5 @@
 import { OrganizationSelect } from '@artemix/web-shared-feature';
-import { GetAccountOrgs } from '@artemix/web/organizations/data-access/server';
+import { GetAccountOrgs } from '@artemix/web-organizations-data-access/server';
 
 interface OrganizationSelectWrapperProps {
   organizationId: string;

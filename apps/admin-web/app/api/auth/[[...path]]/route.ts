@@ -1,7 +1,7 @@
 
 import { getAppDirRequestHandler } from 'supertokens-node/nextjs';
 import { NextRequest, NextResponse } from 'next/server';
-import { ensureSuperTokensInit } from '@artemix/web/auth/util/server';
+import { ensureSuperTokensInit } from '@artemix/web-auth-util/server';
 
 ensureSuperTokensInit();
 

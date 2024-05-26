@@ -2,9 +2,9 @@
 
 import { Card } from '@artemix/web-shared-ui';
 import AddProject from '../AddProject/AddProject';
-import { useSeletedOrganization } from '@artemix/web/organizations/data-access';
+import { useSeletedOrganization } from '@artemix/web-organizations-data-access';
 import { useEffect, useState } from 'react';
-import { Project } from '@artemix/web/shared/util';
+import { Project } from '@artemix/web-shared-util';
 
 export interface ProjectsProps {
   data: Array<Project>;
