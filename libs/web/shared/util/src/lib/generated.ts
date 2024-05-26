@@ -18,8 +18,7 @@ export type Scalars = {
   DateTimeISO: { input: any; output: any; }
 };
 
-export type AiModel = {
-  __typename?: 'AIModel';
+export type IAiModel = {
   aiConnectionToken: Scalars['String']['output'];
   createdAt: Scalars['DateTimeISO']['output'];
   frequencyPenalty: Scalars['Float']['output'];
@@ -33,14 +32,13 @@ export type AiModel = {
   updatedAt: Scalars['DateTimeISO']['output'];
 };
 
-export type AccountType = {
-  __typename?: 'AccountType';
-  displayName?: Maybe<Scalars['String']['output']>;
+export type IAccountType = {
+  displayName: Maybe<Scalars['String']['output']>;
   email: Scalars['String']['output'];
   id: Scalars['ID']['output'];
 };
 
-export type CreateAiModelInput = {
+export type ICreateAiModelInput = {
   aiConnectionToken: Scalars['String']['input'];
   frequencyPenalty: Scalars['Float']['input'];
   maxLength: Scalars['Int']['input'];
@@ -51,148 +49,143 @@ export type CreateAiModelInput = {
   temperature: Scalars['Float']['input'];
 };
 
-export type CreateAccountInput = {
-  displayName?: InputMaybe<Scalars['String']['input']>;
+export type ICreateAccountInput = {
+  displayName: InputMaybe<Scalars['String']['input']>;
   email: Scalars['String']['input'];
   id: Scalars['ID']['input'];
 };
 
-export type CreateOrganizationInput = {
+export type ICreateOrganizationInput = {
   name: Scalars['String']['input'];
 };
 
-export type CreateProjectInput = {
-  description?: InputMaybe<Scalars['String']['input']>;
+export type ICreateProjectInput = {
+  description: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   organizationId: Scalars['ID']['input'];
 };
 
-export type CreatePromptInput = {
+export type ICreatePromptInput = {
   content: Scalars['String']['input'];
   name: Scalars['String']['input'];
 };
 
-export type CreateVariableInput = {
-  contentLimit?: InputMaybe<Scalars['Int']['input']>;
-  defaultValue?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
+export type ICreateVariableInput = {
+  contentLimit: InputMaybe<Scalars['Int']['input']>;
+  defaultValue: InputMaybe<Scalars['String']['input']>;
+  description: InputMaybe<Scalars['String']['input']>;
   label: Scalars['String']['input'];
   name: Scalars['String']['input'];
   promptId: Scalars['Int']['input'];
   type: Scalars['String']['input'];
 };
 
-export type FirstAccountReturnType = {
-  __typename?: 'FirstAccountReturnType';
+export type IFirstAccountReturnType = {
   accountId: Scalars['ID']['output'];
   orgId: Scalars['ID']['output'];
 };
 
-export type Mutation = {
-  __typename?: 'Mutation';
-  createAIModel: AiModel;
-  createAccount: AccountType;
-  createFirstAccount: FirstAccountReturnType;
-  createOrganization: OrganizationType;
-  createProject: ProjectType;
-  createPrompt: Prompt;
-  createVariable: Variable;
+export type IMutation = {
+  createAIModel: IAiModel;
+  createAccount: IAccountType;
+  createFirstAccount: IFirstAccountReturnType;
+  createOrganization: IOrganizationType;
+  createProject: IProjectType;
+  createPrompt: IPrompt;
+  createVariable: IVariable;
   deleteAIModel: Scalars['Boolean']['output'];
   deletePrompt: Scalars['Boolean']['output'];
   deleteVariable: Scalars['Boolean']['output'];
-  updateAIModel?: Maybe<AiModel>;
-  updatePrompt?: Maybe<Prompt>;
-  updateVariable?: Maybe<Variable>;
+  updateAIModel: Maybe<IAiModel>;
+  updatePrompt: Maybe<IPrompt>;
+  updateVariable: Maybe<IVariable>;
 };
 
 
-export type MutationCreateAiModelArgs = {
-  input: CreateAiModelInput;
+export type IMutationCreateAiModelArgs = {
+  input: ICreateAiModelInput;
 };
 
 
-export type MutationCreateAccountArgs = {
-  input: CreateAccountInput;
+export type IMutationCreateAccountArgs = {
+  input: ICreateAccountInput;
 };
 
 
-export type MutationCreateFirstAccountArgs = {
-  input: CreateAccountInput;
+export type IMutationCreateFirstAccountArgs = {
+  input: ICreateAccountInput;
 };
 
 
-export type MutationCreateOrganizationArgs = {
-  input: CreateOrganizationInput;
+export type IMutationCreateOrganizationArgs = {
+  input: ICreateOrganizationInput;
 };
 
 
-export type MutationCreateProjectArgs = {
-  input: CreateProjectInput;
+export type IMutationCreateProjectArgs = {
+  input: ICreateProjectInput;
 };
 
 
-export type MutationCreatePromptArgs = {
-  input: CreatePromptInput;
+export type IMutationCreatePromptArgs = {
+  input: ICreatePromptInput;
 };
 
 
-export type MutationCreateVariableArgs = {
-  input: CreateVariableInput;
+export type IMutationCreateVariableArgs = {
+  input: ICreateVariableInput;
 };
 
 
-export type MutationDeleteAiModelArgs = {
+export type IMutationDeleteAiModelArgs = {
   id: Scalars['Int']['input'];
 };
 
 
-export type MutationDeletePromptArgs = {
+export type IMutationDeletePromptArgs = {
   id: Scalars['Int']['input'];
 };
 
 
-export type MutationDeleteVariableArgs = {
+export type IMutationDeleteVariableArgs = {
   id: Scalars['Int']['input'];
 };
 
 
-export type MutationUpdateAiModelArgs = {
+export type IMutationUpdateAiModelArgs = {
   id: Scalars['Int']['input'];
-  input: UpdateAiModelInput;
+  input: IUpdateAiModelInput;
 };
 
 
-export type MutationUpdatePromptArgs = {
+export type IMutationUpdatePromptArgs = {
   id: Scalars['Int']['input'];
-  input: UpdatePromptInput;
+  input: IUpdatePromptInput;
 };
 
 
-export type MutationUpdateVariableArgs = {
+export type IMutationUpdateVariableArgs = {
   id: Scalars['Int']['input'];
-  input: UpdateVariableInput;
+  input: IUpdateVariableInput;
 };
 
-export type OrganizationType = {
-  __typename?: 'OrganizationType';
+export type IOrganizationType = {
   createdAt: Scalars['DateTimeISO']['output'];
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
-  projects: Array<ProjectType>;
+  projects: Array<IProjectType>;
   updatedAt: Scalars['DateTimeISO']['output'];
 };
 
-export type ProjectType = {
-  __typename?: 'ProjectType';
+export type IProjectType = {
   createdAt: Scalars['DateTimeISO']['output'];
-  description?: Maybe<Scalars['String']['output']>;
+  description: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
   updatedAt: Scalars['DateTimeISO']['output'];
 };
 
-export type Prompt = {
-  __typename?: 'Prompt';
+export type IPrompt = {
   content: Scalars['String']['output'];
   createdAt: Scalars['DateTimeISO']['output'];
   id: Scalars['ID']['output'];
@@ -200,92 +193,90 @@ export type Prompt = {
   updatedAt: Scalars['DateTimeISO']['output'];
 };
 
-export type Query = {
-  __typename?: 'Query';
-  getAIModel?: Maybe<AiModel>;
-  getAccount?: Maybe<AccountType>;
-  getAllAIModels: Array<AiModel>;
-  getAllPrompts: Array<Prompt>;
-  getOrganization?: Maybe<OrganizationType>;
-  getOrganizationsByAccountID?: Maybe<Array<OrganizationType>>;
-  getProjectsByOrgID?: Maybe<Array<ProjectType>>;
-  getPrompt?: Maybe<Prompt>;
-  getVariable?: Maybe<Variable>;
-  getVariablesByPromptId: Array<Variable>;
+export type IQuery = {
+  getAIModel: Maybe<IAiModel>;
+  getAccount: Maybe<IAccountType>;
+  getAllAIModels: Array<IAiModel>;
+  getAllPrompts: Array<IPrompt>;
+  getOrganization: Maybe<IOrganizationType>;
+  getOrganizationsByAccountID: Maybe<Array<IOrganizationType>>;
+  getProjectsByOrgID: Maybe<Array<IProjectType>>;
+  getPrompt: Maybe<IPrompt>;
+  getVariable: Maybe<IVariable>;
+  getVariablesByPromptId: Array<IVariable>;
 };
 
 
-export type QueryGetAiModelArgs = {
+export type IQueryGetAiModelArgs = {
   id: Scalars['Int']['input'];
 };
 
 
-export type QueryGetAccountArgs = {
+export type IQueryGetAccountArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type QueryGetOrganizationArgs = {
+export type IQueryGetOrganizationArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type QueryGetOrganizationsByAccountIdArgs = {
+export type IQueryGetOrganizationsByAccountIdArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type QueryGetProjectsByOrgIdArgs = {
+export type IQueryGetProjectsByOrgIdArgs = {
   id: Scalars['ID']['input'];
 };
 
 
-export type QueryGetPromptArgs = {
+export type IQueryGetPromptArgs = {
   id: Scalars['Int']['input'];
 };
 
 
-export type QueryGetVariableArgs = {
+export type IQueryGetVariableArgs = {
   id: Scalars['Int']['input'];
 };
 
 
-export type QueryGetVariablesByPromptIdArgs = {
+export type IQueryGetVariablesByPromptIdArgs = {
   promptId: Scalars['Int']['input'];
 };
 
-export type UpdateAiModelInput = {
-  aiConnectionToken?: InputMaybe<Scalars['String']['input']>;
-  frequencyPenalty?: InputMaybe<Scalars['Float']['input']>;
-  maxLength?: InputMaybe<Scalars['Int']['input']>;
-  modelType?: InputMaybe<Scalars['String']['input']>;
-  presencePenalty?: InputMaybe<Scalars['Float']['input']>;
-  promptId?: InputMaybe<Scalars['Int']['input']>;
-  stop?: InputMaybe<Scalars['String']['input']>;
-  temperature?: InputMaybe<Scalars['Float']['input']>;
+export type IUpdateAiModelInput = {
+  aiConnectionToken: InputMaybe<Scalars['String']['input']>;
+  frequencyPenalty: InputMaybe<Scalars['Float']['input']>;
+  maxLength: InputMaybe<Scalars['Int']['input']>;
+  modelType: InputMaybe<Scalars['String']['input']>;
+  presencePenalty: InputMaybe<Scalars['Float']['input']>;
+  promptId: InputMaybe<Scalars['Int']['input']>;
+  stop: InputMaybe<Scalars['String']['input']>;
+  temperature: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type UpdatePromptInput = {
-  content?: InputMaybe<Scalars['String']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
+export type IUpdatePromptInput = {
+  content: InputMaybe<Scalars['String']['input']>;
+  name: InputMaybe<Scalars['String']['input']>;
 };
 
-export type UpdateVariableInput = {
-  contentLimit?: InputMaybe<Scalars['Int']['input']>;
-  defaultValue?: InputMaybe<Scalars['String']['input']>;
-  description?: InputMaybe<Scalars['String']['input']>;
-  label?: InputMaybe<Scalars['String']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  promptId?: InputMaybe<Scalars['Int']['input']>;
-  type?: InputMaybe<Scalars['String']['input']>;
+export type IUpdateVariableInput = {
+  contentLimit: InputMaybe<Scalars['Int']['input']>;
+  defaultValue: InputMaybe<Scalars['String']['input']>;
+  description: InputMaybe<Scalars['String']['input']>;
+  label: InputMaybe<Scalars['String']['input']>;
+  name: InputMaybe<Scalars['String']['input']>;
+  promptId: InputMaybe<Scalars['Int']['input']>;
+  type: InputMaybe<Scalars['String']['input']>;
 };
 
-export type Variable = {
-  __typename?: 'Variable';
-  contentLimit?: Maybe<Scalars['Int']['output']>;
+export type IVariable = {
+  contentLimit: Maybe<Scalars['Int']['output']>;
   createdAt: Scalars['DateTimeISO']['output'];
-  defaultValue?: Maybe<Scalars['String']['output']>;
-  description?: Maybe<Scalars['String']['output']>;
+  defaultValue: Maybe<Scalars['String']['output']>;
+  description: Maybe<Scalars['String']['output']>;
   id: Scalars['ID']['output'];
   label: Scalars['String']['output'];
   name: Scalars['String']['output'];
@@ -294,19 +285,19 @@ export type Variable = {
   updatedAt: Scalars['DateTimeISO']['output'];
 };
 
-export type GetAccountOrgsQueryVariables = Exact<{
+export type IGetAccountOrgsQueryVariables = Exact<{
   accountId: Scalars['ID']['input'];
 }>;
 
 
-export type GetAccountOrgsQuery = { __typename?: 'Query', getOrganizationsByAccountID?: Array<{ __typename?: 'OrganizationType', id: string, name: string, projects: Array<{ __typename?: 'ProjectType', id: string, name: string, description?: string | null }> }> | null };
+export type IGetAccountOrgsQuery = { getOrganizationsByAccountID: Array<{ id: string, name: string, projects: Array<{ id: string, name: string, description: string | null }> }> | null };
 
-export type GetProjectsByOrgIdQueryVariables = Exact<{
+export type IGetProjectsByOrgIdQueryVariables = Exact<{
   organizationId: Scalars['ID']['input'];
 }>;
 
 
-export type GetProjectsByOrgIdQuery = { __typename?: 'Query', getProjectsByOrgID?: Array<{ __typename?: 'ProjectType', name: string, description?: string | null, id: string }> | null };
+export type IGetProjectsByOrgIdQuery = { getProjectsByOrgID: Array<{ name: string, description: string | null, id: string }> | null };
 
 
 export const GetAccountOrgsDocument = gql`
@@ -339,22 +330,22 @@ export const GetAccountOrgsDocument = gql`
  *   },
  * });
  */
-export function useGetAccountOrgsQuery(baseOptions: Apollo.QueryHookOptions<GetAccountOrgsQuery, GetAccountOrgsQueryVariables> & ({ variables: GetAccountOrgsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetAccountOrgsQuery(baseOptions: Apollo.QueryHookOptions<IGetAccountOrgsQuery, IGetAccountOrgsQueryVariables> & ({ variables: IGetAccountOrgsQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
+        return Apollo.useQuery<IGetAccountOrgsQuery, IGetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
       }
-export function useGetAccountOrgsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>) {
+export function useGetAccountOrgsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IGetAccountOrgsQuery, IGetAccountOrgsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
+          return Apollo.useLazyQuery<IGetAccountOrgsQuery, IGetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
         }
-export function useGetAccountOrgsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>) {
+export function useGetAccountOrgsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<IGetAccountOrgsQuery, IGetAccountOrgsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
+          return Apollo.useSuspenseQuery<IGetAccountOrgsQuery, IGetAccountOrgsQueryVariables>(GetAccountOrgsDocument, options);
         }
 export type GetAccountOrgsQueryHookResult = ReturnType<typeof useGetAccountOrgsQuery>;
 export type GetAccountOrgsLazyQueryHookResult = ReturnType<typeof useGetAccountOrgsLazyQuery>;
 export type GetAccountOrgsSuspenseQueryHookResult = ReturnType<typeof useGetAccountOrgsSuspenseQuery>;
-export type GetAccountOrgsQueryResult = Apollo.QueryResult<GetAccountOrgsQuery, GetAccountOrgsQueryVariables>;
+export type GetAccountOrgsQueryResult = Apollo.QueryResult<IGetAccountOrgsQuery, IGetAccountOrgsQueryVariables>;
 export const GetProjectsByOrgIdDocument = gql`
     query GetProjectsByOrgId($organizationId: ID!) {
   getProjectsByOrgID(id: $organizationId) {
@@ -381,19 +372,19 @@ export const GetProjectsByOrgIdDocument = gql`
  *   },
  * });
  */
-export function useGetProjectsByOrgIdQuery(baseOptions: Apollo.QueryHookOptions<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables> & ({ variables: GetProjectsByOrgIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+export function useGetProjectsByOrgIdQuery(baseOptions: Apollo.QueryHookOptions<IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables> & ({ variables: IGetProjectsByOrgIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
+        return Apollo.useQuery<IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
       }
-export function useGetProjectsByOrgIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>) {
+export function useGetProjectsByOrgIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
+          return Apollo.useLazyQuery<IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
         }
-export function useGetProjectsByOrgIdSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>) {
+export function useGetProjectsByOrgIdSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
+          return Apollo.useSuspenseQuery<IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables>(GetProjectsByOrgIdDocument, options);
         }
 export type GetProjectsByOrgIdQueryHookResult = ReturnType<typeof useGetProjectsByOrgIdQuery>;
 export type GetProjectsByOrgIdLazyQueryHookResult = ReturnType<typeof useGetProjectsByOrgIdLazyQuery>;
 export type GetProjectsByOrgIdSuspenseQueryHookResult = ReturnType<typeof useGetProjectsByOrgIdSuspenseQuery>;
-export type GetProjectsByOrgIdQueryResult = Apollo.QueryResult<GetProjectsByOrgIdQuery, GetProjectsByOrgIdQueryVariables>;
+export type GetProjectsByOrgIdQueryResult = Apollo.QueryResult<IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables>;

@@ -12,7 +12,7 @@ export const SelectOrgWrapper = ({ organizationId }: SelectOrgWrapperProps) => {
         return (
           <SelectOrganization
             organizationId={organizationId}
-            data={response.getOrganizationsByAccountID}
+            data={response}
           />
         );
       }}
