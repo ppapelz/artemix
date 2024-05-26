@@ -3,7 +3,7 @@
 import styles from './SelectOrganization.module.scss';
 import React, { useEffect } from 'react';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { cn } from '@artemix/web/shared/util';
+import { cn, Organization } from '@artemix/web/shared/util';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -24,17 +24,13 @@ export interface BaseObject {
   id: string;
   name: string;
 }
-export interface Organization extends BaseObject {
-  projects: Array<Project>;
-}
 
 export interface Project extends BaseObject {
-  description?: string;
+  descripion?: string;
 }
 
 export interface SelectOrganizationProps {
-  // data: GetAccountOrgsQuery['getOrganizationsByAccountID'];
-  data: any;
+  data: Array<Organization>;
   organizationId: string;
 }
 
@@ -68,12 +64,13 @@ export function SelectOrganization({
   const { updateOrganization } = useOrganization();
 
   useEffect(() => {
-    console.log('organizationId', organizationId);
     if (data && data.length && organizationId) {
       const selectedOrganization = data.find(
         (org: Organization) => org.id === organizationId
       );
-      setSelectedOrg(selectedOrganization);
+      if (selectedOrganization) {
+        setSelectedOrg(selectedOrganization);
+      }
     }
   }, [data, organizationId]);
 
