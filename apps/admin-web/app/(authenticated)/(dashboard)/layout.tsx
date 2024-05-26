@@ -1,4 +1,4 @@
-import { Layout } from '@promtus/web-feature-layout';
+import { Layout } from '@artemix/web-layout-feature';
 import React from 'react';
 
 export default async function RootLayout({

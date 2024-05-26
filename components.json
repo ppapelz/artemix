@@ -11,6 +11,6 @@
   },
   "aliases": {
     "components": "@artemix/ui",
-    "utils": "@artemix/web/shared/util"
+    "utils": "@artemix/web-shared-util"
   }
 }

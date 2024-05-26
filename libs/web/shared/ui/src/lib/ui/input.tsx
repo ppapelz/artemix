@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@artemix/web/shared/util"
+import { cn } from "@artemix/web-shared-util"
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}

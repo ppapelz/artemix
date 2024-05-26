@@ -1,5 +1,5 @@
 import { Slider } from "@artemix/web-shared-ui"
-import { cn } from "@artemix/web/shared/util"
+import { cn } from "@artemix/web-shared-util"
 
 type SliderProps = React.ComponentProps<typeof Slider>
 

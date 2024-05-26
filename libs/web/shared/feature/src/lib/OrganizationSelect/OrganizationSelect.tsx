@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import styles from './OrganizationSelect.module.scss';
-import { useSeletedOrganization } from '@artemix/web/organizations/data-access';
-import { Organization, Project } from '@artemix/web/shared/util';
+import { useSeletedOrganization } from '@artemix/web-organizations-data-access';
+import { Organization, Project } from '@artemix/web-shared-util';
 import { OrganizationDropdown } from '@artemix/web-shared-ui';
 
 export interface OrganizationSelectProps {

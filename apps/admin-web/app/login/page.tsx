@@ -1,5 +1,5 @@
-import { LoginImage } from '@artemix/auth-ui';
-import { Authentication } from '@artemix/web/auth/feature';
+import { LoginImage } from '@artemix/web-auth-ui';
+import { Authentication } from '@artemix/web-auth-feature';
 
 export default function Login() {
   return (

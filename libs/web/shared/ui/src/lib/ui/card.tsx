@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@artemix/web/shared/util"
+import { cn } from "@artemix/web-shared-util"
 
 const Card = React.forwardRef<
   HTMLDivElement,

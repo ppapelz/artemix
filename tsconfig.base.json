@@ -17,17 +17,15 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "paths": {
-      "@artemix/auth-ui": ["libs/web/auth/ui/src/index.ts"],
-      "@artemix/auth-ui/server": ["libs/web/auth/ui/src/server.ts"],
       "@artemix/server/database": ["libs/server/database/src/index.ts"],
       "@artemix/server/graphql": ["libs/server/graphql/src/index.ts"],
       "@artemix/server/models": ["libs/server/models/src/index.ts"],
       "@artemix/server/openai": ["libs/server/openai/src/index.ts"],
-      "@artemix/ui-ai-connections": [
-        "libs/web/ai-connections/ui-ai-connections/src/index.ts"
+      "@artemix/web-shared-data-access": [
+        "libs/web/shared/data-access/src/index.ts"
       ],
-      "@artemix/ui-ai-connections/server": [
-        "libs/web/ai-connections/ui-ai-connections/src/server.ts"
+      "@artemix/web-shared-data-access/server": [
+        "libs/web/shared/data-access/src/server.ts"
       ],
       "@artemix/web-shared-feature": ["libs/web/shared/feature/src/index.ts"],
       "@artemix/web-shared-feature/server": [
@@ -35,45 +33,40 @@
       ],
       "@artemix/web-shared-ui": ["libs/web/shared/ui/src/index.ts"],
       "@artemix/web-shared-ui/server": ["libs/web/shared/ui/src/server.ts"],
-      "@artemix/web/auth/feature": ["libs/web/auth/feature/src/index.ts"],
-      "@artemix/web/auth/feature/server": [
+      "@artemix/web-shared-util": ["libs/web/shared/util/src/index.ts"],
+      "@artemix/web-shared-util/server": ["libs/web/shared/util/src/server.ts"],
+      "@artemix/web-auth-feature": ["libs/web/auth/feature/src/index.ts"],
+      "@artemix/web-auth-feature/server": [
         "libs/web/auth/feature/src/server.ts"
       ],
-      "@artemix/web/auth/ui": ["libs/web/auth/ui/src/index.ts"],
-      "@artemix/web/auth/ui/server": ["libs/web/auth/ui/src/server.ts"],
-      "@artemix/web/auth/util": ["libs/web/auth/util/src/index.ts"],
-      "@artemix/web/auth/util/server": ["libs/web/auth/util/src/server.ts"],
-      "@artemix/web/organizations/data-access": [
+      "@artemix/web-auth-ui": ["libs/web/auth/ui/src/index.ts"],
+      "@artemix/web-auth-ui/server": ["libs/web/auth/ui/src/server.ts"],
+      "@artemix/web-auth-util": ["libs/web/auth/util/src/index.ts"],
+      "@artemix/web-auth-util/server": ["libs/web/auth/util/src/server.ts"],
+      "@artemix/web-organizations-data-access": [
         "libs/web/organizations/data-access/src/index.ts"
       ],
-      "@artemix/web/organizations/data-access/server": [
+      "@artemix/web-organizations-data-access/server": [
         "libs/web/organizations/data-access/src/server.ts"
       ],
-      "@artemix/web/organizations/feature": [
+      "@artemix/web-organizations-feature": [
         "libs/web/organizations/feature/src/index.ts"
       ],
-      "@artemix/web/organizations/feature/server": [
+      "@artemix/web-organizations-feature/server": [
         "libs/web/organizations/feature/src/server.ts"
       ],
-      "@artemix/web/shared/data-access": [
-        "libs/web/shared/data-access/src/index.ts"
+      "@artemix/web-ui-examples-ui": [
+        "libs/web/ui-elements/ui/src/index.ts"
       ],
-      "@artemix/web/shared/data-access/server": [
-        "libs/web/shared/data-access/src/server.ts"
+      "@artemix/web-ui-examples-ui/server": [
+        "libs/web/ui-elements/ui/src/server.ts"
       ],
-      "@artemix/web/shared/util": ["libs/web/shared/util/src/index.ts"],
-      "@artemix/web/ui-examples/ui-elements": [
-        "libs/web/ui-examples/ui-elements/src/index.ts"
-      ],
-      "@artemix/web/ui-examples/ui-elements/server": [
-        "libs/web/ui-examples/ui-elements/src/server.ts"
-      ],
-      "@promtus/organizations-ui": ["libs/web/organizations/ui/src/index.ts"],
-      "@promtus/organizations-ui/server": [
+      "@artemix/web-organizations-ui": ["libs/web/organizations/ui/src/index.ts"],
+      "@artemix/web-organizations-ui/server": [
         "libs/web/organizations/ui/src/server.ts"
       ],
-      "@promtus/web-feature-layout": ["libs/web/layout/feature/src/index.ts"],
-      "@promtus/web-feature-layout/server": [
+      "@artemix/web-layout-feature": ["libs/web/layout/feature/src/index.ts"],
+      "@artemix/web-layout-feature/server": [
         "libs/web/layout/feature/src/server.ts"
       ]
     }

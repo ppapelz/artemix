@@ -1,10 +1,10 @@
-import { ApolloQuery } from '@artemix/web/shared/data-access/server';
+import { ApolloQuery } from '@artemix/web-shared-data-access/server';
 import {
   GetProjectsByOrgIdDocument,
   IGetProjectsByOrgIdQuery,
   IGetProjectsByOrgIdQueryVariables,
   Project,
-} from '@artemix/web/shared/util';
+} from '@artemix/web-shared-util';
 
 interface GetProjectsProps {
   children: (data: Array<Project>) => JSX.Element;
