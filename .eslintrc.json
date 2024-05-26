@@ -44,6 +44,29 @@
               {
                 "sourceTag": "scope:admin-api",
                 "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "scope:admin-web",
+                "onlyDependOnLibsWithTags": ["*"]
+              },
+              {
+                "sourceTag": "scope:db",
+                "onlyDependOnLibsWithTags": ["scope:db", "scope:shared"]
+              },
+              {
+                "sourceTag": "scope:auth",
+                "onlyDependOnLibsWithTags": ["scope:auth", "scope:shared"]
+              },
+              {
+                "sourceTag": "scope:shared",
+                "onlyDependOnLibsWithTags": ["scope:shared"]
+              },
+              {
+                "sourceTag": "scope:organizations",
+                "onlyDependOnLibsWithTags": [
+                  "scope:organizations",
+                  "scope:shared"
+                ]
               }
             ]
           }

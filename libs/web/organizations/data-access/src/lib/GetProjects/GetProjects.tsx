@@ -1,10 +1,13 @@
+import { ApolloQuery } from '@artemix/web/shared/data-access/server';
 import {
-  ApolloQuery,
-} from '@artemix/web/shared/data-access/server';
-import { GetProjectsByOrgIdDocument, IGetProjectsByOrgIdQuery, IGetProjectsByOrgIdQueryVariables } from '@artemix/web/shared/util';
+  GetProjectsByOrgIdDocument,
+  IGetProjectsByOrgIdQuery,
+  IGetProjectsByOrgIdQueryVariables,
+  Project,
+} from '@artemix/web/shared/util';
 
 interface GetProjectsProps {
-  children: (data: IGetProjectsByOrgIdQuery) => JSX.Element;
+  children: (data: Array<Project>) => JSX.Element;
   organizationId: string;
 }
 
@@ -23,7 +26,8 @@ export const GetProjects = async ({
       {({ data, loading, error }) => {
         if (loading) return <p>Loading...</p>;
         if (error) return <p>Error! {error.message}</p>;
-        return data ? children(data) : <p>No data found</p>;
+        if (!data.getProjectsByOrgID) return <p>No data found</p>;
+        return children(data.getProjectsByOrgID);
       }}
     </ApolloQuery>
   );
