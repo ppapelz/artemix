@@ -1,16 +1,20 @@
 'use client';
 
-import { Card } from '@artemix/web-shared-ui';
-import AddProject from '../AddProject/AddProject';
-import { useSeletedOrganization } from '@artemix/web/organizations/data-access';
+import {
+  AddProjectProvider,
+  useSeletedOrganization,
+} from '@artemix/web/organizations/data-access';
 import { useEffect, useState } from 'react';
 import { Project } from '@artemix/web/shared/util';
-
+import { PlusCircle } from 'lucide-react';
+import { ProjectCard } from '@artemix/organizations-ui/server';
+import { AddProjectDialog } from '../AddProjectDialog/AddProjectDialog';
 export interface ProjectsProps {
   data: Array<Project>;
+  organizationId: string;
 }
 
-export function Projects({ data }: ProjectsProps) {
+export function Projects({ data, organizationId }: ProjectsProps) {
   const [projects, setProjects] = useState<Array<Project>>(data);
   const { selectedOrganization } = useSeletedOrganization();
 
@@ -22,18 +26,24 @@ export function Projects({ data }: ProjectsProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-end w-auto mb-4">
-        <AddProject />
-      </div>
-
       <div className="flex space-x-3">
         {projects?.map((project) => {
           return (
-            <Card key={project.id} className="py-8 px-8">
-              {project.name}
-            </Card>
+            <button key={project.id} onClick={() => console.log(project.id)}>
+              <ProjectCard>{project.name}</ProjectCard>
+            </button>
           );
         })}
+        <AddProjectProvider>
+          <AddProjectDialog organizationId={organizationId}>
+            <button>
+              <ProjectCard>
+                <PlusCircle className="mr-2" />
+                <span>Add Project</span>
+              </ProjectCard>
+            </button>
+          </AddProjectDialog>
+        </AddProjectProvider>
       </div>
     </div>
   );

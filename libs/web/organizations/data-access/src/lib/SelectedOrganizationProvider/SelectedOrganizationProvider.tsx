@@ -1,11 +1,12 @@
 'use client';
 
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import { Project } from '@artemix/web/shared/util';
+import { createContext, useState, useContext, ReactNode } from 'react';
 
 interface Organization {
   id: string;
   name: string;
-  projects: Array<any>;
+  projects: Array<Project>;
 }
 
 interface OrganizationContextType {

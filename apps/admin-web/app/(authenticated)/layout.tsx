@@ -5,6 +5,7 @@ import {
   TryRefreshComponent,
 } from '@artemix/web/auth/feature';
 import { getSSRSessionHelper } from '@artemix/web/auth/util/server';
+import { ApolloClientProvider } from '@artemix/web/shared/data-access';
 
 export default async function RootLayout({
   children,
@@ -35,5 +36,5 @@ export default async function RootLayout({
     return <TryRefreshComponent />;
   }
 
-  return <>{children}</>;
+  return <ApolloClientProvider>{children}</ApolloClientProvider>;
 }
