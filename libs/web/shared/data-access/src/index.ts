@@ -1,3 +1,4 @@
+export * from './lib/ApolloClientProvider/ApolloClientProvider';
 export {
   useSeletedOrganization,
   SelectedOrganizationProvider,

@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import AddProject from './AddProject';
+import AddProjectDialog from './AddProjectDialog';
 
 describe('AddProject', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<AddProject />);
+    const { baseElement } = render(<AddProjectDialog />);
     expect(baseElement).toBeTruthy();
   });
 });

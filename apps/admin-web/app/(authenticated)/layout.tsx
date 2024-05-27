@@ -6,6 +6,7 @@ import {
 } from '@artemix/web-auth-feature';
 import { getSSRSessionHelper } from '@artemix/web-shared-util/server';
 import { AuthenticatedWrapper } from '@artemix/web-layout-feature/server';
+import { ApolloClientProvider } from '@artemix/web-shared-data-access';
 
 export default async function RootLayout({
   children,
@@ -36,5 +37,9 @@ export default async function RootLayout({
     return <TryRefreshComponent />;
   }
 
-  return <AuthenticatedWrapper>{children}</AuthenticatedWrapper>;
+  return (
+    <AuthenticatedWrapper>
+      <ApolloClientProvider>{children}</ApolloClientProvider>
+    </AuthenticatedWrapper>
+  );
 }

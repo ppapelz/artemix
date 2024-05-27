@@ -1,5 +1,5 @@
 'use client';
-
+import { Loader2 } from 'lucide-react';
 import {
   Button,
   Form,
@@ -12,14 +12,19 @@ import {
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { Project } from '@artemix/web/shared/util';
 
 const formSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
   description: z.string().optional(),
 });
 
-export function AddProjectForm() {
-  // 1. Define your form.
+interface AddProjectFormProps {
+  submitForm: (values: Project) => void;
+  loading: boolean;
+}
+
+export function AddProjectForm({ submitForm, loading }: AddProjectFormProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -28,11 +33,8 @@ export function AddProjectForm() {
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    submitForm(values as Project);
   }
 
   return (
@@ -62,7 +64,10 @@ export function AddProjectForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Add</Button>
+        <Button disabled={loading} type="submit">
+          {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+          Add
+        </Button>
       </form>
     </Form>
   );

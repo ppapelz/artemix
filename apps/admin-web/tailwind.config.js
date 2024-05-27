@@ -77,6 +77,12 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      minWidth: {
+        'project-card': '210px',
+      },
+      maxWidth: {
+        'project-card': '210px',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
