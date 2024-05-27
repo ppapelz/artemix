@@ -1,9 +1,6 @@
 import { Button } from '@artemix/web-shared-ui';
-import {
-  CardDemo,
-  SliderDemo,
-  DataTableDemo,
-} from '@artemix/web/ui-examples/ui-elements/server';
+import { DataTableDemo } from '@artemix/web-ui-examples-ui';
+import { CardDemo,  SliderDemo} from '@artemix/web-ui-examples-ui/server';
 
 const UIElements = () => {
   return (

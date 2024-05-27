@@ -1,7 +1,7 @@
 import './global.css';
 import { Inter as FontSans } from 'next/font/google';
-import { SuperTokensProvider } from '@artemix/web/auth/feature';
-import { cn } from '@artemix/web/shared/util';
+import { SuperTokensProvider } from '@artemix/web-auth-feature';
+import { cn } from '@artemix/web-shared-util';
 import { ThemeProvider } from '@artemix/web-shared-ui';
 
 export const fontSans = FontSans({

@@ -1,6 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { getApolloClient } from '@artemix/web/shared/data-access/server';
+import { getApolloClient } from '@artemix/web-shared-data-access/server';
 
 export default async function Logs() {
   let promptsData = [];

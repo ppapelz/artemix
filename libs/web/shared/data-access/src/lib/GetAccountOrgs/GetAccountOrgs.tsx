@@ -1,11 +1,11 @@
-import { getSSRSessionHelper } from '@artemix/web/auth/util/server';
-import { ApolloQuery } from '@artemix/web/shared/data-access/server';
+import { getSSRSessionHelper } from '@artemix/web-shared-util/server';
 import {
   GetAccountOrgsDocument,
   IGetAccountOrgsQuery,
   IGetAccountOrgsQueryVariables,
   Organization,
-} from '@artemix/web/shared/util';
+} from '@artemix/web-shared-util';
+import ApolloQuery from '../ApolloQuery/ApolloQuery';
 
 interface GetAccountOrgsProps {
   children: (data: Array<Organization>) => JSX.Element;

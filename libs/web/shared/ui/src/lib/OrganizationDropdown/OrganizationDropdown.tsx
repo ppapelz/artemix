@@ -2,7 +2,7 @@
 
 import styles from './OrganizationDropdown.module.scss';
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { cn, Organization, Project } from '@artemix/web/shared/util';
+import { cn, Organization, Project } from '@artemix/web-shared-util';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -36,10 +36,10 @@ export function DropdownItemContent({
 
 export interface OrganizationDropdownProps {
   organizations: Array<Organization>;
-  selectedOrgganization: Organization | null;
-  selectedProject: Project | null;
+  selectedOrgganization: Organization | undefined;
+  selectedProject: Project | undefined;
   onSelectOrganization: (item: Organization) => void;
-  onSelectProject: (item: Project) => void;
+  onSelectProject: (organizationId: string, item: Project) => void;
 }
 
 export function OrganizationDropdown({
@@ -79,7 +79,7 @@ export function OrganizationDropdown({
                     {organization.projects.map((project) => (
                       <DropdownMenuItem
                         key={project.id}
-                        onClick={() => onSelectProject(project)}
+                        onClick={() => onSelectProject(organization.id, project)}
                       >
                         <DropdownItemContent
                           name={project.name}

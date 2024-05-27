@@ -3,9 +3,10 @@ import { redirect } from 'next/navigation';
 import {
   SessionAuthForNextJS,
   TryRefreshComponent,
-} from '@artemix/web/auth/feature';
-import { getSSRSessionHelper } from '@artemix/web/auth/util/server';
-import { ApolloClientProvider } from '@artemix/web/shared/data-access';
+} from '@artemix/web-auth-feature';
+import { getSSRSessionHelper } from '@artemix/web-shared-util/server';
+import { AuthenticatedWrapper } from '@artemix/web-layout-feature/server';
+import { ApolloClientProvider } from '@artemix/web-shared-data-access';
 
 export default async function RootLayout({
   children,
@@ -36,5 +37,9 @@ export default async function RootLayout({
     return <TryRefreshComponent />;
   }
 
-  return <ApolloClientProvider>{children}</ApolloClientProvider>;
+  return (
+    <AuthenticatedWrapper>
+      <ApolloClientProvider>{children}</ApolloClientProvider>
+    </AuthenticatedWrapper>
+  );
 }

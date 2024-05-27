@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 
 interface AddProjectProps {
   children: React.ReactNode;
-  organizationId: string;
+  organizationId: string | undefined;
 }
 
 export function AddProjectDialog({
@@ -26,7 +26,7 @@ export function AddProjectDialog({
   const submitForm = (value: Project) => {
     const createProjectInput = {
       ...value,
-      organizationId: organizationId,
+      organizationId: organizationId as string,
     };
     console.log('submit form');
     console.log(createProjectInput);

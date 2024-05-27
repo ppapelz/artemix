@@ -1,28 +1,13 @@
 'use client';
 
-import {
-  AddProjectProvider,
-  useSeletedOrganization,
-} from '@artemix/web/organizations/data-access';
-import { useEffect, useState } from 'react';
-import { Project } from '@artemix/web/shared/util';
+import { useSeletedOrganization } from '@artemix/web-shared-data-access';
 import { PlusCircle } from 'lucide-react';
 import { ProjectCard } from '@artemix/organizations-ui/server';
 import { AddProjectDialog } from '../AddProjectDialog/AddProjectDialog';
-export interface ProjectsProps {
-  data: Array<Project>;
-  organizationId: string;
-}
+import { AddProjectProvider } from '@artemix/web-organizations-data-access';
 
-export function Projects({ data, organizationId }: ProjectsProps) {
-  const [projects, setProjects] = useState<Array<Project>>(data);
-  const { selectedOrganization } = useSeletedOrganization();
-
-  useEffect(() => {
-    if (selectedOrganization.id) {
-      setProjects(selectedOrganization.projects);
-    }
-  }, [selectedOrganization]);
+export function Projects() {
+  const { projects, selectedOrganization } = useSeletedOrganization();
 
   return (
     <div className="flex flex-col">
@@ -35,7 +20,7 @@ export function Projects({ data, organizationId }: ProjectsProps) {
           );
         })}
         <AddProjectProvider>
-          <AddProjectDialog organizationId={organizationId}>
+          <AddProjectDialog organizationId={selectedOrganization?.id}>
             <button>
               <ProjectCard>
                 <PlusCircle className="mr-2" />
