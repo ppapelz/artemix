@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import UserMetadata from "supertokens-node/recipe/usermetadata";
 import { withSession } from "supertokens-node/nextjs";
 import SuperTokens from "supertokens-node";
-import { backendConfig } from '@artemix/web-auth-util/server';
+import { backendConfig } from '@artemix/web-shared-util/server';
+
 SuperTokens.init(backendConfig());
 
 export async function POST(request: NextRequest) {

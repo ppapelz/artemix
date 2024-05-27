@@ -1,6 +1,8 @@
-import { GetOrganizationId } from '@artemix/web-shared-data-access/server';
-import { GetAccountOrgs } from '@artemix/web-organizations-data-access/server';
-import { SelectedOrganizationProvider } from '@artemix/web-organizations-data-access';
+import {
+  GetAccountOrgs,
+  GetOrganizationId,
+} from '@artemix/web-shared-data-access/server';
+import { SelectedOrganizationProvider } from '@artemix/web-shared-data-access';
 
 export function AuthenticatedWrapper({
   children,
