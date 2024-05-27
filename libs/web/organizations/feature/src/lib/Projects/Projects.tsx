@@ -3,22 +3,9 @@
 import { Card } from '@artemix/web-shared-ui';
 import AddProject from '../AddProject/AddProject';
 import { useSeletedOrganization } from '@artemix/web-organizations-data-access';
-import { useEffect, useState } from 'react';
-import { Project } from '@artemix/web-shared-util';
 
-export interface ProjectsProps {
-  data: Array<Project>;
-}
-
-export function Projects({ data }: ProjectsProps) {
-  const [projects, setProjects] = useState<Array<Project>>(data);
-  const { selectedOrganization } = useSeletedOrganization();
-
-  useEffect(() => {
-    if (selectedOrganization.id) {
-      setProjects(selectedOrganization.projects);
-    }
-  }, [selectedOrganization]);
+export function Projects() {
+  const { projects } = useSeletedOrganization();
 
   return (
     <div className="flex flex-col">

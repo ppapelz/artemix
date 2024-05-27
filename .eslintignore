@@ -1,1 +1,4 @@
 node_modules
+/libs/web/shared/ui/src/lib/ui
+apps/admin-api
+libs/server

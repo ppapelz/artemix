@@ -1,38 +1,76 @@
 'use client';
 
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import { Organization, Project } from '@artemix/web-shared-util';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+  useCallback,
+} from 'react';
 
-interface Organization {
-  id: string;
-  name: string;
-  projects: Array<any>;
+export interface OrganizationContextType {
+  organizations: Array<Organization>;
+  selectedOrganization: Organization | undefined;
+  updateSelectedOrganization: (organizationId: string) => void;
+  projects: Array<Project> | undefined;
+  selectedProject: Project | undefined;
+  updateSelectedProject: (organizationId: string, project: Project) => void;
 }
 
-interface OrganizationContextType {
-  selectedOrganization: Organization;
-  updateSelectedOrganization: (newOrganization: Organization) => void;
+export interface SelectedOrganizationProviderProps {
+  children: ReactNode;
+  selectedOrganizationId: string;
+  organizations: Array<Organization>;
+  selectedProjectId?: string;
 }
-
-const defaultSelectedOrganization: Organization = {
-  id: '',
-  name: '',
-  projects: [],
-};
 
 const OrganizationContext = createContext<OrganizationContextType | undefined>(
   undefined
 );
 
-export const SelectedOrganizationProvider = ({ children }: { children: ReactNode }) => {
-  const [selectedOrganization, setOrganization] =
-    useState<Organization>(defaultSelectedOrganization);
+export const SelectedOrganizationProvider = ({
+  children,
+  selectedOrganizationId,
+  organizations,
+}: SelectedOrganizationProviderProps) => {
+  const [selectedOrganization, setSelectedOrganization] =
+    useState<Organization>();
+  const [selectedProject, setSelectedProject] = useState<Project>();
 
-  const updateSelectedOrganization = (newOrganization: Organization) => {
-    setOrganization(newOrganization);
+  const updateSelectedOrganization = useCallback(
+    (organizationId: string): void => {
+      const selectedOrganization = organizations.find(
+        (organization) => organization.id === organizationId
+      );
+      if (selectedOrganization) {
+        setSelectedOrganization(selectedOrganization);
+      }
+    },
+    [organizations, setSelectedOrganization]
+  );
+
+  const updateSelectedProject = (organizationId: string, project: Project) => {
+    updateSelectedOrganization(organizationId);
+    setSelectedProject(project);
   };
 
+  useEffect(() => {
+    updateSelectedOrganization(selectedOrganizationId);
+  }, [selectedOrganizationId, updateSelectedOrganization]);
+
   return (
-    <OrganizationContext.Provider value={{ selectedOrganization, updateSelectedOrganization }}>
+    <OrganizationContext.Provider
+      value={{
+        organizations,
+        selectedOrganization,
+        projects: organizations[0]?.projects,
+        selectedProject,
+        updateSelectedOrganization,
+        updateSelectedProject,
+      }}
+    >
       {children}
     </OrganizationContext.Provider>
   );
