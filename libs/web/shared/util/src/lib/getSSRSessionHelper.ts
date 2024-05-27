@@ -1,7 +1,7 @@
 import { SessionContainer } from "supertokens-node/recipe/session";
-import { ensureSuperTokensInit } from "./superTokenBackendConfig";
 import { getSSRSession } from "supertokens-node/nextjs";
 import { cookies, headers } from "next/headers";
+import { ensureSuperTokensInit } from "./superTokenBackendConfig";
 
 ensureSuperTokensInit();
 

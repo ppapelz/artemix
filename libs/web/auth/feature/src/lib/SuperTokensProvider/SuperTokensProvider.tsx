@@ -3,7 +3,7 @@ import React from 'react';
 import { SuperTokensWrapper } from 'supertokens-auth-react';
 import SuperTokensReact from 'supertokens-auth-react';
 import { usePathname, useRouter } from 'next/navigation';
-import { frontendConfig, setRouter } from '@artemix/web-auth-util';
+import { frontendConfig, setRouter } from '@artemix/web-shared-util';
 
 if (typeof window !== 'undefined') {
   SuperTokensReact.init(frontendConfig());

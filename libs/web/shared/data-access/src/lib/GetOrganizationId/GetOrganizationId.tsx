@@ -1,4 +1,4 @@
-import { getSSRSessionHelper } from '@artemix/web-auth-util/server';
+import { getSSRSessionHelper } from '@artemix/web-shared-util/server';
 import UserMetadata from 'supertokens-node/recipe/usermetadata';
 
 interface GetOrganizationIdProps {

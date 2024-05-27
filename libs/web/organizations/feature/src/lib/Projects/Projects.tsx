@@ -2,7 +2,7 @@
 
 import { Card } from '@artemix/web-shared-ui';
 import AddProject from '../AddProject/AddProject';
-import { useSeletedOrganization } from '@artemix/web-organizations-data-access';
+import { useSeletedOrganization } from '@artemix/web-shared-data-access';
 
 export function Projects() {
   const { projects } = useSeletedOrganization();

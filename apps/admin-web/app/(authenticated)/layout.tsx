@@ -4,7 +4,7 @@ import {
   SessionAuthForNextJS,
   TryRefreshComponent,
 } from '@artemix/web-auth-feature';
-import { getSSRSessionHelper } from '@artemix/web-auth-util/server';
+import { getSSRSessionHelper } from '@artemix/web-shared-util/server';
 import { AuthenticatedWrapper } from '@artemix/web-layout-feature/server';
 
 export default async function RootLayout({
