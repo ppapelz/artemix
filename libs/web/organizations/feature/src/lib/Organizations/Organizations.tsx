@@ -6,25 +6,23 @@ import { Navbar } from '@artemix/web-layout-feature';
 import { OrganizationSelectWrapper } from '../OrganizationSelectWrapper/OrganizationSelectWrapper';
 import { GetProjects } from '@artemix/web-organizations-data-access/server';
 import { GetOrganizationId } from '@artemix/web-shared-data-access/server';
+import { OrganizationSelect } from '@artemix/web-shared-feature';
 
 export function OrganizationsFeature() {
   return (
-    <GetOrganizationId>
-      {(organizationId) => (
-        <SelectedOrganizationProvider>
-          <Navbar>
-            <OrganizationSelectWrapper
-              organizationId={organizationId}
-            ></OrganizationSelectWrapper>
-          </Navbar>
-          <Page>
-            <GetProjects organizationId={organizationId}>
-              {(response) => <Projects data={response} />}
-            </GetProjects>
-          </Page>
-        </SelectedOrganizationProvider>
-      )}
-    </GetOrganizationId>
+    <>
+      <Navbar>
+        <OrganizationSelect />
+      </Navbar>
+      <Page>
+        <Projects/>
+      </Page>
+      {/* <Page>
+        <GetProjects organizationId={organizationId}>
+          {(response) => <Projects data={response} />}
+        </GetProjects>
+      </Page> */}
+    </>
   );
 }
 
