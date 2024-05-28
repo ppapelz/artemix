@@ -1,6 +1,7 @@
 import {
   GetAccountOrgs,
   GetOrganizationId,
+  GetProjectId,
 } from '@artemix/web-shared-data-access/server';
 import { SelectedOrganizationProvider } from '@artemix/web-shared-data-access';
 
@@ -12,18 +13,23 @@ export function AuthenticatedWrapper({
   return (
     <GetOrganizationId>
       {(organizationId) => (
-        <GetAccountOrgs>
-          {(organizations) => {
-            return (
-              <SelectedOrganizationProvider
-                selectedOrganizationId={organizationId}
-                organizations={organizations}
-              >
-                {children}
-              </SelectedOrganizationProvider>
-            );
-          }}
-        </GetAccountOrgs>
+        <GetProjectId>
+          {(projectId) => (
+            <GetAccountOrgs>
+              {(organizations) => {
+                return (
+                  <SelectedOrganizationProvider
+                    selectedOrganizationId={organizationId}
+                    organizations={organizations}
+                    selectedProjectId={projectId}
+                  >
+                    {children}
+                  </SelectedOrganizationProvider>
+                );
+              }}
+            </GetAccountOrgs>
+          )}
+        </GetProjectId>
       )}
     </GetOrganizationId>
   );

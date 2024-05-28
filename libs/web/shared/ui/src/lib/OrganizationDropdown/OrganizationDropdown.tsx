@@ -36,7 +36,7 @@ export function DropdownItemContent({
 
 export interface OrganizationDropdownProps {
   organizations: Array<Organization>;
-  selectedOrgganization: Organization | undefined;
+  selectedOrganization: Organization | undefined;
   selectedProject: Project | undefined;
   onSelectOrganization: (item: Organization) => void;
   onSelectProject: (organizationId: string, item: Project) => void;
@@ -44,18 +44,20 @@ export interface OrganizationDropdownProps {
 
 export function OrganizationDropdown({
   organizations,
-  selectedOrgganization,
+  selectedOrganization,
   selectedProject,
   onSelectOrganization,
-  onSelectProject
+  onSelectProject,
 }: OrganizationDropdownProps) {
   return (
     <div className={styles['container']}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          {selectedOrgganization && (
+          {selectedOrganization && (
             <Button variant="link">
-              <span className="mr-3">{selectedOrgganization?.name}'s organization</span>
+              <span className="mr-3">
+                {selectedOrganization?.name}'s organization
+              </span>
               <ChevronsUpDown></ChevronsUpDown>
             </Button>
           )}
@@ -66,10 +68,12 @@ export function OrganizationDropdown({
           {organizations?.map((organization) =>
             organization.projects.length ? (
               <DropdownMenuSub key={organization.id}>
-                <DropdownMenuSubTrigger onClick={() => onSelectOrganization(organization)}>
+                <DropdownMenuSubTrigger
+                  onClick={() => onSelectOrganization(organization)}
+                >
                   <DropdownItemContent
                     name={organization.name}
-                    checked={organization.id === selectedOrgganization?.id}
+                    checked={organization.id === selectedOrganization?.id}
                   />
                 </DropdownMenuSubTrigger>
                 <DropdownMenuPortal>
@@ -79,7 +83,9 @@ export function OrganizationDropdown({
                     {organization.projects.map((project) => (
                       <DropdownMenuItem
                         key={project.id}
-                        onClick={() => onSelectProject(organization.id, project)}
+                        onClick={() =>
+                          onSelectProject(organization.id, project)
+                        }
                       >
                         <DropdownItemContent
                           name={project.name}
@@ -97,7 +103,7 @@ export function OrganizationDropdown({
               >
                 <DropdownItemContent
                   name={organization.name}
-                  checked={organization.id === selectedOrgganization?.id}
+                  checked={organization.id === selectedOrganization?.id}
                 />
               </DropdownMenuItem>
             )

@@ -20,34 +20,17 @@ export function OrganizationSelect() {
 
   const handleSelectOrg = (org: Organization) => {
     updateSelectedProject(org.id, org.projects[0]);
-    updateOrgIDMetaData(org.id);
     updateSelectedOrganization(org.id);
   };
 
   const handleSelectProject = (organizationId: string, project: Project) => {
-    updateOrgIDMetaData(organizationId);
     updateSelectedProject(organizationId, project);
-  };
-
-  const updateOrgIDMetaData = async (orgId: string) => {
-    try {
-      await fetch('/api/user-metadata', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ key: 'orgId', value: orgId }),
-        credentials: 'include',
-      });
-    } catch (err) {
-      console.error(err);
-    }
   };
 
   return (
     <OrganizationDropdown
       organizations={organizations}
-      selectedOrgganization={selectedOrganization}
+      selectedOrganization={selectedOrganization}
       selectedProject={selectedProject}
       onSelectOrganization={handleSelectOrg}
       onSelectProject={handleSelectProject}
