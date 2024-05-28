@@ -16,26 +16,27 @@ import { useEffect } from 'react';
 interface AddProjectProps {
   children: React.ReactNode;
   organizationId: string | undefined;
+  addProject: (project: Project) => void;
 }
 
 export function AddProjectDialog({
   children,
   organizationId,
+  addProject,
 }: AddProjectProps) {
   const { loading, error, data, createProject } = useAddProject();
+
   const submitForm = (value: Project) => {
     const createProjectInput = {
       ...value,
       organizationId: organizationId as string,
     };
-    console.log('submit form');
-    console.log(createProjectInput);
     createProject(createProjectInput);
   };
 
   useEffect(() => {
     if (data) {
-      console.log('data', data);
+      addProject(data);
     }
   }, [data]);
 
