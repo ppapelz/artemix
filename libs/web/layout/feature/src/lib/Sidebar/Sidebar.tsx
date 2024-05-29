@@ -12,6 +12,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from '@artemix/web-shared-ui';
+import { OrganizationSelect } from '@artemix/web-shared-feature';
 
 export interface SidebarItem {
   link: string;
@@ -89,21 +90,7 @@ export function Sidebar({
 
         <div className="flex justify-center items-center border-t">
           <div className="mt-2"></div>
-          {/* <div className="mt-3">
-            <a href="/" onClick={(event) => event.preventDefault()}>
-              <Button variant="ghost" size="icon">
-                <Linkedin className="h-4 w-4"></Linkedin>
-              </Button>
-            </a>
-            <a href="/" onClick={onLogout}>
-              <Button variant="ghost" size="icon">
-                <Github className="h-4 w-4"></Github>
-              </Button>
-            </a>
-          </div>
-          <Badge variant="outline" className="mt-3 px-4 max-h-6">
-            v3.1.1
-          </Badge> */}
+          <OrganizationSelect />
         </div>
       </div>
       {show && <ModalOverlay onClick={toggleSidebar} />}

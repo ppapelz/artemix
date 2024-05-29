@@ -1,0 +1,1 @@
+export const ORGANIZATION_PATH_NAME = '/organizations';
